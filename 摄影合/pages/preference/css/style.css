@@ -1,0 +1,264 @@
+.cle{
+	clear: both;
+}	
+/*版心*/
+.container{
+	width: 1200px;
+	height: 2320px;
+	margin: 0 auto;
+	background: url(../img/bg.jpg) no-repeat top center;
+}	
+.container .header{
+	position: relative;
+	width: 100%;
+	height: 44px;
+	margin-top: 17px;
+}
+.container .header .logo{
+	display: block;	
+	float: left;	
+	width: 119px;
+	height: 44px;
+	background: url(../img/jj2.png) no-repeat right center;
+}
+.container .header .links{
+	position: absolute;
+	right: 0;
+	height: 44px;
+}
+
+.container .links .link{
+	display: block;
+	float: left;
+	height: 42px;
+	line-height: 44px;
+	margin-left: 36px;
+	/*padding-top: 2px;*/
+	/*border-bottom: 2px solid #dd1717;*/
+	color: #fff;
+	font-size: 16px;
+}
+.container .links .link.active{
+	border-bottom: 2px solid #dd1717;
+	color: #dd1717;
+}
+/*提示*/
+.container .tips{
+	margin: 151px auto;
+	width: 600px;
+}
+.container .tips .tips-en{
+	width: 517px;
+	height: 24px;
+	margin: 0 auto;
+	line-height: 24px;
+	text-align: center;
+	color: #dd1717;
+	font-size: 24px;
+}
+ .tips .tips-en .tips-item{
+ 	float: left;
+ 	height: 24px;
+}	
+  .tips .tips-en .tips-item.line{
+  	width: 129px;
+}
+  .tips .tips-en .tips-item.en{
+  	width: 259px;
+}
+ .tips-en .line .line-detail{
+ 	display: block;
+	width: 129px;
+	height: 2px;
+	margin-top: 11px;
+	background-color: #dd1717;
+}
+.container .tips .text.gray{
+	display: block;
+	margin-top: 15px;
+	width: 100%;
+	text-align: center;
+	font-size: 16px;
+	line-height: 16xp;
+	color: #8c8c8c
+}
+.container .tips .text.white{
+	display: block;
+	margin-top: 30px;
+	width: 100%;
+	text-align: center;
+	font-size: 14px;
+	line-height: 14xp;
+	color: #fff;
+}
+.container .main{
+	position: relative;
+	width: 1078px;
+	height: 1528px;
+	margin: 0 auto;
+}
+.container .main .photo{
+	width: 515px;
+	height: 739px;
+}
+.container .photo img{
+	display: block;
+}
+.container .photo .des{
+	width: 100%;
+	height: 200px;
+	background-color: #0d0d0d;
+}
+.container .main .photo.lb{
+	padding-top: 50px;
+}
+
+.container .main .photo.rt{
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+.container .main .photo.rb{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+.container .photo .img-link{
+	display: block;
+	width: 100%;
+	height: 75px;
+	line-height: 75px;
+	text-align: center;
+	color: #fff;
+	font-size: 16px;
+	background-color: #212121;
+}
+.main .des .number{
+	padding-top: 49px;
+	font-size: 36px;
+	line-height: 36px;
+	color: #fff;
+	text-align: center;
+}
+.main .des .eng{
+	padding-top: 26px;			
+	font-size: 14px;
+	line-height: 14px;
+	color: #fff;
+	text-align: center;
+}
+.main .des .people{
+	padding-top: 34px;
+	font-size: 14px;
+	line-height: 14px;
+	color: #fff;
+	text-align: center;
+}	
+.main .people .red{
+	color: #dd1717;
+}			
+.container .photo .img-link.lb{
+	background-color: #dd1717;
+}
+.container .photo .des.lb{
+	background-color: #6f0c0c;
+}
+.container .photo .des.rt{
+	background-color: rgba(255,255,255,.05);
+}	
+.container .footer {
+	width: 100%;
+	height: 111px;
+	color: #8c8c8c;
+	margin-top: 143px;
+}
+.container .footer .lt{
+	float: left;
+	width: 369px;
+	height: 100%;
+}
+.container .footer .center{
+	float: left;
+	width: 342px;
+	height: 100%;
+	line-height: 36px;
+	padding-left: 112px;
+	border-left: 2px solid #0d0d0d;
+	border-right: 2px solid #0d0d0d;			
+}	
+.container .footer .rt{
+	float: left;
+	width: 181px;
+	height: 100%;
+	line-height: 37px;
+	padding-left: 192px;
+}	
+.footer .lt .coname{
+	padding-top: 26px;
+	height: 33px;
+	line-height: 16px
+	font-size: 16px;
+}	
+.footer .lt .footer-icon{
+	width: 100%;
+	height: 29px;
+}
+.footer .footer-icon .icon{
+	display: block;
+	float: left;
+	width: 29px;
+	height: 29px;
+	padding-right: 20px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: auto 29px;
+}	
+.footer .footer-icon .icon.wb{
+	background-image: url(../img/wb.png);
+}	
+.footer .footer-icon .icon.qq{
+	background-image: url(../img/qq.png);
+}
+.footer .footer-icon .icon.wx{
+	background-image: url(../img/wx.png);
+}
+.footer .footer-icon .icon.baidu{
+	background-image: url(../img/baidu.png);
+}			
+.bottom{
+	width: 100%;
+	height: 77px;
+	background-color: #161616;
+}
+.bottom .bottom-c{
+	width: 1200px;
+	height: 100%;
+	line-height: 77px;
+	margin:0 auto;
+	text-align: center;
+	font-size: 12px;
+	color: #fff;
+}
+
+.footer2{
+	width: 1200px;
+	height: 116px;
+	margin: 0 auto;
+	color: #8c8c8c;
+}
+.footer2 .f-left,
+.footer2 .f-center,
+.footer2 .f-right{
+	float: left;
+	width: 400px;
+	height: 100%;
+}
+.footer2 .f-center{
+	width: 396px;
+	border-left: 2px solid #0e0e0e;
+	border-right: 2px solid #0e0e0e;
+}
+.footer2 .f-right,
+.footer2 .f-center{
+	text-indent: 180px;
+}
