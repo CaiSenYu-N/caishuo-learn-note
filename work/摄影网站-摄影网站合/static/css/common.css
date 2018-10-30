@@ -18,3 +18,9 @@ a {
 .clr {
   clear: both;
 }
+
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+}
