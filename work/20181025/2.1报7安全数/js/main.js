@@ -20,3 +20,69 @@ for(var i=1; i<=num; i++){
     console.log(i);
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var num = prompt('请输入任意数字：');
+
+for(var i=1; i<num; i++){
+  if(i%7!=0||i%10!=7){
+    console.log(i);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var num = prompt('请输入任意数：');
+for(var i=1; i<=num; i++){
+  if(i%7!=0||i%10!=7){
+    console.log(i);
+  }
+}
