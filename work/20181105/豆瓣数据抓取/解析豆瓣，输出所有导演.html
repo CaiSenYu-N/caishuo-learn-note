@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="豆瓣.js">
+
+  </script>
+
+  <script>
+
+    // var subjects = data.subjects;
+    // for(var i=0; i<subjects.length; i++){
+    //   var item = subjects[i];
+    //   var fileName = item.title;
+    //   var directors = item.directors;
+    //   var dirNameStr = '';
+    //   for(var j=0; j<directors.length; j++){
+    //     var dir =  directors[j];
+    //     dirNameStr += dir.name+'/';
+    //   }
+    //   dirNameStr = dirNameStr.substr(0,dirNameStr.length-1);
+    //   console.log('<<'+fileName+'>> : '+dirNameStr)
+    // }
+    //
+
+
+
+
+
+
+
+
+
+
+
+
+
+    var subjects = data.subjects;
+
+    for(var i=0; i<subjects.length; i++){
+      var item = subjects[i];
+      var fileName = item.title;
+      var directors = item.directors;
+      var dirNameStr = '';
+      for(var j=0; j<directors.length; j++){
+        var dir = directors[j];
+        dirNameStr += dir.name+'/';
+      }
+        dirNameStr = dirNameStr.substr(0,dirNameStr.length-1);
+        console.log('<<'+fileName+'>> : '+dirNameStr);
+    }
+  </script>
+</head>
+<body>
+
+</body>
+</html>
