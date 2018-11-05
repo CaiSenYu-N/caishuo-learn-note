@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <ul id="ui1">
+    <li>li_1</li>
+    <li>li_2</li>
+    <li>li_3</li>
+    <li>li_4</li>
+    <li>li_5</li>
+  </ul>
+
+  <script>
+    // var ul1 = document.getElementById('ul1');
+    //
+    // var lis = myChildren(ul1);
+    // var li_3 = lis[3];
+    // li_3.style.backgroundColor = 'red';
+    //
+    // function myChildren(pNode){
+    //   var else = pNode.children;
+    //   var rs = [];
+    //   for(var i=0; i<else.length; i++){
+    //     if(else[i].nodeType == 1){
+    //       rs.push(else[i]);
+    //     }
+    //   }
+    //   return rs;
+    // }
+
+    var ul1 = document.getElementById('ul1');
+  //获取所有的孩子节点
+  // 嫡出
+  // var lis = ul1.childNodes;  // 伪数组
+  // 庶出  这里一般使用children即可,在ie8中存在兼容问题,包含注释节点.
+  // var lis = ul1.children;
+  // 兼容后的代码
+  var lis = myChildren(ul1);
+  var li_3 =lis[3];
+  // lis.length ;
+  // console.log(lis.length);
+  // alert(lis.length);
+  li_3.style.backgroundColor = 'green';
+
+  // 封装方法,找到所有的文本节点
+
+  function myChildren(pNode){
+    // 通过父类元素 获取所有孩子节点,可能包括注释节点(ie8);
+    var eles = pNode.children;
+    var rs = [];
+    for(var i = 0 ;i < eles.length ; i ++){
+      // nodeType==1 标签节点
+      if(eles[i].nodeType == 1){
+        //找到正确的节点 插入数组
+        rs.push(eles[i]);
+      }
+    }
+    return rs;
+  }
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<div class="box">
+
+</div>
+<botton class="btn">
+
+</botton>
+<button class="btn2">
+
+</button>
+
+<script>
+var boxDiv = document.getElementsByClassName('box')[0];
+var btn = document.getElementsByClassName('btn')[0];
+var btn2 = document.getElementsByClassName('btn2')[0];
+
+var pEle = document.creatElement('p');
+pEle.innerText = 'helloworld' ;
+var img = document.creatElement('img');
+var img2 = documeng.creatElement('img');
+img.src = '';
+img2.src = '';
+// 通过父节点插入子节点
+boxDiv.appendChild(pEle);
+boxDiv.appendChild(img);
+// 父节点.insertBefore(要插入的节点，参考节点)；
+boxDiv.insertBefore(img2,pEle);
+btn.onclick = function(){
+  // boxDiv.removeChild(img2);
+  // node.parentNode.removeChild(node);
+  img2.parentNode.removeChild(img2);
+}
+
+btn2.onclick = function(){
+  var scriptEle = document.getElementsByTagName('script');
+  var newBox = boxDiv.cloneNode(true);
+  document.body.insertBefore(newBox,scriptEle);
+}
+
+</script>
+</body>
+</html>
