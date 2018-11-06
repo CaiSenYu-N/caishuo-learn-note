@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .bg-img {
+      width: 400px;
+      height: 250px;
+    }
+
+    ul {
+      list-style: none;
+      height: 150px;
+      background-color: skyblue;
+    }
+
+    ul li {
+      float: left;
+      margin-left: 20px;
+      width: 200px;
+      height: 100%;
+    }
+
+    ul li img {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <img class="bg-img" src="imgs/a.jpg" alt="">
+  <ul>
+    <li class="img-item"><img src="imgs/hulk.jpg" alt=""></li>
+    <li class="img-item"><img src="imgs/sjl.jpg" alt=""></li>
+    <li class="img-item"><img src="imgs/a.jpg" alt=""></li>
+    <li class="img-item"><img src="imgs/钢铁侠.jpg" alt=""></li>
+  </ul>
+
+  <script>
+
+    var lis = document.getElementsByClassName('img-item');
+    var target = document.getElementsByClassName('bg-img')[0];
+
+    for(var i=0; i<lis.length; i++){
+      lis[i].onclick = function(){
+        var child = this.children[0];
+        var imgUrl = child.getAttribute('src');
+        console.log(imgUrl);
+        target.src = imgUrl;
+      }
+    }
+
+  </script>
+</body>
+</html>

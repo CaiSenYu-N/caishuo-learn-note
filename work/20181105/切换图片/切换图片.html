@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+
+    .img{
+      width: 400px;
+    }
+  </style>
+</head>
+<body>
+  <img class="img" src="imgs/钢铁侠.jpg" alt="">
+
+  <script>
+
+    var imgs = ['a.jpg','hulk.jpg','sjl.jpg','钢铁侠.jpg'];
+
+    // var imgEl = document.getElementsByClassName('img')[0];
+    // imgEl.onclick = function(){
+    //   var randomIndex = Math.floor(Math.random()*imgs.length);
+    //   this.src = 'imgs/'+imgs[randomIndex];
+    // }
+
+
+
+
+
+
+
+
+    // var imgEl = document.getElementsByClassName('img')[0];
+    //
+    // imgEl.onclick = function(){
+    //   var randomIndex = Math.floor(Math.random()*imgs.length);
+    //   this.src = 'imgs/'+imgs[randomIndex];
+    // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    var imgEl = document.getElementsByClassName('img')[0];
+
+    imgEl.onclick = function(){
+      var randomIndex = Math.floor(Math.random()*imgs.length);
+      this.src = 'imgs/'+imgs[randomIndex];
+    }
+  </script>
+</body>
+</html>
