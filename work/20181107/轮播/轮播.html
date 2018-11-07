@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .swiper {
+      position: relative;
+      width: 750px;
+      height: 450px;
+      background-color: green;
+      margin: 100px auto;
+    }
+
+    .swiper img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper a {
+      text-decoration: none;
+      color: #ccc;
+      text-align: center;
+      line-height: 35px;
+      font-size: 25px;
+    }
+
+    .swiper .arr {
+      position: absolute;
+      top: 50%;
+      display: block;
+      width: 35px;
+      height: 35px;
+      border: 1px solid #ccc;
+      border-radius: 50%;
+    }
+
+    .swiper .arr-left {
+      left: 10px;
+    }
+
+    .swiper .arr-right {
+      right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="swiper">
+    <img class="img" src="imgs/z_1.jpg" alt="">
+    <a href="javascript:;" class="arr arr-left"><</a>
+    <a href="javascript:;" class="arr arr-right">></a>
+  </div>
+
+  <script>
+
+    // var imgs = ['z_1.jpg','z_2.jpg','z_3.jpg','z_4.jpg','z_5.jpg','z_6.jpg'];
+    //
+    // var imgEl = document.getElementsByClassName('img')[0];
+    // var btnLeft = document.getElementsByClassName('arr-left')[0];
+    // var btnRight = document.getElementsByClassName('arr-right')[0];
+    //
+    // var count = 0;
+    // btnLeft.onclick = function(){
+    //   if(count == 0){
+    //     count = imgs.length-1;
+    //   }else{
+    //     count--;
+    //   }
+    //   imgEl.src = 'imgs/'+imgs[count];
+    // }
+    //
+    // btnRight.onclick = function(){
+    //   if(count == imgs.length-1){
+    //     count = 0;
+    //   }else{
+    //     count++;
+    //   }
+    //   imgEl.src = 'imgs/'+imgs[count];
+    // }
+    //
+
+
+
+
+
+
+
+
+
+
+
+var imgs = ['z_1.jpg','z_2.jpg','z_3.jpg','z_4.jpg','z_5.jpg','z_6.jpg'];
+
+var imgEl = document.getElementsByClassName('img')[0];
+var btnLeft = document.getElementsByClassName('arr-left')[0];
+var btnRight = document.getElementsByClassName('arr-right')[0];
+
+var count = 0;
+btnLeft.onclick = function(){
+  if(count == 0){
+    count = imgs.length-1;
+  }else{
+    count--;
+  }
+  imgEl.src = 'imgs/'+imgs[count];
+}
+
+btnRight.onclick = function(){
+  if(count == imgs.length-1){
+    count = 0;
+  }else{
+    count++;
+  }
+  imgEl.src = 'imgs/'+imgs[count];
+}
+  </script>
+</body>
+</html>
