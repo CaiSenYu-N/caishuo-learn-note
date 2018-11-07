@@ -66,7 +66,7 @@
 		.swiper .dotts .dott-item.active {
 			background-color: red;
 		}
-		
+
 	</style>
 </head>
 <body>
@@ -106,7 +106,10 @@
 					count --;
 				}
 			}
+			// 拼接地址
 			imgEl.src = 'imgs/'+imgs[count];
+
+			// 去除/添加active
 			var lis = document.getElementsByClassName('dott-item');
 			for(var i = 0 ; i < lis.length ; i ++ ){
 				delClass(lis[i],'active');
@@ -114,6 +117,7 @@
 			addClass(lis[count],'active');
 
 		}
+		// 渲染页面 
 		function initDotts(el,imgs){
 			var str = '';
 			for(var i = 0 ; i < imgs.length ; i ++){
