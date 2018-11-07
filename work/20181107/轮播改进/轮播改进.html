@@ -172,6 +172,30 @@ function swipImg(isRight){
   }
   imgEl.src = 'imgs/'+imgs[count];
 }
+
+
+
+
+
+
+
+
+
+var count = 0;
+function(isRight){
+  if(isRight){
+    if(count == imgs.length-1){
+      count = 0;
+    }else{
+      count++;
+    }
+  }else{
+    if(count == 0){
+      count = imgs.length-1;
+    }
+  }
+  imgEl.url = 'imgs/'+imgs[count];
+}
   </script>
 </body>
 </html>
