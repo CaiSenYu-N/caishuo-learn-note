@@ -1,0 +1,259 @@
+.header {
+  width: 100%;
+  height: 100%;
+}
+
+.header .header-center {
+  position: relative;
+  margin: 0 auto;
+  width: 1200px;
+  height: 75px;
+}
+
+.header .header-center .logo {
+  position: absolute;
+  top: 14px;
+}
+
+.header .header-center .nav {
+  position: absolute;
+  right: 0;
+  overflow: hidden;
+}
+
+.header .header-center .nav li {
+  float: left;
+  margin-left: 36px;
+  margin-top: 13px;
+  width: 64px;
+  height: 44px;
+  text-align: center;
+  line-height: 44px;
+}
+
+.header .header-center li a {
+  display: block;
+  width: 100%;
+  height: 42px;
+  font-size: 16px;
+  color: #8d8d8d;
+}
+
+.header .header-center li a.active {
+  color: #dd1717;
+  border-bottom: 2px solid #dd1717
+}
+
+/* 内容部分 */
+.container {
+  color: #fff;
+  background-color: #161616;
+}
+
+.container .container-center {
+  width: 1200px;
+  margin: 0 auto;
+  background-color: #161616;
+  overflow: hidden;
+}
+/* 装饰线 */
+
+.container .container-center .dec {
+  width: 100%;
+  height: 117px;
+  margin-bottom: 56px;
+}
+
+.container .container-center .dec-top {
+  position: relative;
+  width: 517px;
+  height: 19px;
+  line-height: 19px;
+  margin: 0 auto;
+  padding-top: 38px;
+  overflow: hidden;
+}
+
+.container .container-center .dec-line {
+  width: 129px;
+  height: 2px;
+  margin-top: 8.5px;
+  background-color: #850f0f;
+}
+
+.container .container-center .dec-word {
+  position: absolute;
+  left: 200px;
+  font-size: 24px;
+  color: #850f0f;
+}
+
+.container .container-center .dec-left {
+  float: left;
+}
+
+.container .container-center .dec-right {
+  position: absolute;
+  left: 388px;
+}
+
+.container .container-center .dec p {
+  width: 48px;
+  height: 40px;
+  line-height: 40px;
+  font-size: 12px;
+  color: #8d8e8e;
+  margin: 0 auto;
+}
+
+/* 公司介绍 */
+.container .container-center .user-msg {
+  margin-bottom: 30px;
+}
+
+.container .container-center .about-us {
+  float: left;
+  margin-left: 100px;
+  width: 283px;
+}
+
+.container .container-center .about-us span {
+  color: #dd1717;
+}
+
+.container .container-center .about-us p{
+  margin-top: 15px;
+}
+
+/* 表单 */
+.container .container-center form {
+  float: right;
+  margin-right: 100px;
+}
+
+.container .container-center input {
+  display: block;
+  width: 533px;
+  height: 46px;
+  margin-bottom: 19px;
+  margin-top: 9px;
+  background-color: #1f1f1f;
+  border: 1px solid #363636;
+  outline: none;
+}
+
+.container .container-center .location {
+  height: 178px;
+}
+
+.container .container-center .form span {
+  color: #dd1717;
+}
+
+.container .container-center .form button {
+  margin-left: 192.5px;
+  margin-top: 31px;
+  font-size: 16px;
+  color: #fff;
+  width: 148px;
+  height: 48px;
+  border: none;
+  border-radius: 24px 24px;
+  background-color: #dd1717;
+}
+
+/* 地址信息 */
+
+.pro-wrap {
+  width: 100%;
+  height: 350px;
+  /* background-color: green; */
+  overflow: hidden;
+}
+
+.process {
+  width: 1200px;
+  margin: 0 auto;
+  font-size: 14px;
+  color: #696969;
+  line-height: 30px;
+  margin-top: 142px;
+  background-color: #000;
+}
+.process .add {
+  width: 1200px;
+  height: 111px;
+  font-size: 14px;
+  margin-bottom: 119px;
+}
+
+.process .add li {
+  display: block;
+  float: left;
+}
+
+.process .add li p {
+  height: 35px;
+  line-height: 35px;
+}
+
+.process .add .add-l {
+  text-align: left;
+  width: 30.95%;
+  height: 111px;
+  overflow: hidden;
+}
+
+.process .add .add-l p {
+  font-size: 16px;
+}
+
+.process .add .add-l a {
+  display: block;
+  float: left;
+  width: 23px;
+  height: 26px;
+  margin-right: 22px;
+}
+
+.process .add .add-c {
+  text-align: center;
+  width: 455px;
+  height: 111px;
+  border-left: 2px solid #0E0E0E;
+  border-right: 2px solid #0E0E0E;
+}
+
+.process .add .add-c p {
+  width: 238px;
+  text-align: left;
+  margin: 0 auto;
+}
+
+.process .add .add-r {
+  text-align: left;
+  float: right;
+  width: 181px;
+  height: 111px;
+}
+
+
+/* 底部 */
+.footer {
+  font-size: 12px;
+  line-height: 80px;
+  color: #a7a7a7;
+  text-align: center;
+  width: 100%;
+  height: 80px;
+  background-color: #161616;
+}
+
+.footer a {
+  font-size: 12px;
+  color: #a7a7a7;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
