@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="box">
+    <p class="endTime"></p>
+    <p class="lastTime"></p>
+  </div>
+
+  <script>
+
+    var endTimeEl = document.getElementsByClassName('endTime')[0];
+    var lastTimeEl = document.getElementsByClassName('lastTime')[0];
+
+    var endTimeStr = '2018-11-10 00:00:00';
+    endTimeEl.innerText = endTimeStr;
+    var endTime = new Date(endTimeStr);
+    var endTimeStamp = endTime.getTime();
+    var HOUR_MS = 60*60*1000;
+    var MIN_MS = 60*1000;
+
+    setInterval(function(){
+      var nowTime = new Date();
+      var nowTimeStamp = nowTime.getTime();
+      console.log(endTimeStamp);
+      console.log(nowTimeStamp);
+      var cha = endTimeStamp - nowTimeStamp;
+
+      var hour = Math.floor(cha / HOUR_MS) ;
+      var min = Math.floor((cha % HOUR_MS) / MIN_MS);
+      var s = Math.floor((cha % MIN_MS)/1000);
+      var rs = wrapNum(hour)+'时'+wrapNum(min)+'分'+wrapNum(s)+'秒';
+      lastTimeEl.innerText = rs;
+    },1000)
+
+    function wrapNum(n){
+      return n<10?('0'+n):n;
+    }
+  </script>
+</body>
+</html>

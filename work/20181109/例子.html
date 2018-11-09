@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .add{
+      width: 100px;
+      height: 100px;
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="add"></div>
+
+  <script>
+    var adEl = document.getElementsByClassName('add')[0];
+
+    setTimeout(function(){
+      // adEl.style.display = 'none';
+      adEl.style.display = 'none';
+    },3000)
+  </script>
+</body>
+</html>

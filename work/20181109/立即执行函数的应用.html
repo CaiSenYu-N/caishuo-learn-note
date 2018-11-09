@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li class="li-item">lis_1</li>
+    <li class="li-item">lis_2</li>
+    <li class="li-item">lis_3</li>
+    <li class="li-item">lis_4</li>
+    <li class="li-item">lis_5</li>
+  </ul>
+
+  <script>
+    var lis = document.getElementsByClassName('li-item');
+
+    // // js没有块状作用域 跟java后台语言不同
+		// for(var i = 0 ; i < lis.length ; i++){
+		// 	// 绑定这个事件是循环的时候立即执行的,但是函数体内部的代码,是事件被触发(点击)后才能执行的
+		// 	// lis[i].onclick = function () {
+		// 	// 	// this指向调用者
+		// 	// 	// console.log(this);
+		// 	// 	// console.log(lis[i]); //undefined
+		// 	// 	console.log(lis[i]);
+		// 	// }
+    //
+		// 	lis[i].onclick = (function(n){
+		// 		// n是一个基本数据类型,外层的i传递进来就创建了副本,
+		// 		// 所以此时拿到的是确切的0,1,2
+		// 		// console.log('i==>'+n);
+		// 		// 深层次: 相当于在以下函数体内部调用了其他(外层)函数内部的变量n,
+		// 		// 这实际上是一个"闭包"的写法
+		// 		return function () {
+		// 			console.log('i==>'+n);
+		// 		}
+		// 	})(i);
+		// }
+
+
+    // for(var i=0; i<lis.length; i++){
+    //   lis[i].onclick = (function (n){
+    //     return function(){
+    //       console.log('i==>'+n);
+    //     }
+    //   })(i)
+    // }
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    //
+    // for(var i=0; i<lis.length; i++){
+    //   lis[i].onclick = (function (n){
+    //     return function(){
+    //       console.log('i==>'+n);
+    //     }
+    //   })(i)
+    // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // for(var i=0; i<lis.length; i++){
+    //   lis[i].onclick = (function(n){
+    //     return function(){
+    //       console.log('i==>'+n);
+    //     }
+    //   })(i)
+    // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // for(var i=0; i<lis.length; i++){
+    //   lis[i].onclick = (function(n){
+    //     return function(){
+    //       console.log('i==>'+n);
+    //     }
+    //   })(i);
+    // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    for(var i=0; i<lis.length; i++){
+      lis[i].onclick = (function(n){
+        return function(){
+          console.log('i==>'+n)
+        }
+      })(i);
+    }
+  </script>
+</body>
+</html>
