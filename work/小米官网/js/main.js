@@ -63,3 +63,28 @@ function initNavData(index,data,el) {
 			el.innerHTML = str;
       console.log(str);
 		}
+
+    // 轮播部分
+    var imgs = ['banner_1.jpg','banner_2.jpg','banner_3.jpg','banner_4.jpg','banner_5.jpg'];
+
+    var imgEl = document.getElementsByClassName('img')[0];
+    var btnLeft = document.getElementsByClassName('arr-left')[0];
+    var btnRight = document.getElementsByClassName('arr-right')[0];
+
+    count = 0;
+    function swipImg(isRight){
+      if(isRight){
+        if(count == imgs.length-1){
+          count = 0;
+        }else{
+          count ++;
+        }
+      }else{
+        if(count == 0){
+          count = imgs.length-1;
+        }else{
+          count --;
+        }
+      }
+      imgEl.src = 'imgs/'+imgs[count];
+    }

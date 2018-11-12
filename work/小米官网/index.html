@@ -9,7 +9,7 @@
 </head>
 <body>
   <!-- 顶部导航栏 -->
-  <div class="header">
+  <div class="header clearfix">
     <div class="header-c clearfix">
       <ul class="nav">
         <li class="nav-item"><a href="#">小米商城</a></li>
@@ -82,8 +82,8 @@
   </div>
 
   <!-- 隐藏产品信息栏 -->
-  <div class="pro-hide clearfix">
-    <div class="pro-hide-c">
+  <div class="pro-hide">
+    <div class="pro-hide-c clearfix">
       <!-- <div class="pro-hide-detial">
         <p class="pro-hide-title">新品</p>
         <a href="#" class="pro-hide-img">
@@ -133,6 +133,13 @@
         <p class="pro-hide-price">3200元起</p>
       </div> -->
     </div>
+  </div>
+
+<!-- 轮播部分 -->
+  <div class="swip">
+    <img class="banner-img" src="imgs/banner_1.jpg" alt="">
+    <a href="javascript:;" class="arr arr-left" onclick="swipImg(false)"><</a>
+    <a href="javascript:;" class="arr arr-right" onclick="swipImg(true)">></a>
   </div>
 
 <script src="js/util.js"></script>
