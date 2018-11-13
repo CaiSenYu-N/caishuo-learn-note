@@ -65,23 +65,36 @@
     var count = 0;
 
     btnEl.onclick = function(){
+      // 开启一个定时器；
       setInterval(function(){
+        // 每3秒切换至下一张图片；
         count ++;
+        // 如果已经切换到最后一张图片；
         if(count == lis.length){
+          // 跳到第一张图片；
           count = 0;
+          // 样式左边跳回0；
           targetEl.style.left = 0;
+        // 如果没有在最后一张；
         }else{
+          // 调用函数animate()；
           var target = -1 * count * lisW;
           animate(targetEl,target);
         }
       },3000);
     }
 
+    // 被调用，传入元素el为ul class="imgs"; target；
     function animate(el,target){
+      // 开启定时器；
       timer = setInterval(function(){
+        // 定义每次移动距离 = 要跳到的距离大于元素当前的左侧距离吗？如果大于每次+5，不大于每次+-5；
         var step = target>el.offsetLeft?5:-5;
+        // 循环计算元素的左侧样式距离 = 循环计算（元素的左侧距离+每次移动距离）；
         el.style.left = (el.offsetLeft+step)+'px';
+        // 循环计算差值 = 要移动到的距离 - 元素目前左侧的距离；
         var cha = target - el.offsetLeft;
+        // 如果差值小于每次要移动的距离时，元素左侧样式距离直接等于要移动到的距离，并清除定时器；
         if(Math.abs(cha)<Math.abs(step)){
           el.style.left = target + 'px';
           clearInterval(timer);
