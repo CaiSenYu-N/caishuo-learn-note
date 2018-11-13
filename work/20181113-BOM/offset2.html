@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box {
+      position: relative;
+			left: 0;
+			top: 0;
+      width: 400px;
+      height: 400px;
+      background-color: yellow;
+      margin: 20px;
+    }
+
+    .innerbox {
+      width: 200px;
+      height: 200px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <div class="innerbox">
+
+    </div>
+  </div>
+
+  <script>
+    var boxEl = document.getElementsByClassName('box')[0];
+    var innerBoxEl = document.getElementsByClassName('innerbox')[0];
+
+    console.log(innerBoxEl.offsetLeft);
+    console.log(innerBoxEl.offsetTop);
+  </script>
+</body>
+</html>

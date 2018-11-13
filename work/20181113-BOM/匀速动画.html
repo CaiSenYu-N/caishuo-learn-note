@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .d1 {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background-color: #ccc;
+    }
+
+    button {
+      margin-top: 250px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="d1"></div>
+  <button class="btn1">移至308</button>
+  <button class="btn2">移至600</button>
+
+  <script>
+
+    var d1El = document.getElementsByClassName('d1')[0];
+    var btn1 = document.getElementsByClassName('btn1')[0];
+    var btn2 = document.getElementsByClassName('btn2')[0];
+    var target1 = 308;
+    var target2 = 600;
+
+    btn1.onclick = function(){
+      // 按钮被点击时，开启一个定时器；
+      var timer = setInterval(function(){
+        // 定义每次移动距离，要移动的距离大于元素当前距离吗？大于的话每次+10，小于的话每次+-10；
+        var step = target1>d1El.offsetLeft?10:-10;
+        // 循环计算每17毫秒元素左边的距离等于左边当前距离加上每次移动距离；
+        d1El.style.left = (d1El.offsetLeft+step)+'px';
+        console.log(d1El.style.left);
+        // 循环计算差值等于要移动的距离减去元素当前左边的距离；
+        var cha = target1-d1El.offsetLeft;
+        // 循环计算如果差值小于步数，元素左边距离直接等于要移动到的距离
+        if(Math.abs(cha)<Math.abs(step)){
+          d1El.style.left = target1+'px';
+          console.log(d1El.style.left);
+          clearInterval(timer);
+        }
+      },17);
+    }
+
+    btn2.onclick = function(){
+      var timer = setInterval(function(){
+        var step = target2>d1El.offsetLeft?10:-10;
+        d1El.style.left = (d1El.offsetLeft+step)+'px';
+        var cha = target2-d1El.offsetLeft;
+        console.log(cha);
+        if(Math.abs(cha)<Math.abs(step)){
+          d1El.style.left = target2 + 'px';
+          clearInterval(timer);
+        }
+      },17);
+    }
+
+  </script>
+</body>
+</html>

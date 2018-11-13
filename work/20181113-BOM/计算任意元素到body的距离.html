@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <script>
+    function position(el){
+      function bodyLeft(el){
+        id(!el.offsetParent){
+          return el.offsetLeft;
+        }
+        return el.offsetLeft + bodyLeft(el.offsetParent);
+      }
+
+      function bodyTop(el){
+        id(!el.offsetParent){
+          return el.offsetTop;
+        }
+        return el.offsetTop + bodyLeft(el.offsetParent);
+      }
+      returen {
+        left: bodyLeft(el);
+        top: badyTop(el);
+      }
+    }
+
+  </script>
+</body>
+</html>

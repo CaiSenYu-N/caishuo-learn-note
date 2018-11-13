@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0px;
+    }
+
+    .d1 {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background-color: #ccc;
+    }
+
+    .btn {
+      margin-top: 250px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="d1"></div>
+  <button class="btn">右移动400px</button>
+  <button class="btn1">右移动800px</button>
+  <script>
+
+    var d1El = document.getElementsByClassName('d1')[0];
+    var btnEl = document.getElementsByClassName('btn')[0];
+    var btnEl1 = document.getElementsByClassName('btn1')[0];
+
+    btnEl.onclick = function(){
+      d1El.style.left = '400px';
+    }
+
+    btnEl1.onclick = function(){
+      d1El.style.left = '800px';
+    }
+
+  </script>
+</body>
+</html>
