@@ -5,8 +5,86 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box {
+      position: relative;
+      width: 300px;
+      height: 200px;
+      margin: 100px auto;
+      border: 1px solid yellow;
+      overflow: hidden;
+    }
+
+    .box .imgs {
+      list-style: none;
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 500%;
+			height: 100%;
+    }
+
+    .box .imgs li {
+      float: left;
+      width: 300px;
+      height: 100%;
+      background-color: #ccc;
+    }
+
+    .box .imgs img {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
 </head>
 <body>
+  <div class="box">
+    <ul class="imgs">
+      <li><img src="img/pro-m1.png" alt=""></li>
+      <li><img src="img/pro-m2.png" alt=""></li>
+      <li><img src="img/tv-1.png" alt=""></li>
+      <li><img src="img/tv-2.png" alt=""></li>
+      <li><img src="img/m1.jpg" alt=""></li>
+    </ul>
+  </div>
+  <button class="btn">启动动画</button>
 
+  <script>
+
+    var targetEl = document.getElementsByClassName('imgs')[0];
+    var btnEl = document.getElementsByClassName('btn')[0];
+    var lisW = targetEl.children[0].offsetWidth;
+    var target = -1*lisW*(targetEl.children.length-1);
+    var timer = null;
+
+    btnEl.onclick = function(){
+      animate(targetEl,target);
+    }
+
+    function animate(el,target){
+      clearInterval(timer);
+      // 定义一个定时器
+      timer = setInterval(function(){
+        // 定义步数，要移动的位置大于元素的左边距离吗？大于的话就+10，小于的话就+-10；
+        var step = target>el.offsetLeft?1:-1;
+        // 元素的左边距离就等于每17毫秒加10/-10；
+        el.style.left = (el.offsetLeft+step)+'px';
+        console.log(el.style.left);
+        // 循环计算差值为要移动到的位置减去元素左边的位置；
+        var cha = target-el.offsetLeft;
+        // 如果差值小于步数，则元素左边距离直接等于target，清除定时器；
+        if(Math.abs(cha)<Math.abs(step)){
+          el.style.left = target+'px';
+          console.log(el.style.left);
+          clearInterval(timer);
+        }
+      },10);
+    }
+  </script>
 </body>
 </html>

@@ -36,6 +36,7 @@
     var btn2 = document.getElementsByClassName('btn2')[0];
     var target1 = 308;
     var target2 = 600;
+    var timer = null;
 
     btn1.onclick = function(){
       animate(d1El,target1);
@@ -50,7 +51,7 @@
       // 为防止两个或多个定时器叠加，在启动一个定时器之前先清除其他定时器；
       clearInterval(timer);
       // 定义一个定时器
-      var timer = setInterval(function(){
+      timer = setInterval(function(){
         // 定义步数，要移动的位置大于元素的左边距离吗？大于的话就+10，小于的话就+-10；
         var step = target>el.offsetLeft?10:-10;
         // 元素的左边距离就等于每17毫秒加10/-10；
