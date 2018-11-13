@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box {
+      position: relative;
+      width: 300px;
+      height: 150px;
+      margin: 100px auto;
+      border: 1px solid red;
+      background-color: #ccc;
+      overflow: hidden;
+    }
+
+    .box .imgs {
+      position: absolute;
+      left: 0;
+      top: 0;
+      list-style: none;
+      width: 500%;
+      height: 100%;
+      /* background-color: yellow; */
+    }
+
+    .box .imgs li {
+      float: left;
+      width: 300px;
+      height: 100%;
+    }
+
+    .box .imgs img {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <ul class="imgs">
+      <li><img src="img/pro-m1.png" alt=""></li>
+      <li><img src="img/pro-m2.png" alt=""></li>
+      <li><img src="img/pro-m3.png" alt=""></li>
+      <li><img src="img/tv-1.png" alt=""></li>
+      <li><img src="img/tv-2.png" alt=""></li>
+    </ul>
+  </div>
+  <button class="btn">开启轮播</button>
+
+  <script>
+    var btnEl = document.getElementsByClassName('btn')[0];
+    var targetEl = document.getElementsByClassName('imgs')[0];
+    var lisW = targetEl.children[0].offsetWidth;
+    var lis = targetEl.children;
+    var timer = null;
+    var count = 0;
+
+    btnEl.onclick = function(){
+      setInterval(function(){
+        count ++;
+        if(count == lis.length){
+          count = 0;
+          targetEl.style.left = 0;
+        }else{
+          var target = -1 * count * lisW;
+          animate(targetEl,target);
+        }
+      },3000);
+    }
+
+    function animate(el,target){
+      timer = setInterval(function(){
+        var step = target>el.offsetLeft?5:-5;
+        el.style.left = (el.offsetLeft+step)+'px';
+        var cha = target - el.offsetLeft;
+        if(Math.abs(cha)<Math.abs(step)){
+          el.style.left = target + 'px';
+          clearInterval(timer);
+        }
+      },17);
+    }
+
+  </script>
+</body>
+</html>
