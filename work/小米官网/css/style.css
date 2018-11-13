@@ -148,8 +148,10 @@ a {
   right: 53px;
   top: 25px;
   width: 245px;
-  height: 50px;
+  height: 52px;
   background-color: #ffffff;
+  border: none;
+  border: 1px solid #ccc;
   outline: none;
 }
 
@@ -157,9 +159,10 @@ a {
   display: none;
   position: absolute;
   right: 53px;
-  top: 77px;
+  top: 79px;
   width: 245px;
   border: 1px solid #ff6700;
+  border-top: none;
   background-color: #fff;
   z-index: 5;
 }
@@ -238,13 +241,13 @@ a {
 
 .container-header-c .search.active .search-text {
   border: 1px solid #ff6700;
-  height: 52px;
 }
 
 .container-header-c .search.active .search-img {
   border: 1px solid #ff6700;
   border-left: none;
   height: 52px;
+  line-height: 52px;
 }
 
 .container-header-c .search.active .input-msg {
@@ -320,48 +323,91 @@ a {
 
 
 /* 轮播部分 */
-.containar-banner {
-  width: 100%;
-}
-
 .swip {
   position: relative;
   width: 1200px;
+  height: 460px;
   margin: 0 auto;
+  overflow: hidden;
 }
 
-.swip .banner-img {
+.swip .imgs {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 400%;
+  height: 100%;
+  list-style: none;
+}
+
+.swip .imgs li {
+  float: left;
+  width: 1200px;
+  height: 100%;
+}
+
+.swip .imgs img {
   width: 100%;
   height: 100%;
 }
 
-.swip a {
-  text-decoration: none;
-  color: #ccc;
-  text-align: center;
-  line-height: 35px;
-  font-size: 25px;
-}
-
 .swip .arr {
   position: absolute;
-  top: 50%;
-  margin-top: -35px;
-  display: block;
-  width: 30px;
-  height: 70px;
-  line-height: 70px;
-  border-radius: 4px;
+  font-size: 34px;
+  top: 200px;
+  width: 40px;
+  height: 85px;
+  line-height: 85px;
+  text-align: center;
+  border-radius: 0 4px 4px 0;
+  color: #ccc;
 }
 
 .swip .arr:hover {
-  background: rgba(0,0,0,.5);
+  background-color: rgba(0,0,0,.5);
 }
-
-.swip .arr-left {
-  left: 240px;
+.swip .arr:hover.arr-right {
+  border-radius: 4px 0 0 4px;
 }
 
 .swip .arr-right {
-  right: 0px;
+  right: 0;
+}
+
+.swip .arr-left {
+  left: 235px;
+}
+
+.swip .side-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 235px;
+  height: 100%;
+  background-color: rgba(0,0,0,.7);
+}
+
+.swip .side-bar p {
+  width: 235px;
+  height: 42px;
+  line-height: 42px;
+}
+
+.swip .side-bar .li-top {
+  margin-top: 20px;
+}
+
+.swip .side-bar p:hover {
+  background-color: #ff6700;
+}
+
+.swip .side-bar a {
+  color: #fff;
+  font: 14px/1.5 "Helvetica Neue",Helvetica,Arial,"Microsoft Yahei","Hiragino Sans GB","Heiti SC","WenQuanYi Micro Hei",sans-serif;
+  font-weight: bold;
+  margin-left: 35px;
+}
+
+.swip .side-bar span {
+  margin-left: 90px;
 }
