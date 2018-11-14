@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box {
+      position: relative;
+      left: 0;
+      top: 0;
+      width: 100px;
+      height: 100px;
+      background-color: #ccc;
+    }
+
+    button {
+      margin-top: 120px;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+
+  </div>
+  <button class="btn1">400</button>
+  <button class="btn2">800</button>
+
+  <script>
+
+    var btn1El = document.getElementsByClassName('btn1')[0];
+    var btn2El = document.getElementsByClassName('btn2')[0];
+    var boxEl = document.getElementsByClassName('box')[0];
+    var target = 400;
+    var target2 = 800;
+
+    btn1El.onclick = function(){
+      clearInterval(timer);
+      var timer = setInterval(function(){
+        var leader = boxEl.offsetLeft;
+        var step = (target-leader)/10;
+        if(step<1&&step>0){
+          step = 1;
+        }else if(step>-1&&step<0){
+          step = -1;
+        }
+        boxEl.style.left = (step + leader) + 'px';
+        if(target == leader){
+          boxEl.style.left = target + 'px';
+          clearInterval(timer);
+      }
+      },17);
+    }
+
+    btn2El.onclick = function(){
+      clearInterval(timer);
+      var timer = setInterval(function(){
+        var leader = boxEl.offsetLeft;
+        var step = (target2-leader)/10;
+        if(step<1&&step>0){
+          step = 1;
+        }else if(step>-1&&step<0){
+          step = -1;
+        }
+        boxEl.style.left = (step + leader) + 'px';
+        if(target2 == leader){
+          boxEl.style.left = target2 + 'px';
+          clearInterval(timer);
+      }
+      },17);
+    }
+  </script>
+</body>
+</html>
