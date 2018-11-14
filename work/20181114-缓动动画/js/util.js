@@ -11,7 +11,7 @@ function addClass(el,className){
 		// 添加之前应该判断有没有 如果已经存在 直接return
 		oldClassStr = el.getAttribute('class'); // null
 		//danger strong ==> ['danger','strong'];
-		var oldClassArr = oldClassStr.split(' '); 
+		var oldClassArr = oldClassStr.split(' ');
 		//判断数组['danger','strong']是否存在className
 		if(oldClassArr.indexOf(className)!=-1){
 			console.log('已存在"'+className+'",无需添加.');
@@ -42,6 +42,6 @@ function delClass(el,className){
 		oldClassArr.splice(index,1); //['danger','active'];
 	}
 	//数组变字符串 重新赋值['danger','active'] ==> 'danger active';
-	oldClassStr = oldClassArr.join(' '); // 
+	oldClassStr = oldClassArr.join(' '); //
 	el.setAttribute('class',oldClassStr);
 }
