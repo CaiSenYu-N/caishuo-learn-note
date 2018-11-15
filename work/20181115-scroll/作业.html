@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			position: relative;
+			margin: 200px auto;
+			width: 1000px;
+			height: 200px;
+		}
+		.box img{
+			width: 200px;
+			height: 100%;
+			float: left;
+		}
+		.box .mask{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 200px;
+			height: 100%;
+			background-color: rgba(0,0,0,.3);
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="mask"></div>
+		<img src="img/m1.jpg" alt="">
+		<img src="img/pro-m1.png" alt="">
+		<img src="img/pro-m2.png" alt="">
+		<img src="img/tv-1.png" alt="">
+		<img src="img/tv-2.png" alt="">
+	</div>
+</body>
+</html>

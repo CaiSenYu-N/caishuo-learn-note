@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .btn {
+      display: none;
+      position: fixed;
+      right: 50px;
+      bottom: 150px;
+      width: 30px;
+      height: 70px;
+    }
+
+    .footer {
+      width: 100%;
+      height: 600px;
+      background-color: #ccc;
+      margin-top: 2000px;
+    }
+  </style>
+</head>
+<body>
+  <div class="footer">
+
+  </div>
+  <button class="btn">
+    回到上头
+  </button>
+
+  <script>
+  	var timer = null;
+    var btn = document.getElementsByClassName('btn')[0];
+
+    window.onscroll = function(){
+      var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      if(scrollTop>300){
+        btn.style.display = 'block';
+      }else{
+        btn.style.display = 'none';
+      }
+    }
+
+    btn.onclick = function(){
+      animate(0);
+    }
+
+    function animate(target){
+      clearInterval(timer);
+      timer = setInterval(function(){
+        var leader = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        var step = (target - leader )/10;
+				if(step<1&&step>0){
+					step = 1;
+				}else if(step>-1&&step<0){
+					step = -1;
+				}
+        window.scrollTo(0,leader+step);
+				if(target==leader){
+					window.scrollTo(0,target);
+					clearInterval(timer);
+        }
+      },17);
+    }
+
+
+  </script>
+</body>
+</html>

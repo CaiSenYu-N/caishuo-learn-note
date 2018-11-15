@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      background-color: #ccc;
+    }
+
+    .footer {
+      margin-top: 1000px;
+      width: 100%;
+      height: 600px;
+      background-color: skyblue;
+    }
+
+    .btn {
+      position: fixed;
+      right: 20px;
+      bottom: 100px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+
+  </div>
+  <div class="footer">
+
+  </div>
+  <button class="btn">点击打印</button>
+  <script>
+    //存在兼容问题
+    // console.log(document.body.scrollTop);
+    //兼容写法
+    // window.pageYOffset 高级浏览器才有
+    // document.documentElement.scrollTop ie6,7,8
+    // document.body.scrollTop 怪异模式
+    // offsetLeft / pageXOffset 跟这个一样 不过在实际页面中几乎不存在
+    var btnEl = document.getElementsByClassName('btn')[0];
+    btnEl.onclick = function(){
+      var top = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      console.log(top);
+    }
+  </script>
+</body>
+</html>

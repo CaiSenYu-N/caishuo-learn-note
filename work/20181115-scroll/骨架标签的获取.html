@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <input type="text" placeholder="请输入标题">
+  <button class="btn">确定</button>
+
+  <script>
+    var btnEl = document.getElementsByClassName('btn')[0];
+    var inputEl = document.getElementsByTagName('input')[0];
+    var value = inputEl.value;
+
+    btnEl.onclick = function(){
+      document.title = value;
+    }
+
+
+    console.log('title==>'+document.title);
+		console.log('head==>'+document.head);
+
+		console.log('body==>'+document.body);
+		console.log('document==>'+document.documentElement);
+  </script>
+</body>
+</html>
