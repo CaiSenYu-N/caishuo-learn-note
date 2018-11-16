@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box1 {
+      position: relative;
+      left: 100px;
+      top: 100px;
+      width: 600px;
+      height: 600px;
+      border: 20px solid #ccc;
+    }
+
+    .box2 {
+      position: absolute;
+      left: 30px;
+      top: 30px;
+      width: 400px;
+      height: 400px;
+      border: 20px solid skyblue;
+    }
+
+    .box3 {
+      position: absolute;
+      left: 30px;
+      top: 30px;
+      width: 200px;
+      height: 200px;
+      border: 20px solid yellow;
+    }
+  </style>
+</head>
+<body>
+  <div class="box1">
+    <div class="box2">
+      <div class="box3"></div>
+    </div>
+  </div>
+  <script>
+    var box3El = document.getElementsByClassName('box3')[0];
+    var box2Left = bodyLeft(box3El,true);
+
+		console.log("box3El.left===>"+box2Left);
+		// 包含边框吗?
+		// isFirst 要知道是否是第一个边框,默认true
+		function bodyLeft (el,isFisrt) {
+			var currentLeft = isFisrt?el.offsetLeft:(el.offsetLeft+(el.offsetWidth-el.scrollWidth)/2)
+			if(el.offsetParent.tagName == 'BODY'){
+				// el.offsetWidth-el.scrollWidth ==> border宽度
+				return currentLeft;
+			}
+			return  currentLeft+ bodyLeft(el.offsetParent,false);
+		}
+  </script>
+</body>
+</html>

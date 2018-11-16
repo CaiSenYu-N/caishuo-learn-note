@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .d1 {
+      width: 200px;
+      height: 200px;
+      border: 3px solid skyblue;
+      margin: 300px;
+    }
+  </style>
+</head>
+<body>
+  <div class="d1">
+
+  </div>
+
+  <script>
+    var d1El = document.getElementsByClassName('d1')[0];
+    //event 事件对象 即触发这个事件的事件本身
+    d1El.onclick = function(event){
+      //page包含被卷进去的页面 pageX/pageXpageX/pageY/pageY/pageY
+			console.log('event.pageX===>'+event.pageX);
+			console.log('event.pageY===>'+event.pageY);
+      console.log(event.pageX);
+      console.log(event.pageY);
+			// 仅仅包含整个浏览器(但是跟浏览器大小有关系) clientXclientXclientXclientYclientYclientY
+			console.log('event.clientX===>'+event.clientX);
+			console.log('event.clientY===>'+event.clientY);
+      console.log(event.clientX);
+      console.log(event.clientY);
+			// screen指整个屏幕screenXscreenXscreenXscreenYscreenYscreenY
+			console.log('event.screenX===>'+event.screenX);
+			console.log('event.screenY===>'+event.screenY);
+      console.log(event.screenX);
+      console.log(event.screenY)
+    }
+
+  </script>
+</body>
+</html>
