@@ -28,16 +28,65 @@
   <script>
     var d1El = document.getElementsByClassName('d1')[0];
 
-    d1El.onmousedown=function(event){
-      var startX = event.pageX - d1El.offsetLeft;
-      var startY = event.pageY - d1El.offsetTop;
+    // d1El.onmousedown=function(event){
+    //   var startX = event.pageX - d1El.offsetLeft;
+    //   var startY = event.pageY - d1El.offsetTop;
+    //   document.onmousemove = function(event){
+    //     d1El.style.left = (event.pageX - startX) + 'px';
+    //     d1El.style.top = (event.pageY - startY) + 'px';
+    //   }
+    //   d1El.onmouseup = function(){
+    //     document.onmousemove = null;
+    //   }
+    // }
+
+
+
+
+
+
+
+
+
+
+
+
+    // d1El.onmousedown = function(event){
+    //   var startX = event.pageX - d1El.offsetLeft;
+    //   var startY = event.pageY - d1El.offsetTop;
+    //   document.onmousemove = function(event){
+    //     d1El.style.left = (event.pageX - startX) + 'px';
+    //     d1El.style.top = (event.pageY - startY) + 'px';
+    //   }
+    // }
+    //
+    // d1El.onmouseup = function(){
+    //   document.onmousemove = null;
+    // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    d1El.onmousedown = function(event){
+      var startX = event.pageX-d1El.offsetLeft;
+      var startY = event.pageY-d1El.offsetTop;
       document.onmousemove = function(event){
-        d1El.style.left = (event.pageX - startX) + 'px';
-        d1El.style.top = (event.pageY - startY) + 'px';
+        d1El.style.left = (event.pageX-startX)+'px';
+        d1El.style.top = (event.pageY-startY)+'px';
       }
-      d1El.onmouseup = function(){
-        document.onmousemove = null;
-      }
+    }
+
+    d1El.onmouseup = function(){
+      document.onmousemove = null;
     }
   </script>
 </body>

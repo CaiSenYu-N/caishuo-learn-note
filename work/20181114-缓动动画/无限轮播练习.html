@@ -16,10 +16,9 @@
       left: 0;
       top: 0;
       width: 600px;
-      height: 350px;
-      margin: 100px auto;
+      height: 300px;
       border: 3px solid #ccc;
-      background-color: skyblue;
+      margin: 100px auto;
       overflow: hidden;
     }
 
@@ -35,10 +34,10 @@
     .banner .imgs .li-item {
       float: left;
       width: 600px;
-      height: 100%;
+      height: 300px;
     }
 
-    .banner .li-item img {
+    .banner .imgs img {
       width: 100%;
       height: 100%;
     }
@@ -80,5 +79,223 @@
     <a onclick="goNext(false);" href="javascript:;" class="arr arr-left"><</a>
   	<a onclick="goNext(true);" href="javascript:;" class="arr arr-right">></a>
   </div>
+
+  <script>
+
+    var bannerEl = document.getElementsByClassName('banner')[0];
+    var imgsEl = document.getElementsByClassName('imgs')[0];
+    var liW = document.getElementsByClassName('li-item')[0].offsetWidth;
+    var timer = null;
+    var timer2 = null;
+
+    autoPlay();
+
+    bannerEl.onmouseenter = function(){
+      clearInterval(timer2)
+    }
+    bannerEl.onmouseleave = function(){
+      autoPlay();
+    }
+
+    // var count = 0;
+    // function goNext(isRight){
+    //   if(isRight){
+    //     count++;
+    //     if(count==imgsEl.children.length){
+    //       count = 0;
+    //       imgsEl.style.left = 0;
+    //     }
+    //   }else{
+    //     count--;
+    //     if(count<0){
+    //       imgsEl.style.left = -1*(imgsEl.children.length-1)*liW+'px';
+    //       count = imgsEl.children.length-1;
+    //     }
+    //   }
+    //   var target = -1*count*liW;
+    //   animate(imgsEl,target);
+    // }
+    //
+    // function autoPlay(){
+    //   timer2 = setInterval(function(){
+    //     count ++;
+    //     if(count == imgsEl.children.length){
+    //       count = 0;
+    //       imgsEl.style.left = 0;
+    //     }else{
+    //       var target = -1*count*liW;
+    //       animate(imgsEl,target);
+    //     }
+    //   },3000);
+    // }
+    //
+    // // function autoPlay(){
+    // // timer2 = setInterval(function(){
+    // //   console.log(count);
+    // //   count ++;
+    // //   if(count == imgsEl.children.length){
+    // //     count = 0;
+    // //     imgsEl.style.left = 0;
+    // //   }else{
+    // //     var target = -1*count*liW;
+    // //     animate(imgsEl,target);
+    // //   }
+    // // },3000);
+    // // }
+    //
+    // function animate(el,target){
+    //   clearInterval(timer);
+    //   timer = setInterval(function(){
+    //     var leader = el.offsetLeft;
+    //     var step = (target-leader)/10;
+    //     if(step<1&&step>0){
+    //       step=1;
+    //     }else if(step>-1&&step<0){
+    //         step=-1;
+    //       }
+    //     el.style.left = (leader + step) + 'px';
+    //     if(target == leader){
+    //       el.style.left = target+'px';
+    //       clearInterval(timer);
+    //     }
+    //   },17);
+    // }
+
+    // function animate(el,target){
+    //   clearInterval(timer);
+    //   timer = setInterval(function(){
+    //     var leader = el.offsetLeft;
+    //     var step = (target-leader)/10;
+    //     if(step<1&&step>0){
+    //       step = 1;
+    //     }else if(step>-1&&step<0){
+    //       step = -1;
+    //     }
+    //     el.style.left = (leader + step)+'px';
+    //     if(target == leader){
+    //       el.style.left = target+'px';
+    //       clearInterval(timer);
+    //     }
+    //   },17);
+    // }
+
+    // var bannerEl = document.getElementsByClassName('banner')[0];
+    // var imgsEl = document.getElementsByClassName('imgs')[0];
+    // var liW = document.getElementsByClassName('li-item')[0].offsetWidth;
+    // var timer = null;
+    // var timer2 = null;
+    //
+    // autoPlay();
+    // bannerEl.onmouseenter = function(){
+		// 	clearInterval(timer2);
+		// }
+		// bannerEl.onmouseleave = function(){
+		// 	autoPlay();
+		// }
+    //
+    // var count = 0;
+    //
+    //
+    // function goNext(isRight){
+    //   if(isRight){
+    //     count++;
+    //     if(count == imgsEl.children.length){
+    //       count = 1;
+    //       imgsEl.style.left = 0;
+    //     }
+    //   }else{
+    //     count --;
+    //     if(count < 0){
+    //       imgsEl.style.left = -1*(imgsEl.children.length-1)*liW+'px';
+    //       count = imgsEl.children.length-2;
+    //     }
+    //   }
+    //   var target = -1*count*liW;
+    //   animate(imgsEl,target);
+    // }
+    //
+    //
+    // function autoPlay(){
+    // timer2 = setInterval(function(){
+    //   console.log(count);
+    //   count ++;
+    //   if(count == imgsEl.children.length){
+    //     count = 0;
+    //     imgsEl.style.left = 0;
+    //   }else{
+    //     var target = -1*count*liW;
+    //     animate(imgsEl,target);
+    //   }
+    // },3000);
+    // }
+    //
+    //
+    // function animate(el,target){
+    //   clearInterval(timer);
+    //   timer = setInterval(function(){
+    //     var leader = el.offsetLeft;
+    //     var step = (target-leader)/10;
+    //     if(step<1&&step>0){
+    //       step = 1;
+    //     }else if(step>-1&&step<0){
+    //       step = -1;
+    //     }
+    //     el.style.left = (leader + step)+'px';
+    //     if(target == leader){
+    //       el.style.left = target+'px';
+    //       clearInterval(timer);
+    //     }
+    //   },17);
+    // }
+
+    var count = 0;
+    function autoPlay(){
+      timer2 = setInterval(function(){
+        count++;
+        if(count==imgsEl.children.length){
+          count=0;
+          imgsEl.style.left = 0;
+        }else{
+          var target = -1*count*liW;
+          animate(imgsEl,target);
+        }
+      },3000);
+    }
+
+    function goNext(isRight){
+      if(isRight){
+        count++;
+        if(count == imgsEl.children.length){
+          count=0;
+          imgsEl.style.left = 0;
+        }
+      }else{
+        count--;
+        if(count < 0){
+          count=imgsEl.children.length-1;
+        }
+      }
+      var target = -1*count*liW;
+      animate(imgsEl,target);
+    }
+
+    function animate(el,target){
+      clearInterval(timer);
+      timer = setInterval(function(){
+        var leader = el.offsetLeft;
+        var step = (target-leader)/10;
+        if(step<1&&step>0){
+          step = 1;
+        }else if(step<-1&&step>0){
+          step = -1;
+        }
+        el.style.left = (leader+step)+'px';
+        if(leader == target){
+          el.style.left = target;
+          clearInterval(timer);
+        }
+      },17);
+    }
+  </script>
 </body>
 </html>

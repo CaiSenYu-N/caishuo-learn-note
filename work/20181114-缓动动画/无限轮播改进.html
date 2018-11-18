@@ -99,10 +99,10 @@
     <a onclick="goNext(false);" href="javascript:;" class="arr arr-left"><</a>
   	<a onclick="goNext(true);" href="javascript:;" class="arr arr-right">></a>
     <ul class="dotts">
-      <!-- <li class="dott-item" onclick="go(0);"><a href="javascript:;"></a></li>
+      <li class="dott-item" onclick="go(0);"><a href="javascript:;"></a></li>
 			<li class="dott-item active" onclick="go(1);"><a href="javascript:;"></a></li>
 			<li class="dott-item"><a href="javascript:;"></a></li>
-			<li class="dott-item"><a href="javascript:;"></a></li> -->
+			<li class="dott-item"><a href="javascript:;"></a></li>
     </ul>
   </div>
 
@@ -176,39 +176,39 @@
       }
     }
 
-    // var count = 0;
-    // function goNext(isRight){
-    //   if(isRight){
-    //     count++;
-    //     if(count == imgsEl.children.length){
-    //       count = 1;
-    //       imgsEl.style.left = 0;
-    //     }
-    //   }else{
-    //     count --;
-    //     if(count < 0){
-    //       imgsEl.style.left = -1*(imgsEl.children.length-1)*liW+'px';
-    //       count = imgsEl.children.length-2;
-    //     }
-    //   }
-    //   var target = -1*count*liW;
-    //   animate(imgsEl,target);
-    // }
-    //
-    //
-    // function autoPlay(){
-    // timer2 = setInterval(function(){
-    //   console.log(count);
-    //   count ++;
-    //   if(count == imgsEl.children.length){
-    //     count = 0;
-    //     imgsEl.style.left = 0;
-    //   }else{
-    //     var target = -1*count*liW;
-    //     animate(imgsEl,target);
-    //   }
-    // },3000);
-    // }
+    var count = 0;
+    function goNext(isRight){
+      if(isRight){
+        count++;
+        if(count == imgsEl.children.length){
+          count = 0;
+          imgsEl.style.left = 0;
+        }
+      }else{
+        count --;
+        if(count < 0){
+          imgsEl.style.left = -1*(imgsEl.children.length-1)*liW+'px';
+          count = imgsEl.children.length-1;
+        }
+      }
+      var target = -1*count*liW;
+      animate(imgsEl,target);
+    }
+
+
+    function autoPlay(){
+    timer2 = setInterval(function(){
+      console.log(count);
+      count ++;
+      if(count == imgsEl.children.length){
+        count = 0;
+        imgsEl.style.left = 0;
+      }else{
+        var target = -1*count*liW;
+        animate(imgsEl,target);
+      }
+    },3000);
+    }
 
 
     function animate(el,target){
