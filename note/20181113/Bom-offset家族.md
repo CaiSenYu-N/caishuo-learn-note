@@ -13,7 +13,7 @@
 
 3、offsetParent
 
-  * 获取元素的父元素
+  * 获取元素的父元素，找到他有定位属性的父元素，没有的话，找到body；
 
 4、obj.style.left
 

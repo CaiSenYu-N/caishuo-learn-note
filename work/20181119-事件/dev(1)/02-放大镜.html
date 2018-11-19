@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box,
+		.box-marry{
+			position: relative;
+			width: 400px;
+			height: 400px;
+			background: url(img/m1.jpg) no-repeat 0 0;
+			margin: 100px 200px;
+		}
+		.d1{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 150px;
+			height: 150px;
+			background-color: green;
+			/*transparent 透明*/
+			background: transparent url(img/bg.png);
+			cursor: move;
+		}
+		.box-marry{
+			position: absolute;
+			left: 500px;
+			top: 0;
+			margin: 0;
+			/*css3修改图片宽高*/
+			background-size: 800px 800px;
+			border: 2px solid red;
+
+		}
+	</style>
+</head>
+<body>
+	<!-- 要求拖动d1,但不允许d1超过box,参照taobao放大镜 -->
+	<div class="box">
+		<div class="d1"></div>
+		<div class="box-marry">
+		
+		</div>
+	</div>
+	
+	<script>
+		// 1.d1按下鼠标 绑定事件
+		// 2.鼠标移动的时候 改变d1位置
+		// 3.鼠标松开 取消movie监听事件
+
+		var d1El = document.getElementsByClassName('d1')[0];
+		var boxEl = document.getElementsByClassName('box')[0];
+		var boxElMarry = document.getElementsByClassName('box-marry')[0];
+
+
+
+		d1El.onmousedown = function  (event) {
+			//大小图的倍数
+			var xBei = boxEl.offsetWidth/d1El.offsetWidth;
+			var yBei = boxEl.offsetHeight/d1El.offsetHeight;
+			// 背景图片本身也应该做相应的倍数变化
+			// backgroundSize = '266% 266%';
+			boxElMarry.backgroundSize = xBei*100+'% '+yBei*100+'%';
+			// var startX = event.pageX - this.offsetLeft - boxEl.offsetLeft;
+			//抵消 化简
+			var startX = event.pageX - this.offsetLeft;
+			var startY = event.pageY - this.offsetTop;
+			console.log('startX===>'+startX);
+			console.log('startY===>'+startY);
+			boxEl.onmousemove = function(event){
+				//这里的event和外部的event有关系吗?
+				// d1El.style.left = (event.pageX-this.offsetLeft-startX)+'px';
+				var leftV = event.pageX-startX;
+				var topV = event.pageY-startY;
+				if(leftV<0){
+					leftV = 0;
+				}else if(leftV> this.offsetWidth-d1El.offsetWidth){
+					leftV = this.offsetWidth-d1El.offsetWidth;
+				}
+
+				if(topV< 0){
+					topV = 0;
+				}else if(topV > this.offsetHeight-d1El.offsetHeight){
+					topV = this.offsetHeight-d1El.offsetHeight;
+				}
+
+				d1El.style.left = leftV+'px';
+				d1El.style.top = topV+'px';
+				//修改镜像的背景图片坐标 应该是原图距离的2倍  
+				// 拼接结果   -20px -30px
+				console.log('width===>'+this.offsetWidth/d1El.offsetWidth);
+				boxElMarry.style.backgroundPosition = -1*xBei*leftV +'px '+ -1*yBei*topV+'px';
+
+			}
+			d1El.onmouseup = function () {
+				//解绑事件
+				boxEl.onmousemove = null;
+			}
+		}	
+
+	</script>
+</body>
+</html>

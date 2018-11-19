@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.d1{
+			width: 400px;
+			height: 400px;
+			background-color: green;
+		}
+		.d2{
+			width: 200px;
+			height: 200px;
+			background-color: pink;
+		}
+	</style>
+</head>
+<body>
+	<div class="d1" id="d1">
+		<div class="d2" id="d2"></div>
+	</div>
+	<script>
+		// var d1El = document.getElementsByClassName('d1')[0];
+		// var d2El = document.getElementsByClassName('d2')[0];
+		var d1El = document.getElementById('d1');
+		var d2El = document.getElementById('d2');
+		d1El.onclick = function () {
+			alert('外部d1!');
+		}
+		d2El.onclick = function (event) {
+			//event对象的兼容写法
+			// var e = event || window.event;
+			if(event){
+				event.stopPropagation();
+			}else{
+				window.event.cancelBubble = true;
+			}
+			//ie
+			// e.cancelBubble = true;
+			alert('内部d2!');
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			position: relative;
+			width: 600px;
+			height: 600px;
+			background-color: pink;
+			margin: 100px auto;
+		}
+		.d1{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 200px;
+			height: 200px;
+			background-color: green;
+			/*transparent 透明*/
+			background: transparent url(img/bg.png);
+			cursor: move;
+		}
+	</style>
+</head>
+<body>
+	<!-- 要求拖动d1,但不允许d1超过box,参照taobao放大镜 -->
+	<div class="box">
+		<div class="d1"></div>
+	</div>
+	<script>
+		// 1.d1按下鼠标 绑定事件
+		// 2.鼠标移动的时候 改变d1位置
+		// 3.鼠标松开 取消movie监听事件
+
+		var d1El = document.getElementsByClassName('d1')[0];
+		var boxEl = document.getElementsByClassName('box')[0];
+
+		d1El.onmousedown = function  (event) {
+			// var startX = event.pageX - this.offsetLeft - boxEl.offsetLeft;
+			//抵消 化简
+			var startX = event.pageX - this.offsetLeft;
+			var startY = event.pageY - this.offsetTop;
+			console.log('startX===>'+startX);
+			console.log('startY===>'+startY);
+			boxEl.onmousemove = function(event){
+				//这里的event和外部的event有关系吗?
+				// d1El.style.left = (event.pageX-this.offsetLeft-startX)+'px';
+				var leftV = event.pageX-startX;
+				var topV = event.pageY-startY;
+				if(leftV<0){
+					leftV = 0;
+				}else if(leftV> this.offsetWidth-d1El.offsetWidth){
+					leftV = this.offsetWidth-d1El.offsetWidth;
+				}
+
+				if(topV< 0){
+					topV = 0;
+				}else if(topV > this.offsetHeight-d1El.offsetHeight){
+					topV = this.offsetHeight-d1El.offsetHeight;
+				}
+
+				d1El.style.left = leftV+'px';
+				d1El.style.top = topV+'px';
+
+			}
+			d1El.onmouseup = function () {
+				//解绑事件
+				boxEl.onmousemove = null;
+			}
+		}	
+
+	</script>
+</body>
+</html>

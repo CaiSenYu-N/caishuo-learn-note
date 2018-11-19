@@ -18,23 +18,17 @@
       width: 400px;
       height: 400px;
       margin: 100px auto;
-      border: 2px solid #ccc;
       background-color: skyblue;
     }
 
-    .box:hover .innerbox {
-      display: block;
-    }
-
     .box .innerbox {
-      display: none;
       position: absolute;
       left: 0;
       top: 0;
       width: 100px;
       height: 100px;
-      border: 2px solid #ccc;
       background-color: yellow;
+      background: transparent url(img/bg.png);
       cursor: move;
     }
   </style>
@@ -52,20 +46,27 @@
     var innerboxEl = document.getElementsByClassName('innerbox')[0];
 
     innerboxEl.onmousedown = function(event){
-      var startX = event.pageX - innerboxEl.offsetLeft;
-      var startY = event.pageY - innerboxEl.offsetTop;
-      document.onmousemove = function(event){
-        innerboxEl.style.left = (event.pageX - startX)+'px';
-        console.log(innerboxEl.style.left); 
-        innerboxEl.style.top = (event.pageY - startY)+'px';
+      var startX = event.pageX - this.offsetLeft;
+      var startY = event.pageY - this.offsetTop;
+      boxEl.onmousemove = function(event){
+        var leftV = event.pageX - startX;
+        var topV = event.pageY - startY;
+        if(leftV<0){
+          leftV = 0;
+        }else if(leftV > this.offsetWidth - innerboxEl.offsetWidth){
+          leftV = this.offsetWidth - innerboxEl.offsetWidth;
+        }
+
+        if(topV<0){
+          topV = 0;
+        }else if(topV > this.offsetHeight - innerboxEl.offsetHeight){
+          topV = this.offsetHeight - innerboxEl.offsetHeigh;
+        }
+          innerboxEl.style.left = leftV+'px';
+          innerboxEl.style.top = topV+'px';
       }
       innerboxEl.onmouseup = function(){
-        document.onmousemove = null;
-      }
-
-
-      if(innerboxEl.screenX == boxEl.screenX){
-
+        boxEl.onmousemove = null;
       }
     }
   </script>

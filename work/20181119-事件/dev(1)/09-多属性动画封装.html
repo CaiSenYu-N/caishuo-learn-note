@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.d1{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 200px;
+			height: 200px;
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+	<div class="d1">
+		
+	</div>
+	<script>
+		var d1El = document.getElementsByClassName('d1')[0];
+		console.log(getStyle(d1El,'background-color'));
+		d1El.onclick = function(){
+			// animate(this,400);
+			//that包含了此时this的指针指向的对象的状态
+			var that = this;
+			animate(this,{left:600,top:300,width:400,height:250},function(){
+				animate(that,{left:0,top:0,width:200,height:200},function() {
+					animate(that,{left:300,top:200,width:800,height:150},function(){
+						that.style.backgroundColor = 'red';
+					});
+				});
+				//多次动画事件 必须等前一个结束 再进行下一个
+				//问题:如何知道前一次动画何时结束?
+			});
+		}
+		// 封装多属性缓动
+		// 函数的参数可以是任意类型,包括函数类型本身
+		// fn 为函数的"回调函数"  回调函数中 慎重使用 this,一般this的指向会发生变化!!!
+		function  animate(el,params,fn) {
+			// var leader = leader + (target-leader)/10;
+			clearInterval(el.timer);
+			el.timer = setInterval(function(){
+				var flag = true;
+				//遍历params对象
+				// {left:400,top:600}
+				for(var key in params){
+					//怎么计算leader?
+					// offsetxx都是整数
+					var leader = getStyle(el,key);
+
+					var step = (params[key]-leader)/10;
+					//修正step
+					if(Math.abs(step)<1){
+						step = step>0?Math.ceil(step):Math.floor(step);
+					}
+
+					//计算当前位置
+					el.style[key] = (leader+step)+'px';
+					//相等的时候清除
+					if(leader != params[key]){
+						flag = false;
+					}
+				}
+
+				if(flag){
+					clearInterval(el.timer);
+					//当动画执行完毕后调用fn
+					if(fn){
+						fn();
+					}
+				}
+
+			},17)
+
+		}
+
+		/**
+		* 根据class属性获取值
+		**/
+		function getStyle (el,attr) {
+			//获取元素el的attr的class属性
+			var rs = window.getComputedStyle(el,null)[attr];
+			//把px去掉 返回number   20px
+			if(rs.indexOf('px')!=-1){
+				//字符串截取
+				rs = rs.substr(0,rs.length-2);
+				//变为number
+				rs = parseInt(rs);
+			}
+			return rs;
+		}
+
+	</script>
+</body>
+</html>
