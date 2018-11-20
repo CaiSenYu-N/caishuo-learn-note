@@ -12,13 +12,31 @@
     <li>li_2</li>
     <li>li_3</li>
   </ul>
-
-  <button class="btn">动态生成li元素</button>
+  <button class="btn1">动态生成li元素</button>
 
   <script>
-    var ulEl = document.getElementsByClassName('ul');
-    var btn1 = document.getElementsByClassName('btn');
+    var ulEl = document.getElementsByClassName('ul')[0];
+    var btn1 = document.getElementsByClassName('btn1')[0];
     var lis = ulEl.children;
+
+    ulEl.onclick = function(event){
+      console.log(event.target);
+      var el = event.target;
+      if(el.tagName !== 'UL'){
+        alert(el.innerText);
+      }
+    }
+
+    btn1.onclick = function(){
+      var count = Math.floor(Math.random()*3+1);
+      var liLastIndex = lis.length;
+      var str = ulEl.innerHTML;
+      for(var i=0; i<count; i++){
+        str += '<li>li_'+(liLastIndex+i+1)+'</li>';
+      }
+      ulEl.innerHTML = str;
+    }
+
   </script>
 </body>
 </html>

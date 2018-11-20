@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .box {
+      width: 300px;
+      height: 400px;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      background-color: skyblue;
+    }
+
+    .box .box1 {
+      width: 100%;
+      height: 200px;
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="box1">
+
+    </div>
+    <div class="box2">
+
+    </div>
+  </div>
+
+  <script src="js/utils.js"></script>
+  <script>
+    var boxEl = document.getElementsByClassName('box')[0];
+    var box1El = document.getElementsByClassName('box1')[0];
+
+    box1El.onclick = function(){
+      animate(boxEl,{height:200},function(){
+        animate(boxEl,{right:-400});
+      });
+    }
+
+
+  </script>
+</body>
+</html>

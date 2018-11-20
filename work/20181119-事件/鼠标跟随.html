@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .img {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  </style>
+</head>
+<body>
+  <img class="img" src="img/m1.jpg" alt="">
+
+  <script>
+    var imgEl = document.getElementsByClassName('img')[0];
+    document.onclick = function(event){
+      var target = {
+        left:event.pageX - imgEl.offsetWidth/2,
+        top:event.pageY - imgEl.offsetHeight/2
+      }
+      animate(imgEl,target);
+    }
+
+    function animate(el,params,fn){
+      clearInterval(el.timer);
+      el.timer = setInterval(function(){
+        var flag = true;
+        for(var key in params){
+          var leader = getStyle(el,key);
+          var step = (params[key] - leader)/10;
+          if(Math.abs(step)<1){
+            step = step>0?Math.ceil(step):Math.floor(step);
+          }
+          el.style[key] = (leader + step)+'px';
+          if(leader != params[key]){
+            flag = false;
+          }
+        }
+        if(flag){
+          clearInterval(el.timer);
+          if(fn){
+            fn();
+          }
+        }
+      },13);
+    }
+
+    function getStyle(el,attr){
+      var rs = window.getComputedStyle(el,null)[attr];
+      if(rs.indexOf('px') != -1){
+        rs = rs.substr(0,rs.length-2);
+        rs = parseInt(rs);
+      }
+      return rs;
+    }
+  </script>
+</body>
+</html>
