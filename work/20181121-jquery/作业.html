@@ -95,11 +95,11 @@
     $(function(){
 
       $('.pro-left>li').mouseenter(function(){
-        $('.pro-center>li').eq($(this).index()). ('active').siblings().removeClass('active');
+        $('.pro-center>li').eq($(this).index()).addClass('active').siblings().removeClass('active');
       });
 
       $('.pro-right>li').mouseenter(function(){
-        $('.pro-center>li').eq(($(this).index())+9).addClass('active').siblings().removeClass('active');
+        $('.pro-center>li').eq($(this).index()+9).addClass('active').siblings().removeClass('active');
       });
     })
   </script>
