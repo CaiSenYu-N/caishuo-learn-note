@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.d1{
+			width: 200px;
+			height: 200px;
+			background-color: green;
+		}
+		.box{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<ul class="d1">
+		
+	</ul>
+	<button class="btn1">触发事件1</button>
+	<button class="btn2">触发事件2</button>
+	<script src="lib/jquery-3.3.1.min.js"></script>
+	<script>
+		$('.d1').click(function () {
+			alert('d1');
+		})
+		$('.d1').on('click','li',function(e){
+			e.stopPropagation();
+			alert('li');
+			console.log(e)
+		})
+		for(var i = 0 ; i < 5; i ++){
+			$('.d1').append('<li>li_'+i+'</li>');
+		}
+
+		$('.btn1').click(function () {
+			$('.d1').off('click','li')
+		})
+		
+	</script>
+</body>
+</html>
