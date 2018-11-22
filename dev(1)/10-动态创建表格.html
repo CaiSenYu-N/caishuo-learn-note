@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<table class="table" border="1" cellpadding="10" cellspacing="2">
+		<tr>
+			<th>序号</th>
+			<th>姓名</th>
+			<th>电话</th>
+			<th>操作</th>
+		</tr>
+	</table>
+	<button class="btnAdd">追加</button>
+	<script src="lib/jquery-3.3.1.min.js"></script>
+
+	<script>
+		var users = [
+			{
+				name:'张三',
+				tel: '1234234'
+			},
+			{
+				name:'李四',
+				tel: '11234234'
+			},
+			{
+				name:'王五',
+				tel: '44444'
+			}
+		]
+		var users2 = [
+			{
+				name:'赵六',
+				tel: '1234234'
+			},
+			{
+				name:'陈七',
+				tel: '11234234'
+			},
+			{
+				name:'鲁班',
+				tel: '44444'
+			}
+		];
+		initData(users);
+
+
+		function  initData(data) {
+			for(var i = 0 ;i < data.length ; i++){
+				var str = '<tr><td>'+(i+1)+'</td><td>'+data[i].name+'</td><td>'+data[i].tel+'</td><td><button>删除</button></td></tr>';
+				$('.table').append($(str));
+			}
+		}
+
+		
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.d1{
+			display: none;
+			width: 200px;
+			height: 200px;
+			background-color: green;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="d1"></div>
+	<button class="btn1">点击显示</button>
+	<button class="hideBtn1">隐藏</button>
+	<button class="btn2">slideDown</button>
+	<button class="btn3">slideUp</button>
+	<button class="btn4">slideToggle</button>
+	<button class="btn5">fadeIn</button>
+	<button class="btn6">fadeOut</button>
+	<button class="btn7">fadeTo</button>
+	<script src="lib/jquery-3.3.1.min.js"></script>
+	<script>
+		// 1.show
+		$('.btn1').click(function () {
+			// $('.d1').show();
+			// slow：600ms、normal：400ms、fast：200ms
+			// $('.d1').show(2000);
+			$('.d1').show('slow',function () {
+				$('.d1').css('backgroundColor','red');
+			})
+		})
+		$('.hideBtn1').click(function () {
+			$('.d1').hide(1000);
+		})
+		$('.btn2').click(function () {
+			$('.d1').slideDown('slow');
+		})
+		$('.btn3').click(function () {
+			$('.d1').slideUp(1000);
+		})
+		$('.btn4').click(function () {
+			$('.d1').slideToggle(1000);
+		})
+		$('.btn5').click(function () {
+			$('.d1').fadeIn('slow');
+		})
+		$('.btn6').click(function () {
+			$('.d1').fadeOut('fast');
+		})
+		$('.btn7').click(function () {
+			//透明度发生变化 到.3
+			$('.d1').fadeTo('slow',.3);
+		})
+	</script>
+</body>
+</html>

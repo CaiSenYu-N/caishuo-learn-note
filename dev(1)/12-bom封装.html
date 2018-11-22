@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.d1{
+			position: relative;
+			margin-top: 800px;
+			width: 200px;
+			height: 200px;
+			background: green;
+			border: 10px solid red;
+		}
+		.box{
+			position: absolute;
+			left: 50px;
+			top: 50px;
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="d1">
+		<div class="box">
+			
+		</div>
+	</div>
+	<button class="btn1">设置为top=80</button>
+	<script src="lib/jquery-3.3.1.min.js"></script>
+	<script>
+		$('.d1').click(function () {
+			// console.log($(this).width());
+			$(this).width(300);
+			//距离文档顶部的距离
+			console.log($(this).offset().left);
+			console.log($(this).offset().top);
+		})
+
+		$('.box').click(function () {
+			console.log('.box.offset().left==>'+$(this).offset().left);
+		})
+		$('.btn1').click(function () {
+			$('.box').offset({top:80});
+		})
+
+	</script>
+</body>
+</html>

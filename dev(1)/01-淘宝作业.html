@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul{
+			list-style: none;
+		}
+		ul>li{
+			float: left;
+			margin-left: 20px;
+		}
+		.img{
+			width: 400px;
+		}
+	</style>
+</head>
+<body>
+	<ul class="nav-left">
+	</ul>
+	<img class="img" src="img/男包.jpg" alt="">
+	<ul class="nav-right">
+	</ul>
+
+
+	<script src="lib/jquery-3.3.1.min.js"></script>
+	<script src="js/data.js"></script>
+	<script>
+		initNavList($('.nav-left'),data[0]);
+		initNavList($('.nav-right'),data[1]);
+		//绑定事件
+		bindMouseEvent($('.nav-left li'),data[0]);
+		bindMouseEvent($('.nav-right li'),data[1]);
+
+		function initNavList($el,data) {
+			//目前没有学jq的插入方法,所以转换为原生的dom元素
+			var pEl = $el[0];
+			var str = '';
+			for(var i = 0 ;i < data.length ; i++){
+				str += '<li id="li_'+i+'">'+data[i].title+'</li>';
+			}
+			pEl.innerHTML = str;
+		}
+
+		function bindMouseEvent($li,data) {
+			$li.mouseenter(function () {
+				// 1.获取被hover的元素的下标  
+				// id = li_xx
+				var index = parseInt(this.id.split('_')[1]);
+				$('.img')[0].src = data[index].img;
+			})
+		}
+
+	</script>
+</body>
+</html>
