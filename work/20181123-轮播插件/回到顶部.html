@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 100%;
+      height: 1800px;
+      background-color: #ccc;
+    }
+
+    .back-top {
+      position: fixed;
+      right: 20px;
+      top: 300px;
+      width: 40px;
+      height: 80px;
+      background-color: skyblue;
+      border: none;
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+  </div>
+  <button class="back-top"></button>
+
+<script src="lib/jquery-3.3.1.min.js"></script>
+<script src="lib/back-top.js"></script>
+<script>
+  animate($('.back-top'),0);
+  $('.back-top').click(function(){
+    animate($('.back-top'),0);
+  })
+</script>
+</body>
+</html>
