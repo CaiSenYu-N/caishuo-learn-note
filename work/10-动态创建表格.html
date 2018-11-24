@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}	
+		.box{
+			display: none;
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0,0,0,.5);
+		}
+		.form{
+			margin: 100px auto;
+			width: 400px;
+			min-height: 200px;
+			background-color: #fff;
+		}
+
+	</style>
+</head>
+<body>
+	<table class="table" border="1" cellpadding="10" cellspacing="2">
+		<tr>
+			<th>序号</th>
+			<th>姓名</th>
+			<th>电话</th>
+			<th>操作</th>
+		</tr>
+	</table>
+	<div class="box">
+		<form action="" class="form">
+			<table>
+				<tr>
+					<td>用户名</td>
+					<td><input type="text" class="useName"></td>
+				</tr>
+				<tr>	
+					<td>电话</td>
+					<td><input type="text" class="tel"></td>
+				</tr>
+				<tr>
+					<td><button type="button" class="btn1" onclick="deter()">确定</button></td>
+					<td><button type="button" class="btn2" >取消</button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<button class="btnAdd">追加</button>
+	<button class="btnAddUser">增加新的数据对象</button>
+
+
+
+	<script src="lib/jquery-3.3.1.min.js"></script>
+	<script>
+		var users = [
+			{
+				name:'张三',
+				tel: '1234234'
+			},
+			{
+				name:'李四',
+				tel: '11234234'
+			},
+			{
+				name:'王五',
+				tel: '44444'
+			}
+		]
+		var users2 = [
+			{
+				name:'赵六',
+				tel: '1234234'
+			},
+			{
+				name:'陈七',
+				tel: '11234234'
+			},
+			{
+				name:'鲁班',
+				tel: '44444'
+			}
+		];
+		initData(users);
+		// 声明全局变量,为了下方判断是哪种情况下使用了确定按钮
+		var iswhich = true;
+		var tel,userName;
+
+
+		function  initData(data) {
+			for(var i = 0 ;i < data.length ; i++){
+				addEl($('.table'),data[i]);
+			}
+		}
+
+		function addEl($table,that){
+			var index = $('.table tr:last').children().eq(0).text();
+			//是数字的时候 才处理++ ,不然直接=0;
+			index = /[1-9][0-9]*/.test(index)?index++:0;
+			index ++ ;
+			that.id = index;		
+			var str = '<tr><td>'+that.id+'</td><td>'+that.name+'</td><td>'+that.tel+'</td><td><button onclick="del(this)">删除</button><button onclick="modify(this)">修改</button></td></tr>';
+			$table.append($(str));
+		}
+
+		$('.btnAdd').click(function(){
+			if(users2.length==0){
+				alert('没有新数据了!');
+				return ;
+			}
+			var currentUser = users2.shift();
+			addEl($('.table'),currentUser);
+		})
+
+		// 删除整行数据
+		function del(obj){
+			$(obj).parent().parent().remove();
+		}
+		// 点击添加数据对象后,输入框动画形式展现
+		$('.btnAddUser').click(function() {
+			iswhich = true;
+			$('.box').show('fast');
+		});
+			// 新数据输入框确定按钮发生点击事件,把value值动态添加表单中,在清空数据隐藏页面
+			function deter(){
+				if(iswhich){
+					var useName = $('.useName').val();
+					var phone = $('.tel').val();
+					var combined = {
+						name: useName,
+						tel: phone
+					}
+					addEl($('.table'),combined);
+					cancel();				
+				}else{
+					 console.log(tel)
+					$(tel).text($('.tel').val());
+					$(userName).text($('.useName').val());
+					cancel()
+				}
+			};
+			// 新数据输入框取消按钮发生点击事件,清空之前填写数据并隐藏页面
+			$('.btn2').click(function() {
+				cancel();
+			});
+		// 点击输入框盒子后,输入框动画形式隐藏
+		$('.box').click(function () {
+			cancel();
+		})
+		// 防止输入框框架被点击后发生冒泡,隐藏输入框
+		$('.form').click(function (event) {
+			event.stopPropagation();
+		})
+
+
+		/**
+		/ 清空value值,并隐藏输入框页面
+		**/
+		function cancel(){
+			$('.useName').val('');
+			$('.tel').val('');
+			$('.box').hide('fast');
+		}
+
+		// console.log($('.table').children().children())
+		function modify(obj){
+			iswhich = false;
+			// 修改输入框展示出来
+			$('.box').show('fast');
+			// 通过修改按钮的父类的前一个兄弟元素找到电话一栏
+			 tel = $(obj).parent().prev()[0];
+			// 通过修改按钮的父类的前两个兄弟元素找到姓名一栏
+			 userName = $(obj).parent().prev().prev()[0];
+			// 把输入框架中电话值设置为原始值	
+			$('.tel').val($(tel).text());
+			// 把输入框架中的姓名值设置为原始值
+			$('.useName').val($(userName).text());
+		}
+
+
+		// 以下作废!!仅做一个点击按钮的发生事件的表达
+		// function btnclick(ph,uN){
+		// 	$('.btn1').click(function(){		
+		// 		$(phone).text($('.tel').val());
+		// 		$(useName).text($('.useName').val());
+		// 	 	cancel()		
+		// 	})		
+		// }	
+	</script>
+</body>
+</html>
