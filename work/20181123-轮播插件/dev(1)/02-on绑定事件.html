@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 600px;
+			height: 600px;
+			background-color: red;;
+		}
+		.d1{
+			width: 200px;
+			height: 200px;
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+<div class="box">
+	<div class="d1">
+
+	</div>
+</div>
+
+	<button class="btn1">解绑</button>
+	<script src="lib/jquery-3.3.1.min.js"></script>
+	<script>
+		//监听的形式绑定
+		// 可以同时添加多个事件  "然并卵"
+		$('.d1').on('click mouseenter',function () {
+			// alert('fff');
+			console.log('fff');
+		})
+		// $('.btn1').click(function () {
+		// 	//解绑事件
+		// 	$('.d1').off('click mouseenter');
+		// })
+		$('.box').mouseleave(function(){
+			$('.d1').off('click mouseenter');
+		});
+	</script>
+</body>
+</html>

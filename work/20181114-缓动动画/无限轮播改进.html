@@ -156,8 +156,8 @@
         imgsEl.style.left = '0';
       }
       if(count<0){
-        imgsEl.style.left = -1*(imgsEl.children.length-1)*liW+'px';
         window.count = imgsEl.children.length-2;
+        imgsEl.style.left = -1*(imgsEl.children.length-1)*liW+'px';
       }
 
       var target = -1*window.count*liW;
@@ -181,14 +181,14 @@
       if(isRight){
         count++;
         if(count == imgsEl.children.length){
-          count = 0;
+          count = 1;
           imgsEl.style.left = 0;
         }
       }else{
         count --;
         if(count < 0){
           imgsEl.style.left = -1*(imgsEl.children.length-1)*liW+'px';
-          count = imgsEl.children.length-1;
+          count = imgsEl.children.length-2;
         }
       }
       var target = -1*count*liW;

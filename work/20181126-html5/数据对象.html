@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <li data-bg-color="red">li_1</li>
+		<li data-bg-color="green">li_2</li>
+		<li data-bg-color="pink">li_3</li>
+		<li data-bg-color="purple">li_4</li>
+		<li data-bg-color="orange">li_5</li>
+		<li data-bg-color="yellow">li_6</li>
+  </ul>
+
+  <script>
+    // var colors = ['red','green','pink','purple','orange','yellow'];
+    var lis = document.querySelectorAll('li');
+    console.log(lis);
+    for(var i=0; i<lis.length; i++){
+      // lis[i].index = i;
+      lis[i].onclick = function(){
+        console.log('lis[i]');
+        // this.style.backgroundColor = colors[this.index];
+        // this.style.backgroundColor = this.dataset.bgColor;
+        this.style.backgroundColor = this.dataset.bgColor;
+      }
+    }
+  </script>
+</body>
+</html>

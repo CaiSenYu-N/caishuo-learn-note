@@ -7,7 +7,7 @@
 		*{
 			margin: 0;
 			padding: 0;
-		}	
+		}
 		.box{
 			display: none;
 			position: fixed;
@@ -42,7 +42,7 @@
 					<td>用户名</td>
 					<td><input type="text" class="useName"></td>
 				</tr>
-				<tr>	
+				<tr>
 					<td>电话</td>
 					<td><input type="text" class="tel"></td>
 				</tr>
@@ -105,7 +105,7 @@
 			//是数字的时候 才处理++ ,不然直接=0;
 			index = /[1-9][0-9]*/.test(index)?index++:0;
 			index ++ ;
-			that.id = index;		
+			that.id = index;
 			var str = '<tr><td>'+that.id+'</td><td>'+that.name+'</td><td>'+that.tel+'</td><td><button onclick="del(this)">删除</button><button onclick="modify(this)">修改</button></td></tr>';
 			$table.append($(str));
 		}
@@ -138,7 +138,7 @@
 						tel: phone
 					}
 					addEl($('.table'),combined);
-					cancel();				
+					cancel();
 				}else{
 					 console.log(tel)
 					$(tel).text($('.tel').val());
@@ -178,7 +178,7 @@
 			 tel = $(obj).parent().prev()[0];
 			// 通过修改按钮的父类的前两个兄弟元素找到姓名一栏
 			 userName = $(obj).parent().prev().prev()[0];
-			// 把输入框架中电话值设置为原始值	
+			// 把输入框架中电话值设置为原始值
 			$('.tel').val($(tel).text());
 			// 把输入框架中的姓名值设置为原始值
 			$('.useName').val($(userName).text());
@@ -187,12 +187,12 @@
 
 		// 以下作废!!仅做一个点击按钮的发生事件的表达
 		// function btnclick(ph,uN){
-		// 	$('.btn1').click(function(){		
+		// 	$('.btn1').click(function(){
 		// 		$(phone).text($('.tel').val());
 		// 		$(useName).text($('.useName').val());
-		// 	 	cancel()		
-		// 	})		
-		// }	
+		// 	 	cancel()
+		// 	})
+		// }
 	</script>
 </body>
 </html>

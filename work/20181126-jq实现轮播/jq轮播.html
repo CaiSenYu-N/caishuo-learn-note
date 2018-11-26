@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.bootcss.com/jquery/2.2.3/jquery.js"></script>
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .banner {
+      position: relative;
+      left: 0;
+      top: 0;
+      overflow: hidden;
+      width: 500px;
+      height: 320px;
+      margin: 100px auto;
+      background-color: #ccc;
+    }
+
+    .banner .imgs {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 600%;
+      height: 100%;
+    }
+
+    .banner .imgs .li-item {
+      float: left;
+      width: 500px;
+      height: 100%;
+    }
+
+    .banner .li-item img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .banner .arr {
+      position: absolute;
+      left: 5px;
+      top: 50%;
+      margin-top: -20px;
+      display: block;
+      width: 30px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      font-size: 30px;
+      color: #C9BCCE;
+      border: 3px solid #C9BCCE;
+      border-radius: 50%;
+    }
+
+    .banner .arr:hover {
+      color: #fff;
+      border: 3px solid #fff;
+      cursor: pointer;
+    }
+
+    .banner .arr-right {
+      left: auto;
+      right: 5px;
+    }
+
+    .banner .bullet {
+      position: absolute;
+      left: 190px;
+      bottom: 20px;
+    }
+
+    .banner .bullet li {
+      float: left;
+      width: 5px;
+      height: 5px;
+      border: 1px solid #C9BCCE;
+      border-radius: 50%;
+      background-color: #C9BCCE;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+
+    .banner .bullet li:hover {
+      color: #fff;
+      background-color: #fff;
+      border-radius: 0;
+    }
+
+    .banner .bullet li.active {
+      color: #fff;
+      background-color: #fff;
+      border-radius: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="banner">
+    <ul class="imgs">
+      <li class="li-item"><a href="#"><img src="imgs/z_1.jpg" alt=""></a></li>
+      <li class="li-item"><a href="#"><img src="imgs/z_2.jpg" alt=""></a></li>
+      <li class="li-item"><a href="#"><img src="imgs/z_3.jpg" alt=""></a></li>
+      <li class="li-item"><a href="#"><img src="imgs/z_4.jpg" alt=""></a></li>
+      <li class="li-item"><a href="#"><img src="imgs/z_5.jpg" alt=""></a></li>
+      <li class="li-item"><a href="#"><img src="imgs/z_6.jpg" alt=""></a></li>
+    </ul>
+    <a onclick="goNext(false);" href="javascript:;" class="arr arr-left" click="isleft"><</a>
+    <a onclick="goNext(true);" href="javascript:;" class="arr arr-right" click="isRight">></a>
+    <ul class="bullet">
+      <li class="active"></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+
+  <script>
+    var timer;
+    autoPlay();
+
+    $('.banner').mouseenter(function(){
+      clearInterval(timer);
+    })
+    $('.banner').mouseleave(function(){
+      autoPlay();
+    })
+
+    function autoPlay(){
+      count = 0;
+      timer = setInterval(function(){
+        count ++;
+        goCount();
+      },2000);
+    }
+
+    function goNext(isRight){
+      if(isRight){
+        count ++;
+      }else{
+        count --;
+      }
+      goCount();
+    }
+
+    function goCount(){
+        $('.imgs').animate({
+          left:-count*$('.li-item').eq(0).width()
+        },'slow');
+        if(count == $('.li-item').length-1){
+          count = -1;
+          $('.li-item').css('left','0');
+        }else if(count<0){
+          count = $('.li-item').length-1;
+          var liW = $('.li-item').eq(0).width()
+          $('.li-item').css('left','-count*liW');
+        }
+    }
+  </script>
+</body>
+</html>

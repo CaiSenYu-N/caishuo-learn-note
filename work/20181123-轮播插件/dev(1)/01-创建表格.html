@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.mask{
+			display: none;
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(0,0,0,.5);
+		}
+		.form{
+			margin: 100px auto;
+			width: 400px;
+			min-height: 200px;
+			background-color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<table class="table" border="1" cellpadding="10" cellspacing="2">
+		<tr>
+			<th>序号</th>
+			<th>姓名</th>
+			<th>电话</th>
+			<th>操作</th>
+		</tr>
+	</table>
+	<div class="mask">
+		<form class="form">
+			<table>
+				<tr>
+					<td>用户名</td>
+					<td><input type="text" class="userName"></td>
+				</tr>
+				<tr>
+					<td>电话</td>
+					<td><input type="text" class="tel"></td>
+				</tr>
+				<tr>
+					<!-- 在form表单中的button点击会触发form的提交事件,会往form的action的地址发送请求.为了避免,一般会把button添加type="button" -->
+					<td><button  type="button" class="btn-cancel" onclick="cancel()">取消</button></td>
+					<td><button type="button"  class="btn-save" onclick="save()">确定</button></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<button class="btnAdd">追加</button>
+	<button class="btnAddUser">增加新的数据对象</button>
+	<script src="lib/jquery-3.3.1.min.js"></script>
+	
+	<script>
+		var users = [
+			{
+				name:'张三',
+				tel: '1234234'
+			},
+			{
+				name:'李四',
+				tel: '11234234'
+			},
+			{
+				name:'王五',
+				tel: '44444'
+			}
+		]
+		var users2 = [
+			{
+				name:'赵六',
+				tel: '1234234'
+			},
+			{
+				name:'陈七',
+				tel: '11234234'
+			},
+			{
+				name:'鲁班',
+				tel: '44444'
+			}
+		];
+		initData(users);
+
+
+		function  initData(data) {
+			for(var i = 0 ;i < data.length ; i++){
+				createTrEle(data[i],$('.table'));
+			}
+		}
+
+		$('.btnAdd').click(function () {
+			
+			if(users2.length==0) {
+				alert('没有新数据了!');
+				return ;
+			}
+			//user2的一个数据删除 并返回
+			var currentUser = users2.shift();
+
+			createTrEle(currentUser,$('.table'));
+		})
+		/* 
+		* 打开弹窗
+		*/
+		$('.btnAddUser').click(function () {
+			$('.mask').show('fast');
+		})
+
+		function del(obj) {
+			// console.log(obj)
+			$(obj).parent().parent().remove();
+		}
+
+		/**
+		* 用于生成tr行,并且追加到表格中
+		**/
+		function createTrEle(obj,$pEl) {
+			// 1.获取旧的下标   jq链式调用
+			var index = $('.table tr:last').children().eq(0).text();
+			//是数字的时候 才处理++ ,不然直接=0;
+			index = /[1-9][0-9]*/.test(index)?index++:0;
+			index ++ ;
+			obj.id = index;
+			var str = '<tr><td>'+obj.id+'</td><td>'+obj.name+'</td><td>'+obj.tel+'</td><td><button  onclick="del(this)">删除</button><button>修改</button></td></tr>';
+			$pEl.append($(str));
+		}
+		/**
+		* 弹窗取消
+		**/
+		function cancel () {
+			
+		}
+		/**
+		* 弹窗保存
+		**/
+		function save() {
+			var userName = $('.form .userName').val();
+			var tel = $('.form .tel').val();
+			var user = {
+				name:userName,
+				tel:tel
+			}
+			//添加到内容
+			createTrEle(user,$('.table'));
+			// //1.清空表单
+			// $('.form .userName').val('');
+			// $('.form .tel').val('');
+			// //2.关闭dialog
+			// $('.mask').hide('fast');
+			cancel();
+		}
+		function cancel() {
+			//1.清空表单
+			$('.form .userName').val('');
+			$('.form .tel').val('');
+			//2.关闭dialog
+			$('.mask').hide('fast');
+		}
+
+		$('.mask').click(function () {
+			cancel();
+		})
+		$('.form').click(function (event) {
+			event.stopPropagation();
+		})
+	</script>
+</body>
+</html>
