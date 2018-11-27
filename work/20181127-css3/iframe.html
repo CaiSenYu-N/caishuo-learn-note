@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .main {
+      position: relative;
+      left: 0;
+      top: 0;
+      width: 900px;
+      height: 450px;
+      background-color: #ccc;
+      margin: 100px auto;
+    }
+
+    .main::after {
+      content: '';
+      display: block;
+      clear: both;
+    }
+
+    .main .aside {
+      float: left;
+      width: 200px;
+      height: 100%;
+      background-color: yellow;
+    }
+
+    .main .aside .nav-item {
+      display: block;
+      width: 100%;
+      height: 40px;
+      line-height: 40px;
+      color: #eee;
+      text-align: center;
+      margin-top: 3px;
+      background-color: skyblue;
+    }
+
+    .main .nav-item:first-child {
+      margin-top: 0;
+    }
+
+    .main .aside .nav-item:hover {
+      color: #fff;
+      text-shadow: 1px 1px 1px #fff;
+    }
+
+    .main .aside .nav-item.active {
+      color: #fff;
+      text-shadow: 1px 1px 1px #fff;
+    }
+
+    .main .iframe-box {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 700px;
+      height: 100%;
+      background-color: #ccc;
+    }
+
+    .main .iframe-box .iframe-item {
+      width: 100%;
+      height: 100%;
+    }
+
+    .main .tab-box {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 1;
+    }
+
+    .main .iframe-name {
+      position: relative;
+      left: 0;
+      top: 0;
+      float: left;
+      width: 80px;
+      height: 39px;
+      line-height: 39px;
+      text-align: center;
+      font-size: 14px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+    }
+
+    .main .iframe-name.active {
+      background-color: #ccc;
+    }
+
+    .main .close {
+      position: absolute;
+      right: 0;
+      top: 0;
+      display: block;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      color: #000;
+    }
+
+    .main .close:hover {
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="main">
+    <div class="aside">
+      <a href="javascript:;" data-iframe-id="bufan" data-url="http://www.bufanui.com" class="nav-item">不凡</a>
+      <a href="javascript:;" data-iframe-id="taobao" data-url="http://www.taobao.com" class="nav-item">淘宝</a>
+      <a href="javascript:;" data-iframe-id="jingdong" data-url="http://www.jingdong.com" class="nav-item">京东</a>
+    </div>
+    <div class="iframe-box">
+      <!-- <iframe src="" frameborder="0" class="iframe-item"></iframe> -->
+      <ul class="tab-box">
+        <!-- <li class="iframe-name">
+          <span class="web">百度</span>
+          <a href="#" class="close">x</a>
+        </li> -->
+      </ul>
+    </div>
+  </div>
+
+  <script src="https://cdn.bootcss.com/jquery/2.2.3/jquery.js"></script>
+  <script>
+  // 左侧栏被点击
+    $('.nav-item').click(function(){
+      // 去除active样式
+      // console.log($(this).text());
+      $('.nav-item.active').removeClass('active');
+      // 为当前点击对象添加active
+      $(this).addClass('active');
+      var tempId = '#iframe_'+$(this).data('iframe-id');
+      var closeTab = '#tabName_'+$(this).data('iframe-id');
+      // console.log(tempId);
+      // console.log(closeTab);
+
+      if($(tempId).length != 0){
+        $('.iframe-item').hide();
+				$(tempId).show();
+      }else{
+          var str_1 = '<iframe src="'+$(this).data('url')+'" frameborder="0" class="iframe-item" id="iframe_'+$(this).data('iframe-id')+'"></iframe>';
+          $('.iframe-item').hide();
+          $('.iframe-box').append($(str_1));
+      }
+
+      console.log(closeTab);
+      if($(closeTab).length!=0){
+        return;
+      }else{
+        var str_2 = '<li class="iframe-name" data-item="'+$(this).data('iframe-id')+'" id="tabName_'+$(this).data('iframe-id')+'"><span class="web">'+$(this).text()+'</span><a href="#" class="close">x</a></li>';
+        // $('.iframe-name').hide();
+        $('.tab-box').append($(str_2));
+        // var pd_1 = $('.iframe-name').eq().text();
+        // var pd_2 = $(this).text();
+        //
+        // if(pd_1.indexOf(pd_2)>=0){
+        //   $('.iframe-name').eq(i).siblings().removeClass('active');
+        //   $('.iframe-name').eq(i).addClass('active');
+        //   $('.iframe-name').hide();
+        // }
+      }
+      // $('.close').click(function(){
+      //   console.log($(this).parent());
+      //   $(this).parent().hide();
+      // })
+    })
+
+    $('.tab-box').on('click','.iframe-name',function(){
+      $('.iframe-name.active').removeClass('active');
+      $(this).addClass('active');
+      var current = $(this).data('iframe-name');
+      $('.iframe-item').hide();
+      $('#'+current).show();
+    })
+
+    function foo(obj){
+      var preid = $(obj).parent().prev().data('iframe-name');
+      $('#'+preid).show();
+      $(obj).parent().remove();
+      var id=$(obj).parent().data('iframe-name');
+			$('#'+id).remove();
+    }
+  </script>
+</body>
+</html>

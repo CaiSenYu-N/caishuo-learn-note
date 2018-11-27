@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.d1,.d2{
+			width: 200px;
+			height: 200px;
+			border: 50px solid red;
+			background-color: green;
+		}
+		/*css3的盒子模型的好处*/
+		/*当一个元素被hover添加边框 为了避免边框对元素大小造成影响,可以把元素转换为css3的盒子模型*/
+		.d2{
+			margin: 100px;
+			background-color: pink;
+			padding: 30px;
+			/*默认属性*/
+			/*box-sizing: content-box;*/
+			box-sizing: border-box;
+		}
+	</style>
+</head>
+<body>
+	<div class="d1"></div>
+	<div class="d2">我是d2</div>
+</body>
+</html>
