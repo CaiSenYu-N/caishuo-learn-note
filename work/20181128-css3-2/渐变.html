@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .d1 {
+      width: 400px;
+      height: 200px;
+      border: 1px solid #ccc;
+      /*background: linear-gradient(direction, color-stop1, color-stop2, ...);*/
+  		/*	background: linear-gradient(to right bottom,red 60%,green,yellow,purple);*/
+  		/*一般是通过ui设计稿 直接提取的渐变 角度 颜色比重*/
+  		background: linear-gradient(10deg,red 60%,green,yellow,purple);
+			/*渐变的兼容写法 方向是相反的  而且不带to*/
+			/*background: -webkit-linear-gradient(left top,red 60%,green,yellow,purple);*/
+    }
+
+    .d2 {
+      margin: 20px;
+      width: 100px;
+      height: 10px;
+    	background: -webkit-repeating-linear-gradient(30deg,#333 0%,#fff 10%)
+    }
+  </style>
+</head>
+<body>
+  <div class="d1"></div>
+  <div class="d2"></div>
+</body>
+</html>

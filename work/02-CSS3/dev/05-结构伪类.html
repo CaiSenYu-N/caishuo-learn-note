@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		li:first-child{
+			color:red;
+		}
+		li:last-child{
+			color:green;
+		}
+		li:nth-child(3){
+			background-color: pink;
+		}
+		/*n从0开始正整数*/
+		li:nth-child(3n+2){
+			background-color: purple;
+		}
+		li:nth-child(3n){
+			margin-right: 0;
+			font-size: 30px;
+		}
+		li:nth-last-child(2){
+			background-color: yellow;
+		}
+		/*nth-child<0无效的*/
+		li:nth-child(-1n+5){
+		    font-style: italic;
+		}
+		li:nth-child(even){
+			font-weight: bolder;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li>li_1</li>
+		<li>li_2</li>
+		<li>li_3</li>
+		<li>li_4</li>
+		<li>li_5</li>
+		<li>li_6</li>
+		<li>li_7</li>
+		<li>li_8</li>
+		<li>li_9</li>
+		<li>li_10</li>
+	</ul>
+</body>
+</html>

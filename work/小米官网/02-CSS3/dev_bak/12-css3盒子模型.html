@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.d0{
+			width: 200px;
+			height: 200px;
+			background-color: pink;
+		}
+		.d0:hover{
+			padding: 50px;
+			border: 20px solid orange;
+		}
+		.d1{
+			width: 200px;
+			height: 200px;
+			background-color: green;
+		}
+		/*.d1:hover{
+			padding: 50px;
+			border: 20px solid red;
+		}*/
+		.d1:hover{
+			/*padding: 50px;*/
+			box-shadow: 20px 20px 0 red inset,-20px -20px 0 red inset;
+		}
+		.d2{
+			width: 200px;
+			height: 200px;
+			background-color: red;
+			box-sizing: border-box;
+		}
+		.d2:hover{
+			padding: 50px;
+			border:20px solid green;
+		}
+	</style>
+</head>
+<body>
+	<!-- css2盒子模型：
+	一个标签的占位空间是多少？ width+padding+border -->
+	<div class="d0">
+		css2模型
+	</div>
+	<div class="d1">
+		模仿阴影
+	</div>
+	<div class="d2">
+		css3模型
+	</div>
+</body>
+</html>

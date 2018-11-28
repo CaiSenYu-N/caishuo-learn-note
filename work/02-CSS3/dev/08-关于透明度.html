@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.d1{
+			width: 200px;
+			height: 200px;
+			background-color: green;
+			/*元素都会发生透明 包括内容*/
+			opacity: .5;
+		}
+		.d2{
+			width: 200px;
+			height: 200px;
+			/*背景颜色透明*/
+			background-color: rgba(0,128,0,.5);
+			margin:100px;
+		}
+		.d3{
+			width: 200px;
+			height: 200px;
+			/*transparent 完全透明*/
+			background-color: transparent;
+			margin:100px;
+		}
+		.box{
+			width: 0px;
+			height: 0px;
+			border: 50px solid transparent;
+			/*background-color: green;*/
+			margin: 100px;
+			border-top-color: pink;
+		}
+	</style>
+</head>
+<body>
+	<div class="d1">
+		我是d1
+	</div>
+	<div class="d2">
+		我是d2
+	</div>
+	<div class="d3">
+		我是d3
+	</div>
+	<div class="box">
+		
+	</div>
+</body>
+</html>

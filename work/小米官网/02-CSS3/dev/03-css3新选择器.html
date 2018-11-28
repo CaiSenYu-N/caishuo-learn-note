@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.d1{
+			width: 200px;
+			height: 200px;
+			background-color: green;
+		}
+		.d1[title]{
+			border: 4px solid red;
+		}
+		/*伪类*/
+		.box>li:first-child{
+			color:red;
+		}
+		.box>li:last-child{
+			color:blue;
+		}
+		.box>li:nth-child(3){
+			background-color: green;
+		}
+		/*选中前5个*/
+		.box>li:nth-child(-1n+5){
+			background-color: red;
+		}
+		.box>li:nth-last-child(-1n+3){
+			font-size: 20px;
+		}
+	</style>
+</head>
+<body>
+	<div title="第一个盒子" class="d1">
+		
+	</div>
+	<div class="d1">
+		
+	</div>
+	<ul class="box">
+		<li>li_1</li>
+		<li>li_2</li>
+		<li>li_3</li>
+		<li>li_4</li>
+		<li>li_5</li>
+		<li>li_6</li>
+		<li>li_7</li>
+		<li>li_8</li>
+		<li>li_9</li>
+		<li>li_10</li>
+	</ul>
+</body>
+</html>

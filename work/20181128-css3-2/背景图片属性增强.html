@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .d1 {
+      width: 400px;
+      height: 400px;
+      margin: 100px auto;
+      padding: 50px;
+      border: 30px solid rgba(0,128,0,.3);
+      background: url(bg.jpg) no-repeat;
+      background-size: contain;
+      background-origin: border-box;
+      background-clip: content-box;
+    }
+  </style>
+</head>
+<body>
+  <div class="d1">
+    <select name="" class="bgSize">
+      <option value="cover">cover</option>
+      <option value="contain">contain</option>
+    </select>
+
+    <select name="" class="bgOrigin">
+      <option value="border-box">border-box</option>
+      <option value="padding-box">padding-box</option>
+      <option value="content-box">content-box</option>
+    </select>
+  </div>
+
+  <script src="https://cdn.bootcss.com/jquery/2.2.3/jquery.js"></script>
+  <script>
+    $('.bgSize').on('change',function(){
+      $('.d1').css('background-size',$(this).val());
+    })
+
+    $('.bgOrigin').on('change',function(){
+      $('.d1'.css('background-origin',$(this).val))
+    })
+  </script>
+</body>
+</html>

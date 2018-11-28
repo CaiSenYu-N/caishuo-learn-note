@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.d1{
+			width: 100px;
+			height: 100px;
+			background-color: red;
+			margin:200px 200px;
+			/*圆角半径是多少像素
+			如果是百分比 是按照边长的百分比（一般在正方形时候使用）*/
+			/*border-radius css3的新属性，并不一定能够完全兼容所有浏览器
+			css3刚出现的时候一般会把所有的私有化前缀都写上，但是现在浏览器也都在升级
+			很多属性即使不写，也能做到各个浏览器兼容。
+			到现在的情况：一般如果不写，能够兼容，就可以不写。如果真要做到万无一失，需要查看该属性对应的支持浏览器的版本类型及版本号。
+			-webkit 关系着在手机端iphone是否能正常显示，所以一般会写上至少两个属性。
+			一个是-ms  一个是-webkit
+			
+			如果偶然用到一个css3的属性，但又不知道它是css3的属性，如果没错，但是没效果，就把私有化前缀全加上。如果全加上还不行说明不支持。
+			*/
+			border-radius: 50px;
+			-ms-border-radius:50px;
+			-moz-border-radius:50px;
+			-o-border-radius:50px;
+			-webkit-border-radius:50px;
+		}
+		.d2{
+			width: 100px;
+			height: 100px;
+			background-color: green;
+			margin:200px 100px;
+			border-top-left-radius: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div class="d1"></div>
+	<div class="d2"></div>
+</body>
+</html>

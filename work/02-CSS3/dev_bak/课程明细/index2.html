@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- **引用任何第三方插件
+		1.引入样式库
+		2.引入依赖的的js库（jquery/angular.js/vue.js等）
+		3.引入core核心包
+		4.根据api调用相应初始化方法 -->
+	<link rel="stylesheet" type="text/css" href="http://www.bufanui.com/lib/swiper/swiper.min.css">
+	<script type="text/javascript" src="lib/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="http://www.bufanui.com/lib/swiper/swiper.jquery.min.js"></script>
+
+	<!-- Demo styles -->
+	   <style>
+		 	*{
+		 		margin: 0;
+				padding: 0;
+		 	}
+		   body {
+		       background: #eee;
+		       font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+		       font-size: 14px;
+		       color:#000;
+		       margin: 0;
+		       padding: 0;
+			   }
+				 ul{
+				 	list-style: none;
+				 }
+				 .box-wrap{
+						 position: relative;
+						 padding-top: 1px;
+						width: 1200px;
+						height: 440px;
+						margin: 150px auto;
+						background-color: #fff;
+				 }
+		   .box {
+		       width: 1200px;
+		       height: 440px;
+					 margin-top: 50px;
+		       overflow: hidden;
+					 background-color: #fff;
+		   }
+			 .box .swiper-wrapper{
+			 	/*padding: 20px;*/
+			 }
+		   .swiper-slide {
+		       font-size: 18px;
+		       background: #fff;
+		       width: 100%;
+		       height: 100%;
+		   }
+		   .box .swiper-slide .item{
+		   		float: left;
+		   		width: 280px;
+		   		height: 200px;
+		   		margin-right: 19px;
+ 					background-color: #FAFAFA;
+					border-top: 2px solid orange;
+					transition: all .4s ease;
+					-ms-transition: all .4s ease;
+					-webkit-transition: all .4s ease;
+		   }
+		    .box .swiper-slide .item:nth-child(4n){
+				margin-right: 0;
+		    }
+		     .box .swiper-slide .item:nth-last-child(-1n+4){
+					margin-top: 10px;
+		     }
+
+			  .box .swiper-slide .item ul{
+			  	width: 100%;
+					height: 100%;
+			  	padding-left: 16px;
+			  }
+				.box .swiper-slide .item ul li{
+					 font-size: 14px;
+					 line-height: 22px;
+				}
+			 .box .swiper-slide .item ul li:first-child{
+			 		position: relative;
+					width: 140px;
+			 		font-size: 18px;
+					line-height: 22px;
+					margin-top: 22px;
+					margin-bottom: 15px;
+					color: rgb(111, 111, 111);
+			 }
+			  .box .swiper-slide .item ul li:first-child.hot::after{
+			  	position: absolute;
+					display: inline-block;
+			  	content: '';
+					width: 44px;
+					height: 16px;
+					top: 0;
+					right: -44px;
+					background: url('http://www.bufanui.com/img/new.png') no-repeat left;
+			  }
+			 .item:hover{
+			 		/*ui设计师在psd文件中可以看到具体的值*/
+					box-shadow: 0 5px 15px 0px rgba(0,0,0,.3);
+					-webkit-box-shadow: 0 5px 15px 0px rgba(0,0,0,.3);
+					-ms-box-shadow: 0 5px 15px 0px rgba(0,0,0,.3);
+					transform: scale(1.1);
+					-webkit-transform: scale(1.05);
+					-ms-transform: scale(1.05);
+			 }
+			.box-wrap .arr{
+				position: absolute;
+				display: block;
+				float: left;
+				width: 200px;
+				height: 40px;
+				left: 50%;
+				margin-left: -200px;
+				top: 20px;
+				background-color: blue;
+				font-size: 16px;
+				color: #fff;
+				text-align: center;
+				line-height: 40px;
+			}
+			.box-wrap .arr.arr-r{
+				left: 50%;
+				margin-left: 0;
+				background-color: #fff;
+				color: blue;
+			}
+			.box-wrap .arr:hover{
+				background-color: #fff;
+				border: 1px solid blue;
+				color:blue;
+			}
+
+
+
+	   </style>
+		<script type="text/javascript" src="js/data.js"></script>
+	   <script type="text/javascript">
+	   		$(function(){
+
+					pj(data);
+
+					// 模板的方式 1.先把所有的html拿过来，需要替换的内容用占位符，等数据取完毕，用正则替换占位符
+					// var str = '<div class="item" style="border-top-color:${{item}} onmouseover="cgColor(this)" onmouseout="backColor(this)" ><ul>';
+					// str = str.replace(/\${{item}}/g,'xx');
+
+					function pj(data){
+						var str = '';
+						// 所有的滑动的区块 有几个
+						var slideObjs = data.course;
+						for(var i = 0 ; i < slideObjs.length ; i++){
+							str += '<div class="swiper-slide">';
+								//item的对象数组
+								var items = slideObjs[i].details;
+
+								for(var j = 0 ; j < items.length ; j++){
+										var isHot = items[j].hot;
+										str += '<div class="item" style="border-top-color:'+items[j].color
+													+'" onmouseover="cgColor(this)" onmouseout="backColor(this)" ><ul>';
+											str += '<li class="title'+(isHot==='true'?' hot':'')+'">'+ items[j].title+'</li>';
+											for(var k = 0 ; k < items[j].pcontent.length ; k++){
+												str += '<li>'+items[j].pcontent[k]+'</li>';
+											}
+
+										str +='</ul></div>';
+								}
+							str +='</div>';
+						}
+						$('.box .swiper-wrapper').html(str);
+					}
+
+          var swiper = new Swiper('.box',{
+            prevButton:'.swiper-button-prev',
+            nextButton:'.swiper-button-next',
+            watchSlidesProgress : true,
+            watchSlidesVisibility : true,
+          });
+
+
+          $('button').eq(0).on('click',function(){
+                $('.swiper-button-prev').click();
+          })
+
+	   		})
+
+				/**
+				*	根据传递的参数改变字体颜色
+				**/
+				function cgColor(ele){
+					// 获取顶部颜色
+					var borderColor = $(ele).css('borderTopColor');
+					// 设置li的颜色
+					$(ele).find('li').css('color',borderColor);
+				}
+
+				function backColor(ele){
+					$(ele).find('li').css('color','rgb(111, 111, 111)');
+				}
+
+	   </script>
+</head>
+<body>
+		<!-- 记住：动态拼接任意的html之前，必须先把静态的样式写出啦 -->
+	<!-- Swiper -->
+      <button>向前</button>
+      <button>向后</button>
+			<div class="box">
+
+ 	       <div class="swiper-wrapper" >
+
+
+ 	       </div>
+
+         <div class="swiper-button-prev" hidden></div>
+          <div class="swiper-button-next" hidden></div>
+ 	   </div>
+
+
+</body>
+</html>

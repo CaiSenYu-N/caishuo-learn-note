@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		/*伪元素 可以理解为 一种标签 通过css创建*/
+		.clear::after{
+			content:'';
+			display:block;
+			clear:both;
+			height:0;
+			overflow:hidden;
+			/*隐藏元素的几种方法： display:block; 隐藏了 没删除，页面不占空间
+			opacity: 0; background-color: transparent;  透明了 占据空间
+			visibility: hidden;   隐藏，但是还占据空间
+*/
+			visibility:hidden;
+		} 
+		.clear{zoom:1;}
+		span{
+			position: relative;
+			display: block;
+			height: 50px;
+			width: 200px;
+			font-size: 20px;
+			color: #fff;
+			background-color: red;
+		}
+		/*span::before{
+			content: 'hello';
+		}*/
+		span::after{
+			position: absolute;
+			right: -40;
+			top: 0;
+			content: '';
+			display: block;
+			width: 40px;
+			height: 16px;
+			background: url('http://www.bufanui.com/img/new.png') no-repeat left;
+		}
+	</style>
+</head>
+<body>
+	<div class="d1 clear">
+		<div class="left"></div>
+		<div class="right"></div>
+		<div class="clr"></div>
+		<!-- '' -->
+	</div>
+	<span>图标设计</span>
+</body>
+</html>

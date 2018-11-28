@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .box {
+      width: 1000px;
+      height: 300px;
+      margin: 100px auto;
+      border: 1px solid #ccc;
+    }
+
+    .li-item {
+      float: left;
+      width: 200px;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .li-item img {
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+  <ul class="box">
+		<li class="li-item" id="li1"><img src="img/m1.jpg" alt=""></li>
+		<li class="li-item" id="li2"><img src="img/m2.jpg" alt=""></li>
+		<li class="li-item" id="li3"><img src="img/m3.jpg" alt=""></li>
+		<li class="li-item" id="li4"><img src="img/m4.jpg" alt=""></li>
+		<li class="li-item" id="li5"><img src="img/m5.jpg" alt=""></li>
+	</ul>
+
+  <script src="https://cdn.bootcss.com/jquery/2.2.3/jquery.js"></script>
+  <script>
+    var currentLi = null;
+    var timer = null;
+
+    $('.li-item').mouseenter(function(){
+      clearTimeout(timer)
+      var $that = $(this);
+
+      timer = setTimeout(function(){
+        console.log($that);
+        currentLi = $that;
+        $that.siblings().animate({
+          width: 100
+        })
+        $that.animate({
+          width: 600
+        })
+      },200)
+    })
+
+    $('.box').mouseleave(function(){
+      currentLi.animate({
+        width: 200
+      })
+
+      currentLi.siblings().animate({
+        width: 200
+      })
+    })
+  </script>
+</body>
+</html>

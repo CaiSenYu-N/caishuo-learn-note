@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.main{
+			width: 1000px;
+			height: 500px;
+			background-color: pink;
+			margin: 50px auto;
+		}
+		.aside{
+			float: left;
+			width: 200px;
+			height: 100%;
+			background-color: green;
+		}
+		.iframe-box{
+			float: left;
+			width: 800px;
+			height: 100%;
+			background-color: yellow;
+		}
+		.iframe-item{
+			width: 100%;
+			height: 100%;
+		}
+		.aside .nav-item{
+			display: block;
+			width: 100%;
+			height: 40px;
+			background-color: blue;
+			font-size: 20px;
+			line-height: 40px;
+			text-decoration: none;
+			color: #fff;
+			margin-bottom: 10px;
+			text-indent: 20px;
+		}
+		.aside .nav-item:hover{
+			color: orange;
+		}
+		.aside .nav-item.active{
+			color:orange;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div class="aside">
+			<a class="nav-item" data-iframe-id="baidu" data-url="http://www.baidu.com" href="javascript:;">百度</a>
+			<a class="nav-item" data-iframe-id="taobao" data-url="http://www.taobao.com" href="javascript:;">淘宝</a>
+			<a class="nav-item" data-iframe-id="bufan" data-url="http://www.bufanui.com" href="javascript:;">不凡</a>
+		</div>
+		<div class="iframe-box">
+			<!-- <iframe class="iframe-item" src="" border="0" frameborder="0"></iframe> -->
+		</div>
+
+	</div>
+
+	<script src="lib/jquery-3.3.1.min.js"></script>
+	<script>
+		$('.nav-item').click(function () {
+			//移除原本的active样式
+			$('.nav-item.active').removeClass('active');
+			//再给自己添加
+			$(this).addClass('active');
+			//创建之前 判断之前有没有一个 iframe_xx的id存在
+			var tempId = '#iframe_'+$(this).data('iframe-id');
+			console.log(tempId);
+			// $('#iframe_baidu')
+			// console.log($('.nav-itema'));
+			// jquery对于查找到的对象 会有length!=0的属性
+			// 但是原生的方法 document.getElementsByClassName('.abc') == null;
+			if($(tempId).length!=0){
+				//如果存在  其他隐藏  自己显示
+				$('.iframe-item').hide();
+				$(tempId).show();
+			}else{
+				// //jq获取自定义属性  $el.data('xx')
+				// $('.iframe-item').attr('src',$(this).data('url'));
+				//创建iframe
+				var str = '<iframe class="iframe-item" id="iframe_'+$(this).data('iframe-id')+'" src="'+$(this).data('url')+'" border="0" frameborder="0"></iframe>';
+				$('.iframe-item').hide();
+				//追加
+				$('.iframe-box').append($(str));
+			}
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		/*注意：first-child 的意思是 xx的父亲的第几个孩子
+		*/
+		li:first-child{
+			color: red;
+		}
+		li:last-child{
+			color: blue;
+		}
+		li:nth-child(2){
+			background-color: pink;
+		}
+		li:nth-child(2n+1){
+			font-weight: bolder;
+			font-size: 30px;
+		}
+		li:nth-child(2n){
+			font-style: italic;
+			font-size: 30px;
+		}
+		li:nth-last-child(2){
+			font-size: 50px;
+		}
+		/*注意 当n或n表达式的值<0无意义 */
+		/*需求：前5个？*/
+		li:nth-child(-1n+5){
+			text-decoration: line-through;
+		}
+		li:nth-last-child(-1n+3){
+			text-decoration: underline;
+		}
+		li:nth-child(even){
+			background-color: green;
+		}
+		li:nth-child(odd){
+			background-color: red;
+		}
+		li:empty{
+			display: block;
+			width: 200px;
+			height: 50px;
+			border: 2px solid black;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li>li1</li>
+		<li>li2</li>
+		<li>li3</li>
+		<li>li4</li>
+		<li>li5</li>
+		<li>li6</li>
+		<li>li7</li>
+		<li>li8</li>
+		<li>li9</li>
+		<li>li10</li>
+		<li>
+		</li>
+	</ul>
+	
+
+
+</body>
+</html>

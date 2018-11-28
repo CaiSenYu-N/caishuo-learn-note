@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+	/*background: radial-gradient(center, shape size, start-color, ..., last-color);*/
+    .d1 {
+      position: relative;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(10% 20%,yellow,red,green);
+      background: -webkit-radial-gradient(10% 20%,yellow,red,green);
+      border-radius: 50%;
+      -webkit-border-radius: 50%;
+    }
+
+    .d1::after {
+      position: absolute;
+      content: '';
+      display: block;
+      left: 50%;
+      bottom: -71px;
+      width: 600px;
+      height: 100px;
+      border-radius: 50%;
+      background-color: gray;
+    }
+  </style>
+</head>
+<body>
+  <div class="d1"></div>
+</body>
+</html>

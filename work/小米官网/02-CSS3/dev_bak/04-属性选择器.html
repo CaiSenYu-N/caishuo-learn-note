@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		a[href="bufan"]{
+			display: block;
+			width: 200px;
+			height: 20px;
+			background-color: pink;
+		}
+		a[href^="b"]{
+			font-size: 20px;
+			font-weight: bolder;
+		}
+		a[href*="u"]{
+			color: red;
+		}
+		a:not([href]){
+			color: orange;
+			font-size: 30px;
+		}
+		a[id]{
+			text-decoration: line-through;
+		}
+	</style>
+	<script type="text/javascript">
+		/*
+		$(function(){
+			$('a[href="bufan"]').text('不凡学院');
+		})*/
+	</script>
+</head>
+<body>
+	<div class="d1"></div>
+	<a href="baidu" class="" id="">百度</a>
+	<a href="bufan">不凡</a>
+	<a href="qq">qq</a>
+	<a>阿里</a>
+	<audio src="" ></audio>
+
+</body>
+</html>
