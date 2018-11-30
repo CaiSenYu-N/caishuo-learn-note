@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .d1,
+    .d2,
+    .d3 {
+      width: 200px;
+      height: 200px;
+      background-color: red;
+      margin: 50px;
+      animation-duration: 2s;
+			animation-timing-function: ease;
+    }
+
+    .d2 {
+      background-color: pink;
+    }
+
+    .d3 {
+      background-color: green;
+    }
+
+    .box.active .d1 {
+      animation-name: move1;
+    }
+
+    .box.active .d2 {
+      animation-name: move2;
+    }
+
+    .box.active .d3 {
+      animation-name: move3;
+    }
+
+    @keyframes move1{
+			0%{
+				width: 200px;
+			}
+			100%{
+				width:400px;
+			}
+		}
+		@keyframes move2{
+			0%{
+				width: 200px;
+			}
+			100%{
+				width:300px;
+			}
+		}
+		@keyframes move3{
+			0%{
+				width: 200px;
+			}
+			100%{
+				width:500px;
+			}
+		}
+
+  </style>
+</head>
+<body>
+  <button class="btn">开启动画</button>
+  <!-- active 就是一个按钮 用于触发多个动画的开关 -->
+  <div class="box">
+    <div class="d1"></div>
+    <div class="d2"></div>
+    <div class="d3"></div>
+  </div>
+
+  <script>
+
+    var btn = document.querySelector('.btn');
+
+    btn.onclick = function(){
+      var box = document.querySelector('.box');
+      box.classList.add('active');
+
+      // var box = document.querySelector('.box');
+			// box.classList.add('active');
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .d1 {
+      width: 200px;
+      height: 200px;
+      background-color: red;
+      animation: move 1s ease 3 alternate 1s both;
+    }
+
+    .d2 {
+			width: 200px;
+			height: 200px;
+			background-color: orange;
+			margin: 100px;
+			transition: all ease 1s;
+		}
+
+    .d2.active {
+      transform: translateX(200px);
+    }
+
+    @keyframes move {
+      from{
+        transforme: translateX(0);
+      }
+      to{
+				transform: translateX(200px);
+			}
+    }
+
+  </style>
+</head>
+<body>
+  <div class="d1"></div>
+  <div class="d2"></div>
+
+  <script>
+    // 状态的监听 用于处理  多个对象 的多组动画的队列执行
+    // animationstart - CSS 动画开始后触发
+    // animationiteration - CSS 动画重复播放时触发
+    // animationend - CSS 动画完成后触发
+    // var d1 = document.queryselector('.d1');
+    // var d2 = document.queryselector('.d2');
+    var d1 = document.querySelector('.d1');
+		var d2 = document.querySelector('.d2');
+
+    d1.addEventListener('animationstart',function(){
+      console.log('动画开始了...');
+    })
+  //   d1.addEventListener('animationiteration',function () {
+  //   console.log('动画重复执行了...');
+  //   })
+  //   d1.addEventListener('animationend',function () {
+  //     console.log('动画执行结束了...');
+  //     //开启div2的过渡效果
+  //     d2.classList.add('active');
+  // })
+
+    d1.addEventListener('animationiteration',function(){
+      console.log('动画重复执行了...');
+    })
+    d1.addEventListener('animationend',function(){
+      console.log('动画执行结束了...');
+      d2.classList.add('active');
+    })
+
+    // 过渡效果没有监听过渡开始的事件
+    d2.addEventListener('transitionstart',function(){
+      console.log('过渡开始了...');
+    })
+    d2.addEventListener('transitionend',function(){
+      console.log('过渡结束了...');
+    })
+  </script>
+</body>
+</html>

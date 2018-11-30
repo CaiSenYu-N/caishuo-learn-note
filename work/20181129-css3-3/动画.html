@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .d1 {
+      width: 200px;
+      height: 200px;
+      background-color: green;
+      /*1.Animation-name
+			2. Animation-duration
+			3. animation-timing-function
+			4. animation-delay
+			5. animation-iteration-count
+			6.animation-direction
+			7.animation-fill-mode*/
+			/*动画的属性 除了name duration 其余都可不写*/
+      animation-name: move1;
+      animation-duration: 10s;
+      animation-timing-function: cubic-bezier(.37,-0.72,.85,-1.06);
+      animation-iteration-count: infinite;
+			animation-direction: alternate;
+			animation-fill-mode: both;
+    }
+
+    @keyframes move1 {
+      0%{
+				transform: translateX(0) translateY(0) rotate(0);
+				background-color: green;
+			}
+			30%{
+				width: 600px;
+				height: 100px;
+				transform: translateX(600px) translateY(10px) rotate(-70deg);
+				background-color:yellow;
+			}
+			100%{
+				transform: translateX(400px) translateY(300px) rotate(70deg);
+				background-color: orange;
+			}
+    }
+
+  </style>
+</head>
+<body>
+  <div class="d1">
+
+  </div>
+</body>
+</html>

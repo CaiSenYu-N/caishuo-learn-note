@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .cube {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      border: 2px dashed red;
+      transform-style: preserve-3d;
+      margin: 200px auto;
+      perspective: 3000px;
+      transition: all ease 10s;
+      /* transform: rotateY(-50deg); */
+      border-radius: 50%;
+    }
+
+    .cube .side {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 200px;
+      height: 200px;
+      opacity: .5;
+    }
+
+    .cube .side-1 {
+      background-color: pink;
+      transform: translateZ(100px);
+    }
+
+    .cube .side-2 {
+      background-color: green;
+      transform: translateZ(-100px);
+    }
+
+    .cube .side-3{
+			background-color: blue;
+			transform: translateX(-100px) rotateY(90deg);
+		}
+
+    .cube .side.side-4{
+			background-color: purple;
+			transform: translateX(100px) rotateY(90deg);
+		}
+		.cube .side.side-5{
+			background-color: orange;
+			transform: translateY(100px) rotateX(90deg);
+		}
+		.cube .side.side-6{
+			background-color: yellow;
+			transform: translateY(-100px) rotateX(90deg);
+		}
+
+    .cube:hover{
+			transform: rotateX(360deg) rotateY(360deg);
+		}
+  </style>
+</head>
+<body>
+  <div class="cube">
+    <div class="side side-1">1面</div>
+    <div class="side side-2">2面</div>
+    <div class="side side-3">3面</div>
+    <div class="side side-4">4面</div>
+    <div class="side side-5">5面</div>
+    <div class="side side-6">6面</div>
+  </div>
+</body>
+</html>
