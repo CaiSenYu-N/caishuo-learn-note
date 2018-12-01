@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="lib/animate.css">
+  <title>Document</title>
+  <style>
+    	/*可以通过自己写代码 覆盖animate.css内部的部分属性*/
+    .d1 {
+      animation-duration: 3s;
+    }
+
+    .d1,
+    .d2 {
+      width: 200px;
+      height: 200px;
+      margin: 100px;
+      background-color: red;
+    }
+
+    .d2 {
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="d1 tada infinite"></div>
+  <div class="d2"></div>
+
+  <script>
+    var d1 = document.querySelector('.d1');
+    var d2 = document.querySelector('.d2');
+
+    d1.onclick = function(){
+      this.classList.add('animated');
+    }
+
+    d2.onclick = function(){
+      this.classList.add('shake');
+      this.classList.add('animated');
+    }
+
+    d2.addEventListener('animationend',function(){
+      this.classList.remove('shake');
+      this.classList.remove('animated');
+    })
+  </script>
+</body>
+</html>

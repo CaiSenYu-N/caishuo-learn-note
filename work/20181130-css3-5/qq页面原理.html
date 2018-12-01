@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .d1{
+			width: 200px;
+			height: 200px;
+			background-color: green;
+		}
+
+    .box.active .d1 {
+      animation: fadeInUp 1s ease both;
+    }
+
+    .btn{
+			position: fixed;
+			right: 100px;
+			top: 200px;
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+
+    @-webkit-keyframes fadeInUp {
+      0%{
+				opacity:0;
+				-webkit-transform:translateY(100px);
+			}
+			100%{
+				opacity:1;
+				-webkit-transform:translateY(0);
+			}
+    }
+
+  </style>
+</head>
+<body>
+  <div class="box">
+    <div class="d1"></div>
+    <div class="d1"></div>
+    <div class="d1"></div>
+  </div>
+  <div class="btn"></div>
+
+  <script>
+    var btn1 = document.querySelector('.btn');
+    var box = document.querySelector('.box');
+
+    btn1.onclick = function(){
+      box.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
