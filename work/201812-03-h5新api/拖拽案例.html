@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .d1,
+    .d2 {
+      float: left;
+      width: 100px;
+      height: 100px;
+      background-color: green;
+    }
+
+    .d2 {
+      background-color: purple;
+    }
+
+    .box {
+      width: 400px;
+      height: 400px;
+      background-color: pink;
+      margin: 100px auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="d1 cube" draggable="true"></div>
+  <div class="d2 cube" draggable="true"></div>
+  <div class="box">
+
+  </div>
+  <script src="https://cdn.bootcss.com/jquery/2.2.3/jquery.js"></script>
+  <script>
+    // ondrag  应用于拖拽元素，整个拖拽过程都会调用；
+    // ondragstart 应用于拖拽元素，拖拽开始时调用
+    // ondragleave 应用于拖拽元素，当鼠标离开拖拽元素时调用
+    // ondragend 应用于拖拽元素，当拖拽结束时调用
+
+
+    // ondragenter 应用于目标元素，当拖拽元素进入时调用
+    // ondragover 应用于目标元素，当拖拽元素停留在目标元素上调用
+    // ondrop 应用于目标元素，当拖拽元素在目标元素上松开是调用
+    // ondragleave 应用于目标元素，当鼠标离开目标元素时调用
+
+    var d1 = $('.d1')[0];
+    var d2 = $('.d2')[0];
+    var cube = $('.cube');
+    var box = $('.box')[0];
+    // 被拖拽的元素
+    var temp = null;
+
+    cube.on('dragstart',function(){
+      temp = $(this);
+      console.log('ondragstart...');
+    });
+
+    box.ondragenter = function(){
+      console.log('ondragenter...');
+    };
+
+    box.ondragover = function(e){
+      e.preventDefault();
+      console.log('ondragover...');
+    }
+
+    box.ondrop = function(){
+      temp.appendTo($(this));
+      console.log('ondrop...');
+    }
+
+    box.ondragleave = function(){
+      console.log('ondragleave...');
+    }
+  </script>
+</body>
+</html>

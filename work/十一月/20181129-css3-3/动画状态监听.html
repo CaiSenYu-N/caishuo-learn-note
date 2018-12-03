@@ -16,7 +16,7 @@
       width: 200px;
       height: 200px;
       background-color: red;
-      animation: move 1s ease 3 alternate 1s both;
+      animation: move 5s ease 3 alternate 1s both;
     }
 
     .d2 {
@@ -24,11 +24,11 @@
 			height: 200px;
 			background-color: orange;
 			margin: 100px;
-			transition: all ease 1s;
+			transition: all ease 10s;
 		}
 
     .d2.active {
-      transform: translateX(200px);
+      transform: translateX(600px) rotate(7200deg) scale(.5);
     }
 
     @keyframes move {
@@ -36,7 +36,7 @@
         transforme: translateX(0);
       }
       to{
-				transform: translateX(200px);
+				transform: translateX(600px) rotate(7200deg);
 			}
     }
 

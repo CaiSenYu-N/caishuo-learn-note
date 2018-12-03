@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .vd-box {
+      position: relative;
+      left: 0;
+      top: 0;
+      width: 400px;
+      height: 350px;
+      margin: 100px auto;
+    }
+
+    .vd-box .vd1 {
+      width: 100%;
+      height: 100%;
+    }
+
+    .vd-box .tool-bar {
+      position: absolute;
+      left: 0;
+      top: 325px;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 4px;
+      background-color: rgba(0,0,0,.3);
+      cursor:pointer;
+    }
+
+    .vd-box .tool-bar .process-bg {
+      width: 100%;
+      height: 100%;
+      background-color: #ccc;
+
+    }
+
+    .vd-box .tool-bar .process-line {
+
+      width: 1%;
+      height: 100%;
+      background-color: red;
+    }
+
+    .now-time {
+      color: #ccc;
+    }
+
+    .btn {
+      width: 400px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="vd-box">
+    <video src="movie.ogg" class="vd1"></video>
+    <div class="tool-bar">
+      <div class="process-bg">
+        <div class="process-line"></div>
+      </div>
+    </div>
+    <div class="time">
+      <!-- <span class="now-time">0:00</span>/<span class="all-time">3:00</span> -->
+    </div>
+  </div>
+
+  <div class="btn">
+    <a class="btn-restart" href="javascript:;">重新播放哈哈哈</a>
+    <a class="btn-load" href="javascript:;">重新加载哈哈哈</a>
+    <a class="btn-play" href="javascript:;">开始播放哈哈哈</a>
+    <a class="btn-pause" href="javascript:;">暂停播放哈哈哈</a>
+    <a class="btn-allTime" href="javascript:;">获取总时间哦</a>
+    <a class="btn-nowTime" href="javascript:;">获取现在时间哦</a>
+    <a class="btn-status" href="javascript:;">判断播放状态哦</a>
+    <a class="btn-full" href="javascript:;">全屏哈哈哈</a>
+  </div>
+
+  <script>
+    var toolBar = document.querySelector('.tool-bar');
+    var video = document.querySelector('.vd-box');
+    var restartBtn = document.querySelector('.btn-restart');
+    var loadBtn = document.querySelector('.btn-load');
+    var playBtn = document.querySelector('.btn-play');
+		var pauseBtn = document.querySelector('.btn-pause');
+		var allTimeBtn = document.querySelector('.btn-allTime');
+		var nowTimeBtn = document.querySelector('.btn-nowTime');
+		var statusBtn = document.querySelector('.btn-status');
+		var fullBtn = document.querySelector('.btn-full');
+		var vd = document.querySelector('.vd1');
+    var el = document.querySelector('.process-line');
+    var time = document.querySelector('.time');
+    var timer = null;
+
+
+    loadBtn.onclick = function () {
+			vd.load();
+      el.style.width = 0;
+		}
+
+
+		playBtn.onclick = timer = setInterval(function(){
+      vd.play();
+      var time1 = parseFloat(vd.currentTime.toFixed(2));
+      console.log(time1);
+      for(var i=0; i<vd.duration; i++){
+        var str = '';
+      // <span class="now-time">0:00</span>
+        str += '<span class="now-time">'+vd.currentTime+'</span>'+'/'+'<span class="all-time">'+vd.duration+'</span>';
+        // console.log(str);
+        // time.innerHtml(str);
+      }
+      // if(){
+      //   clearInterval(timer);
+      // }
+
+    },100);
+
+		pauseBtn.onclick = function () {
+      clearInterval(timer);
+			vd.pause();
+		}
+		allTimeBtn.onclick = function () {
+			console.log('总时间==>'+vd.duration)
+		}
+		nowTimeBtn.onclick = function () {
+			console.log('当前播放到==>'+vd.currentTime)
+		}
+		statusBtn.onclick = function () {
+			console.log('播放状态===>'+vd.paused)
+		}
+		fullBtn.onclick = function () {
+			vd.webkitRequestFullScreen();
+		}
+
+    video.onclick = function(){
+      if(vd.play()){
+        vd.pause();
+      }else{
+        vd.play();
+      }
+    }
+
+    restartBtn.onclick = function(){
+      vd.play();
+    }
+
+    vd.ontimeupdate = function(){
+      var nowTime = vd.currentTime;
+      var allTime = vd.duration;
+      el.style.width = nowTime/allTime*100+'%';
+    }
+
+
+    video.onmouseenter = function(){
+      toolBar.style.height = 6 + 'px';
+    }
+
+    video.onmouseleave = function(){
+      toolBar.style.height = 4 + 'px';
+    }
+
+    toolBar.onmousedown = function(){
+      var downJ = event.pageX - video.offsetLeft;
+      var toolBarW = toolBar.offsetWidth;
+      el.style.width = downJ/toolBarW*100 +'%';
+    }
+
+    // toolBar.onmouseup = function(){
+    //   var downJ = event.pageX - video.offsetLeft;
+    //   var toolBarW = toolBar.offsetWidth;
+    //   el.style.width = downJ/toolBarW*100 +'%';
+    // }
+
+
+
+  </script>
+</body>
+</html>
