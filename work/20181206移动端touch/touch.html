@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .d1 {
+      width: 200px;
+      height: 200px;
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="d1">
+
+  </div>
+
+  <script>
+    var d1 = document.querySelector('.d1');
+    d1.ontouchstart = function(){
+      console.log('touchstart...');
+      d1.ontouchmove = function(){
+        console.log('touchmove...');
+      }
+      d1.ontouchend = function(){
+        console.log('touchend...');
+      }
+      d1.ontouchcancel = function(){
+        console.log( 'touchcancel...');
+      }
+    }
+
+    setTimeout(function(){
+      alert('hahaha...');
+    },3000)
+  </script>
+</body>
+</html>

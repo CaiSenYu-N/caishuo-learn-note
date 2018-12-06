@@ -8,3 +8,23 @@ window.onresize = function(){
 function resizeFont() {
 	document.documentElement.style.fontSize = window.innerWidth/10+'px';
 }
+
+var hour = document.querySelector('.hour');
+var add = document.querySelector('.add');
+var down = document.querySelector('.down');
+var count =1;
+console.log(count);
+
+add.onclick = function(){
+	count += 1;
+	hour.innerText = count + '小时';
+	console.log(count);
+}
+
+down.onclick = function(){
+	count-=1;
+	count<1?count=1:count;
+	hour.innerText = count + '小时';
+	console.log(count);
+
+}

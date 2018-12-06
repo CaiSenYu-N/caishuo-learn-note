@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .d1 {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 200px;
+      height: 200px;
+      background-color: green;
+      transition: all ease .4s;
+    }
+
+    .d1.active {
+      left: 4.666667rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="d1">
+
+  </div>
+
+  <script>
+    var d1 = document.querySelector('.d1');
+
+    d1.ontouchstart = function(e){
+      // 在移动端，可以触发多点触控，获取第一个事件
+      e = e.touches[0];
+      // console.log(e);
+      var startX = e.pageX;
+      var startY = e.pageY;
+      var endX = startX;
+      var endY = startY;
+
+      var startTime = new Date().getTime();
+      // console.log(new Date().getTime());
+      d1.ontouchmove = function(e){
+        e = e.touches[0];
+        endX = e.pageX;
+        endY = e.pageY;
+      }
+      d1.ontouchend = function(e){
+        var chaX = endX - startX;
+        // 当触摸停止的时候，获取当前的时间戳；
+        var endTime = new Date().getTime();
+        var chaTime = endTime - startTime;
+        if(chaTime<150){
+          this.style.backgroundColor = 'red';
+        }else{//长按或者拖拽
+          //如果滑动距离<2.666667rem 认为是长按(误差)
+          if(Math.abs(chaX)<100){
+            this.style.width = '9.333333rem';
+          }else{
+            var isRight = chaX>0;
+            if(isRight){
+              console.log('往右划了...');
+              this.classList.add('active');
+            }else{
+              this.classList.remove('active');
+            }
+          }
+        }
+      }
+    }
+  </script>
+</body>
+</html>

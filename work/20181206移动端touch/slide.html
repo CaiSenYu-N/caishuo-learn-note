@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .header {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100px;
+      background-color: rgba(0,200,0,.3);
+      z-index: 999;
+    }
+
+    .container {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .container .aside {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100px;
+      height: 100%;
+      background-color: yellow;
+    }
+
+    .container .aside .nav {
+      position: absolute;
+      left: 0;
+      top: 100px;
+      width: 100%;
+      /* height: 100%; */
+      /* background-color: yellow; */
+    }
+
+    .container .aside .nav>li {
+      width: 100%;
+      height: 80px;
+      text-align: center;
+      /* line-hight: 80px; */
+      line-height: 80px;
+      margin-bottom: 10px;
+      background-color: #ccc;
+    }
+
+    .container .aside .nav>li.active {
+      background-color: skyblue;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="header">
+
+  </div>
+  <div class="container">
+    <div class="aside">
+      <ul class="nav">
+        <li class="li_1 active">li_1</li>
+        <li class="li_2">li_2</li>
+        <li class="li_3">li_3</li>
+        <li class="li_4">li_4</li>
+        <li class="li_5">li_5</li>
+        <li class="li_6">li_6</li>
+        <li class="li_7">li_7</li>
+        <li class="li_8">li_8</li>
+        <li class="li_9">li_9</li>
+        <li class="li_10">li_10</li>
+        <li class="li_11">li_11</li>
+        <li class="li_12">li_12</li>
+        <li class="li_13">li_13</li>
+        <li class="li_14">li_14</li>
+        <li class="li_15">li_15</li>
+        <li class="li_16">li_16</li>
+        <li class="li_17">li_17</li>
+        <li class="li_18">li_18</li>
+        <li class="li_19">li_19</li>
+        <li class="li_20">li_20</li>
+      </ul>
+    </div>
+  </div>
+  <script>
+    var aside = document.querySelector('.aside');
+    var nav = document.querySelector('.nav');
+    var lis = nav.children;
+    // 获取一个li的高度
+    liH = lis[0].offsetHeight+10;
+    // 获取nav初始的top距离
+    var initTop = nav.offsetTop;
+    nav.ontouchstart = function(e){
+      // 取消css过渡
+      nav.style.transition = 'none';
+      var maxIns = 120;
+      e = e.touches[0];
+      var startY = e.pageY;
+      var emdY = startY;
+      // 获取原来的位置;
+      var currentTop = nav.offsetTop;
+      nav.ontouchmove = function(e){
+        e = e.touches[0];
+        // 移动重新获取
+        endY = e.pageY;
+        var target = endY-startY+currentTop;
+        if(target>(maxIns+initTop)){
+          console.log('到达了极限位置：'+maxIns);
+          // 修正
+          target = maxIns+initTop;
+        }
+        if(target<(aside.offsetHeight-nav.offsetHeight-maxIns)){
+          target = aside.offsetHeight-nav.offsetHeight-maxIns;
+        }
+        nav.style.top = target + 'px';
+      }
+      nav.ontouchend = function(e){
+        // 当前的top值
+        var nowTop = nav.offsetTop;
+        // 只要>初始head高度，回弹
+        if(nowTop>initTop){
+          nav.style.transition = 'all ease .4s';
+          nav.style.top = initTop + 'px';
+        }
+        if(nowTop<(aside.offsetHeight-nav.offsetHeight)){
+          nav.style.transition = 'all ease .4s';
+          nav.style.top = aside.offsetHeight-nav.offsetHeight+'px';
+        }
+      }
+    }
+
+    for(var i=0; i<lis.length; i++){
+      // 追加下标属性
+      lis[i].index = i;
+      lis[i].onclick = function(){
+        // 排他
+        document.querySelector('.aside .nav>li.active').classList.remove('active');
+        this.classList.add('active');
+        // 用初始top - 需要移动的距离就是当前的top值
+        var target = initTop-this.index*liH;
+        if(target<(aside.offsetHeight-nav.offsetHeight)){
+          target = aside.offsetHeight-nav.offsetHeight;
+        }
+        nav.style.transition = 'all ease .4s';
+        nav.style.top = target+'px';
+      }
+    }
+
+  </script>
+</body>
+</html>

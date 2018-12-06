@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .d1 {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100px;
+      height: 100px;
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+  <div class="d1">
+
+  </div>
+
+  <script>
+    var d1 = document.querySelector('.d1');
+    d1.ontouchstart = function(e){
+      // console.log(e);
+      e = e.touches[0];
+      // 手指按下去的初始坐标
+      var startX = e.pageX;
+      var startY = e.pageY;
+      // 第一次按下去的位置，盒子距离边框的位置
+      var offX = startX-this.offsetLeft;
+      var offY = startY-this.offsetTop;
+      var endX = startX;
+      var endY = startY;
+      document.ontouchmove = function(e){
+        e = e.touches[0];
+        endX = e.pageX;
+        endY = e.pageY;
+        d1.style.left = endX-offX+'px';
+        d1.style.top = endY-offY+'px';
+      }
+      d1.ontouchend = function(){
+        document.ontouchmove = null;
+        console.log('touchend...');
+      }
+      d1.ontouchcansel = function(){
+        document.ontouchmove = null;
+        console.log('touchcancel...');
+      }
+    }
+  </script>
+</body>
+</html>
