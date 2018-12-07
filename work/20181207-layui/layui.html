@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="layui/layui/css/layui.css">
+  <title>Document</title>
+  <style>
+    #popup {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <table id="demo" lay-filter="test"></table>
+  <button class="layui-btn" id="add">添加</button>
+
+  <form class="layui-form" action="" id="popup">
+    <div class="layui-form-item">
+      <label class="layui-form-label">名字</label>
+      <div class="layui-input-block">
+        <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input" id="userName">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">工作</label>
+      <div class="layui-input-block">
+        <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input" id="job">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">薪资</label>
+      <div class="layui-input-block">
+        <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input" id="money">
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">选择框</label>
+      <div class="layui-input-block">
+        <select name="city" lay-verify="required" id="city">
+          <option value="北京">北京</option>
+          <option value="上海">上海</option>
+          <option value="广州">广州</option>
+          <option value="深圳">深圳</option>
+          <option value="杭州">杭州</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="layui-form-item">
+      <label class="layui-form-label">性别</label>
+      <div class="layui-input-block">
+        <input type="radio" name="sex" value="男" title="男">
+        <input type="radio" name="sex" value="女" title="女" checked>
+      </div>
+    </div>
+
+  </form>
+
+  <script src="https://cdn.bootcss.com/jquery/2.2.3/jquery.js"></script>
+  <script src="layui/layui/layui.all.js"></script>
+  <script type="text/html" id="barDemo">
+	  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+	  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+	</script>
+
+  <script>
+    var table = layui.table;
+    var form = layui.form;
+    var _id = 2;
+
+    var list  = [
+			  {id:1,name:'范冰冰',sex:'女',job:'端茶',money:'5000',city:'沈阳',time:'2018-12-7 下午3:14:02'},
+			  {id:2,name:'沈腾',sex:'男',job:'倒水',money:'10000',city:'内蒙',time:'2018-12-7 下午3:14:02'}
+		]
+
+    init();
+    //执行渲染
+    function init(){
+      table.render({
+      elem: '#demo' //指定原始表格元素选择器（推荐id选择器）
+      ,height: 315 //容器高度
+      ,cols: [[
+        {field:'id',title:'id',width:'80'},
+        {field:'name',title:'名字',width:'80'},
+        {field:'sex',title:'性别',width:'80'},
+        {field:'job',title:'工作',width:'80'},
+        {field:'money',title:'薪资',width:'80'},
+        {field:'city',title:'城市',width:'80'},
+        {field:'time',title:'数据执行时间',width:'180'},
+        {field:'doit',title:'操作',toolbar:'#barDemo',width:'180'}
+      ]]
+      ,data:list //设置表头
+      //,…… //更多参数参考右侧目录：基本参数选项
+      });
+    }
+
+    //弹出层
+    table.on('tool(test)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
+      // console.log(obj);
+      var data = obj.data; //获得当前行数据
+      var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
+      var tr = obj.tr; //获得当前行 tr 的DOM对象
+
+       if(layEvent === 'del'){ //删除
+        layer.confirm('真的删除行么', function(index){
+          obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
+          for(var i = 0 ; i < list.length ; i ++){
+            if(list[i].id==data.id){
+              list.splice(i,1)
+            }
+          }
+
+          // console.log('删除',list,index)
+          layer.close(index);
+          //向服务端发送删除指令
+        });
+      } else if(layEvent === 'edit'){ //编辑也要打开编辑框
+        //do something
+        open(data);
+        // console.log(data)
+
+      }
+    });
+
+
+    // 点击添加
+    $('#add').click(function(){
+      $('#userName').val('');
+			$('#job').val('');
+			$('#money').val('');
+      open();
+     })
+      // 打开弹框
+    function open(data){
+      if(data){
+				$('#userName').val(data.name);
+				$('#job').val(data.job);
+				$('#money').val(data.money);
+				// $("input[name='sex']").val('0')
+				var sex = data.sex=='男'?0:1;
+				$('input:radio[name="sex"][value='+sex+']').prop('checked', true);
+				$('#city').val(data.city);
+				form.render();
+				console.log(data.city);
+			}else{
+
+			}
+      layer.open({
+        type: 1,
+        content: $('#popup'),
+         //这里content是一个普通的String
+         btn: ['确认提交'],
+         yes: function(index, layero){
+          //按钮【按钮一】的回调
+          _id+=1
+          if(data){
+            for(var i=0; i<list.length; i++){
+              if(list[i].id == data.id){
+                list[i].name=$('#userName').val();
+                list[i].sex=$("input[name='sex']:checked").val()==0?'男':'女'
+                list[i].job=$('#job').val();
+                list[i].money=$('#money').val();
+                list[i].city=$('#city').val();
+                list[i].time=getTime();
+              }
+            }
+          }else{
+            list.push({
+				    	id:_id,
+				    	name:$('#userName').val(),
+				    	sex:$("input[name='sex']:checked").val()==0?'男':'女',
+				    	job:$('#job').val(),
+				    	money:$('#money').val(),
+				    	city:$('#city').val(),
+				    	time:getTime()
+			    	})
+          }
+          init()
+			    layer.close(index);
+			    $('#popup').hide()
+        },
+        cancel: function(index, layero){
+         $('#popup').hide()
+       }
+      });
+    }
+
+    function getTime(){
+		    var newDate = new Date();
+		    return newDate.toLocaleString().replace(/\//g, "-")
+		    // console.log(newDate.toLocaleDateString()); // 2018年11月18日
+		    // console.log(newDate.toLocaleString().replace(/\//g, "-")); // 2018年11月18日 上午10:33:24
+		    // console.log(newDate.toLocaleTimeString()); // 上午10:33:24
+		}
+  </script>
+</body>
+</html>

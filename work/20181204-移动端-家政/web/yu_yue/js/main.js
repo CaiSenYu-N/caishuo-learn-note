@@ -12,7 +12,7 @@ function resizeFont() {
 var hour = document.querySelector('.hour');
 var add = document.querySelector('.add');
 var down = document.querySelector('.down');
-var count =1;
+var count = 1;
 console.log(count);
 
 add.onclick = function(){

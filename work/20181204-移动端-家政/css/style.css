@@ -494,3 +494,8 @@
   display: block;
   margin-top: 0.106667rem;
 }
+
+.trag {
+  border: 25px solid;
+  border-top: yellow;
+}
