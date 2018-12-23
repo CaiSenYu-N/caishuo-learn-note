@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		var name = 'zs';
+		var name2 = name;
+		name2 = 'lisi';
+		console.log(name,'========',name2);
+		var user = {
+			name:'zs',
+			age:20
+		}
+		var user2 = user;
+		user2.name = 'lisi';
+		console.log(user,'=====',user2);
+		//基本数据类型和复杂类型(对象类型)作为参数传递
+
+		var count = 0;
+		var obj = {
+			count:0
+		}
+
+		// 基本数据类型作为参数,在函数内部会克隆该参数的副本对象,所以在内部修改不会影响外部的值
+		function foo (count) {
+			// 内部变量和外部变量命名重复的时候,就近原则
+			// count++;
+			// 在内部变量和外部变量命名重复的时候,可以通过"作用域名"来访问其他变量,可以打破就近原则
+			window.count ++ ;
+			return count;
+		}
+		// 复杂数据类型作为参数,咱函数内部引用的是同一个堆内存的地址(指针),所以修改是同一个
+		function bar(obj){
+			// var obj2 = obj;
+			// js原生方法 实现对象的浅克隆
+			var obj2 = Object.assign({},obj);
+			obj2.count ++;
+			// return obj;
+		}
+
+		foo(count);
+		console.log('count===>'+count);
+		bar(obj);
+		console.log('obj===>',obj);
+
+	</script>
+</body>
+</html>

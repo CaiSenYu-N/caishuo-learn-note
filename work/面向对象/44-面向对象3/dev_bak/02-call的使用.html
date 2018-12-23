@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		
+		function sort(){
+			// 数组 sort();
+			// 动态的把sort的执行对象 换成 arguments
+			Array.prototype.sort.call(arguments);
+			console.log(arguments);
+		}
+		function test1(){
+			// 在参数前面动态插入一个值
+			// 类似于argument的伪数组 ,本身不具备sort或者push等方法,可以通过call/apply
+			// 动态的扩展他的能力.
+			Array.prototype.push.apply(arguments,[9,10,11,12]);
+			console.log(arguments)
+			// Array.prototype.push()
+		}
+		//可以传递任意多个参数的时候
+		sort(3,2,1,5,6,7);
+
+		test1(1,2,3);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

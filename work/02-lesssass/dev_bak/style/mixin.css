@@ -1,0 +1,7 @@
+#test .border {
+  border-top: 10px solid #ff00ff;
+  border-bottom: 10px solid #ff00ff;
+}
+#test .danger {
+  color: red;
+}

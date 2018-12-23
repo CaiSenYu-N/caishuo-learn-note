@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#c1{
+			border: 1px solid red;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var cvs = document.querySelector('#c1');
+			//获取上下文对象
+			var ctx = cvs.getContext("2d");
+			// *	butt ： 默认。向线条的每个末端添加平直的边缘。
+			// *	round ： 向线条的每个末端添加圆形线帽。
+			// *	square： 向线条的每个末端添加正方形线帽。 
+
+			ctx.lineWidth = 50;
+			ctx.strokeStyle = 'green';
+			ctx.lineJoin = 'round';
+			ctx.moveTo(100, 100);
+			ctx.lineTo(400, 100);
+			ctx.lineTo(100,200);
+			ctx.stroke();
+
+
+		}
+	</script>
+</head>
+<body>
+	<canvas id="c1" width=800 height=500>
+		您的浏览器不支持！
+	</canvas>
+</body>
+</html>

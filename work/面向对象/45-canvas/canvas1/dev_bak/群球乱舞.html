@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#cvs{
+			display: block;
+			margin: 100px auto;
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="cvs" width=1200 height=800>
+		
+	</canvas>
+	<script src="Ball.js"></script>
+	<script>
+		function rd255(){
+			
+		}
+		var cvs = document.querySelector('#cvs');
+		//获取上下文对象
+		var ctx = cvs.getContext("2d");
+		//球的集合
+		var ballList = [];
+		var count = 100;
+		//创建count个球的对象
+		for(var i = 0 ; i< count ; i ++){
+			var r = rd(10,50);
+			console.log(r);
+			var x = rd(r,cvs.width-r);
+			var y = rd(r,cvs.height-r);
+			var ball = new Ball(cvs,{x:x,y:y,r:6});
+			// var ball = new Ball(cvs,{r:10});
+			ballList.push(ball);
+		}
+
+		setInterval(function(){
+			//重绘count个球
+			ctx.clearRect(0, 0, cvs.width ,cvs.height);
+			for(var i = 0 ; i < ballList.length ; i ++){
+				//绘制
+				ballList[i].draw();
+			}
+			lineTo();
+
+		}, 30);
+
+
+		function lineTo(){
+			for(var i = 0 ; i < ballList.length ; i ++){
+				for(var j = 1 ; j < ballList.length - i ;  j ++){
+					var dis = abs(ballList[i],ballList[j]);
+					if(dis<=200){
+						ctx.beginPath();
+						ctx.moveTo(ballList[i].x, ballList[i].y); // 设置线的起始位置
+						ctx.lineTo(ballList[j].x, ballList[j].y); // 设置线的结束位置
+						// ctx.strokeStyle = 'rgba(255,0,0,'+(1-dis/200)+')'; // 设置绘制线条的颜色
+						ctx.strokeStyle = ballList[i].color; // 设置绘制线条的颜色
+						ctx.strokeWidth = 1; // 设置绘制线条的宽度
+						// ctx.strokeStyle = 'red';
+						ctx.stroke(); // 绘制
+						ctx.closePath();
+					}
+				}
+			}
+
+			function abs(b1,b2){
+				return Math.floor(Math.sqrt(Math.pow((b1.x-b2.x),2)+Math.pow((b1.y-b2.y),2)));
+			}
+		}
+
+		/**
+		* 计算任意区间的随机值
+		**/
+		function rd(min,max){
+			return Math.floor(Math.random()*(max-min+1))+min;
+		}
+
+
+	</script>
+</body>
+</html>

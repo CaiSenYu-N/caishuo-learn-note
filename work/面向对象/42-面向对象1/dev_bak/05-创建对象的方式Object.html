@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script>
+		// 1.所有的对象都是Object对象的子类,换句话说 Object对象是所有对象的顶级对象
+		//可以通过new的关键词创建一个对象的实例对象.
+		// 实例对象就是单独的某个可以直接使用的个体
+		// Human构造对象   zhangsan  lis通过该构造对象创建出来的一个实例对象
+		// Human();  var zhangsa = new Human();  var lis = new Human();
+		// Dog();   var od = new Dog()  var od = new Object();
+
+		//弊端: 无法识别 实例对象的具体类型
+		var user = new Object();
+		user.name = '张三';
+		user.age = 20;
+		user.say = function(){
+			alert('Hi,i am saying...')
+		}
+
+		var user2 = new Object();
+		user2.name = '李四';
+		user2.age = 30;
+
+		console.log(user.name);
+		console.log(user2.name);
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

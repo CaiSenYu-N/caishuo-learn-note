@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		function Event(){
+
+		}
+
+		Event.prototype = {
+			on:function(id,type,fn){
+				if(ele.addEventListener){
+					ele.addEventListener(type,fn,false);
+				}else{
+					ele.attachEvent('on'+type,fn)
+				}
+			},
+			mouseover:function(id,fn){
+				this.on(id,'mouseover',fn);
+			},
+			hover:function(id,fn1,fn2){
+				this.onmouseover(id,f1);
+			}
+		}
+
+		Event.prototype = {
+		  on:function(id,type,fn){
+		      var ele = document.getElementById(id);
+		      //需要兼容ie和标准浏览器
+		      if(ele.addEventListener){
+		        ele.addEventListener(type,fn,false);
+		      }else{
+		        ele.attachEvent('on'+type,fn);
+		      }
+		  },
+		  mouseover:function(id,fn){
+		    this.on(id,'mouseover',fn);
+		  },
+		  mouseout:function(id,fn){
+		    this.on(id,'mouseout',fn);
+		  },
+		  hover:function(id,f1,f2){
+		    this.mouseover(id,f1);
+		    this.mouseout(id,f2);
+		  }
+		}
+		var myEvent = new Event();
+
+		window.onload = function(){
+		      myEvent.on('d1','click',function(){
+		          alert('d1')
+		      })
+
+		      myEvent.hover('d1',function(){
+		        var d1 = document.getElementById('d1');
+		        d1.style.backgroundColor = 'orange';
+		      },function(){
+		        var d1 = document.getElementById('d1');
+		        d1.style.backgroundColor = 'red';
+		      })
+		    }
+
+		    // $.hover(id,fn1,fn2);
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

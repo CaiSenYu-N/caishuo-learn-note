@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		function User(name,age){
+			this.name = name;
+			this.age = age;
+			//所以有必要把 方法放到外部.
+			// this.say = function(){
+			// 	alert('Hi ,iam  saying');
+			// }
+
+		}
+		// prototype 就是一个User的所有的实例对象共享的一个空间
+		User.prototype.say = function(){
+			alert('Hi ,iam  saying '+this.name);
+		}
+		var user1 = new User('张三',20);
+		var user2 = new User('李四',30);
+
+		user1.say();
+		user2.say();
+		// 明明相等的两个say方法 为什么不同呢?
+		console.log(user1.name == user2.name);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

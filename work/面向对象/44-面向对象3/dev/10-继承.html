@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		//什么是继承?
+		//比如 动物园 需要录入所有动物信息  
+		// 狮子  老虎   鲨鱼    老鹰  
+
+		function Animate(color){
+			this.color = color;
+		}
+		Animate.prototype.move = function(){
+			alert('Hi  i  can  move...');
+		}
+
+		//js如何实现继承 
+		function Dog(name,color){
+			//借用构造函数
+			Animate.call(this,color);
+			// this.color = color;	
+			this.name = name;
+		}
+		// 子类的原型对象 = 继承父类的 实例对象
+		Dog.prototype = new Animate();
+		Dog.prototype.run = function(){
+			alert('Hi my Color is '+this.color+' and i can running...');
+		}
+
+
+		function Cat(name,color,skill){
+			Animate.call(this,color);	
+			this.name = name;
+			// this.color = color;
+			this.skill = skill;
+		}
+		Cat.prototype = new Animate();
+		Cat.prototype.run = function(){
+			alert('Hi my Color is '+this.color+' and i can running...');
+		}
+
+
+		var dog = new Dog('欧弟','yellow');
+		dog.move();
+		var cat = new Cat('加菲猫','orange','吃肉');
+		var cat2 = new Cat('加菲猫2','orange2','吃肉2');
+		// alert(dog.color);
+		cat.move();
+		cat.run();
+		cat2.run();
+
+
+	</script>
+</body>
+</html>

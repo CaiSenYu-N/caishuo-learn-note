@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		// 1. 直接new Object
+		// 2. 字面量形式 {}  适用于创建单个对象
+		// 3. 工厂模式创建对象
+		// var zs = {
+		// 	name:'zs',
+		// 	age:20
+		// }
+		// var ls = {
+		// 	name:'ww',
+		// 	age:30
+		// }
+		// ...
+
+		function createUser(name,age) {
+			//批量创建
+			var obj = new Object();
+			obj.name = name;
+			obj.age = age;
+			return obj;
+		}
+		//弊端?
+		var user1 = createUser('张三',20);
+		var user2 = createUser('李四',30);
+		var dog = createUser('偶滴',1);
+		console.log(user1,user2);
+		// instanceof  用于检测某个对象是另一个对象的实例对象
+		// 人类 来源于  猿类 
+		// 小狗 来源于  狼 
+		console.log(user1 instanceof Object);
+		console.log(user1 instanceof createUser); // false
+
+	</script>
+</body>
+</html>

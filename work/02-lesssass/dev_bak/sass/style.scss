@@ -1,0 +1,96 @@
+@import "foo.scss";
+@import "bar";
+$danger:orange;
+$link-color: blue;
+
+
+//混合器 sass中的混合器为了区分类 做了一个@mixin的声明
+//带参数的混合器
+//带默认参数的混合器
+@mixin border($w:30px,$style:solid,$color:gray){
+	border: $w $style $color;
+	-webkit-border: $w $style $color;
+	-moz-border: $w $style $color;
+}
+
+/**
+  可以通过函数 实现  px ==> rem  
+**/
+@function p2r($v) {
+	//比如 1px 需要转rem吗?
+	// 判断如果v==1  返回1px就行
+ @if $v == 1 {
+    @return 1px;
+  }
+  @return $v/75+rem;
+}
+
+
+a {
+  color: $link_color;
+}
+.d1{
+	width: p2r(75);
+	height: p2r(1);
+	background-color: $danger;
+	//混合器的使用需要用到@include
+	// @include border(20px,dashed,green);
+	@include border();
+}
+.d2{
+	width: 100px;
+	height: 200px;
+	background-color: red;
+}
+
+
+.d3{
+	width: 200px;
+	height: 200px;
+	background-color: yellow;
+}
+.header{
+	width: 100%;
+	height: 60px;
+	background-color: pink;
+	.header-c{
+		width: 900px;
+		height: 100%;
+		background-color: green;
+		margin: 0 auto;
+		// &跟less中的功能一样 都是返回上一级
+		&:hover{
+			background-color: purple;
+		}
+		// +.header-bottom{
+		// 	width: 100px;
+		// }
+	}
+	.header-c+.header-bottom{
+		width: 100px;
+	}
+
+	
+	//支持分组
+	.button1,.button2{
+		width: 100px;	// 这种注释内容不会出现在生成的css文件中
+		height: 30px;	/* 这种注释内容会出现在生成的css文件中 */
+		background-color: red;
+	}
+}
+
+.d3{
+	width: 200px;
+	height: 300px;
+	background-color: green;
+}
+.error {
+  border: 1px solid red;
+  background-color: #fdd;
+}
+.seriousError {
+  @extend .error;
+  border-width: 3px;
+}
+
+

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		
+		#canvas{
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="600" height="600"></canvas>
+
+	<script>
+		var cvs = document.querySelector('#canvas')
+		var ctx = cvs.getContext("2d");
+
+		ctx.fillStyle = 'rgba(255,0,0,.5)';
+		var h1 = 500;
+		var h2 = 300;
+		var h3 = 320;
+		var h4 = 500;
+		var offset = 60;
+		var count = 0;
+		setInterval(function(){
+			ctx.clearRect(0, 0, 600, 600);
+			ctx.beginPath();
+			ctx.moveTo(0, 600);
+			
+			count ++;
+			if(Math.floor(count/60)%2==0){
+				h1++;
+				h2++;
+				setTimeout(function(){
+					h3++;
+					h4++;
+				}, 2020)
+				
+			}else{
+				h1--;
+				h2--;
+				setTimeout(function(){
+					h3--;
+					h4--;
+				}, 2020)
+				
+			}
+			ctx.lineTo(0, h1);
+			ctx.bezierCurveTo(280, h2, 300, h3, 600,h4)
+			ctx.lineTo(600,600);
+			ctx.closePath();
+
+			ctx.fill();
+
+
+		}, 20)
+
+		
+	</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		
+		function User(name,age){
+			this.name = name;
+			this.age = age;
+		}
+		function Human(){
+
+		}
+		var user1 = new User('张三',20);
+		// instanceof  可以判断对象类型
+		// 在 某些请情况下 我们需要判断一个实例对象是否是是通过某个构造对象创建的时候 使用.
+		console.log(user1 instanceof User);
+		console.log(user1 instanceof Object);
+		console.log(user1 instanceof Human);
+
+		console.log(user1.constructor == User);
+		console.log(user1.constructor == Human);
+
+		// function foo(p1,p2,p3){
+		// 	// 在这里面如何判断用户传递的 实参和形参的位置是对应的?
+		// 	// 或者说 如何实现 不管用户按照什么顺序传递了三个形参 我都能正确处理?
+		// }
+
+		// fo0(dog,user,human1);
+		// fo0(user,dog,human1);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" class="name">
+
+	<script type="text/javascript">
+		var user = {
+			name:'张三'
+		}
+		var inputEl = document.querySelector('.name');
+		Object.defineProperty(user,'name', {
+			set:function (v) {
+				//劫持
+				inputEl.value = v;	
+			},
+			get:function (){
+				return inputEl.value;
+			}
+		})
+
+		
+	</script>
+
+</body>
+</html>

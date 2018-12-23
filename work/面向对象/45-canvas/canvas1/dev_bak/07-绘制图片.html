@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#canvas{
+			display: block;
+			border: 1px solid red;
+			/*canvas的宽高不能写到这里  会导致图片缩放比例失真*/
+			/*width: 500px;
+			height: 500px;*/
+			margin: 30px auto;
+		}	
+		
+	</style>
+
+</head>
+<body>
+	<canvas id="canvas">您的浏览器不支持!</canvas>
+	<!-- <img src="img/avatar.jpg" alt=""> -->
+	<script>
+		var cvs = document.querySelector('#canvas');
+		cvs.width = 500;
+		cvs.height = 500;
+		var ctx = cvs.getContext("2d");
+		// var img = document.querySelector('img');
+		
+		//在处理loading动画的时候讲过
+		var img = new Image();
+		img.src = 'img/avatar.jpg';
+		// img必须加载完图片才能处理.	
+		img.onload = function(){
+
+			// context.drawImage(img,sx,sy,swidth,sheight,x,y,width,height);
+			//截取图片 (37,0)开始[180,180]放到canvas中(100,100),宽高[300,300]
+			ctx.drawImage(img, 37,0,180,180,100,100,300,300);
+			// ctx.drawImage(img,0,0,200,100);
+		}
+			
+	</script>
+
+</body>
+</html>

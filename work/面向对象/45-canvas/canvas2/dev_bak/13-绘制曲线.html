@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#c1{
+			border: 1px solid red;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var cvs = document.querySelector('#c1');
+			//获取上下文对象
+			var ctx = cvs.getContext("2d");
+			
+
+			ctx.moveTo(0,200);
+			ctx.quadraticCurveTo(200,100,200, 0);
+			ctx.stroke();
+
+			ctx.beginPath();
+			ctx.moveTo(200,200);
+			ctx.bezierCurveTo(200, 0, 300, 200, 400, 0);
+			ctx.quadraticCurveTo(200,100,200, 0);
+			ctx.stroke();
+
+
+			ctx.beginPath();
+			
+			ctx.moveTo(75,40);
+			ctx.fillStyle = 'red';
+			 ctx.bezierCurveTo(75,37,70,25,50,25);
+			 ctx.bezierCurveTo(20,25,20,62.5,20,62.5);
+			 ctx.bezierCurveTo(20,80,40,102,75,120);
+			 ctx.bezierCurveTo(110,102,130,80,130,62.5);
+			 ctx.bezierCurveTo(130,62.5,130,25,100,25);
+			 ctx.bezierCurveTo(85,25,75,37,75,40);
+			 ctx.fill();
+
+
+		}
+	</script>
+</head>
+<body>
+	<canvas id="c1" width=800 height=500>
+		您的浏览器不支持！
+	</canvas>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#c1{
+			border: 1px solid red;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var cvs = document.querySelector('#c1');
+			//获取上下文对象
+			var ctx = cvs.getContext("2d");
+
+			var img = new Image();
+			img.src = 'https://mdn.mozillademos.org/files/5397/rhino.jpg';
+			img.onload = function() {
+			  ctx.drawImage(img, 0, 0);
+			  img.style.display = 'none';
+			};
+			var color = document.getElementById('color');
+			function pick(event) {
+			  var x = event.layerX;
+			  var y = event.layerY;
+			  var pixel = ctx.getImageData(x, y, 1, 1);
+			  var data = pixel.data;
+			  var rgba = 'rgba(' + data[0] + ',' + data[1] +
+			             ',' + data[2] + ',' + (data[3] / 255) + ')';
+			  color.style.background =  rgba;
+			  color.textContent = rgba;
+			}
+			cvs.addEventListener('mousemove', pick);
+		}
+	</script>
+</head>
+<body>
+	<canvas id="c1" width=800 height=500>
+		您的浏览器不支持！
+	</canvas>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		// 使用严格模式
+		'use strict';
+		var user1 = {
+			name:'张三',
+			age:20
+		}
+
+		user tv = {
+			name:'小米tv',
+			price:3000
+		}
+
+		// function  add(a){
+		// 	b = 5;
+		// 	return a+b;
+		// }
+		// alert(add(3));
+		//当前的写法 是通过Object对象的defineProperty方法来定义
+		// user1对象的  age 属性的 属性
+		Object.defineProperty(user1,'age',{
+			configurable:false,
+			enumerable:false,
+			writable:false,
+			value:50
+		})
+		// Configurable: 当前属性是否可以被delete删除
+		// enumerable: 可以通过for-in打印
+		// writable: 当前属性可以被重新覆盖
+
+
+		// 非法操作能不能给提示?  es5 本身存在这么一个问题,需要通过 'use strict'解决
+		// delete user1.age;
+		// console.log(user1);
+
+
+		//遍历对象
+		// console.log(user1.age)
+		// for(var a in user1){
+		// 	console.log(a+'==>'+user1[a]);
+		// }
+
+		// user1.age = 33;
+		// console.log(user1);
+
+
+		console.log(user1);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

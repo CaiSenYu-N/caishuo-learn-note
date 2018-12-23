@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.canvas{
+			border:1px solid red;
+			/*canvas宽高不能在css中些 会使canvas中的图片拉伸变形*/
+			/*width: 600px;*/
+			/*background-color: pink;*/
+		}
+	</style>
+</head>
+<body>
+	<canvas class="canvas" width="600" height="600">您的浏览器不支持</canvas>
+
+	<script>
+		var cvs = document.querySelector('.canvas');
+		//创建一个2d的cvs上下文对象
+		var ctx = cvs.getContext("2d");
+		drawGrid(cvs,ctx);
+		var data = {
+			"ui":{
+				count:30,
+				color: 'green'
+			},
+			"h5":{
+				count:30,
+				color: 'pink'
+			},
+			"java":{
+				count:22,
+				color: 'yellow'
+			},
+			"php":{
+				count:18,
+				color: 'purple'
+			}
+		};
+
+		var sum = 0;
+		for(var key in data ){
+			sum += data[key].count;
+		}
+		//半径
+		var r = 120;
+		
+		//开始的角度
+		var startDeg = 0;
+
+		for(var key in data){
+			drawBing(startDeg,data[key],key);
+		}
+
+		function  drawBing(deg,obj,key){
+			ctx.beginPath();
+			//中心的坐标
+			ctx.moveTo(300, 300);
+			//结束的度数 =  上一个扇形的结束度数+当前扇形所占据的度数
+			var endAngle =  deg + obj.count/sum*2*Math.PI;
+			ctx.arc(300, 300, r, deg, endAngle, false);
+			ctx.fillStyle = obj.color;
+			ctx.fill();
+			//填充文字
+			// 1.确定度数 
+			var tempDeg = obj.count/sum*2*Math.PI/2;
+			// 错的地方 cos和sin的正负值
+			var x = 300+Math.cos(tempDeg)*r/2;
+			var y = 300+Math.sin(tempDeg)*r/2;
+			ctx.textAlign = 'center';
+			ctx.fillStyle = '#fff';
+			ctx.fillText(key, x,y);
+			ctx.closePath();
+			//修改startDeg 使下一次的开始度数按照当前的结束度数
+			startDeg = endAngle;
+		}
+
+
+		ctx.font = '60px "微软雅黑"';
+		// ctx.textAlign = 'start';
+		ctx.textBaseline = 'hanging';
+		// 可能是api调整了 代码提示有问题
+		// ctx.textBaseLine = 'middle';
+		//绘制文字
+		ctx.textAlign = 'start';
+		ctx.strokeText('BUFANXUEYUAN', 0, 200);
+		//用于获取字符串宽度
+		console.log(ctx.measureText('BUFANXUEYUAN'));
+
+
+		function drawGrid(cvs,ctx){
+			var w = 50;
+			var h = 50;
+			//竖线条数
+			var wCount = cvs.width/w;
+			var hCount = cvs.height/h;
+			for(var i = 1 ; i < wCount ; i ++){
+				ctx.beginPath();
+				ctx.strokeStyle = 'gray';
+				ctx.moveTo(i*w,0);
+				ctx.lineTo(i*w,cvs.height);
+				ctx.closePath();
+				ctx.stroke();
+			}
+			for(var i = 1 ; i < hCount ; i ++){
+				ctx.beginPath();
+				ctx.strokeStyle = 'gray';
+				ctx.moveTo(0,i*h);
+				ctx.lineTo(cvs.width,i*h);
+				ctx.closePath();
+				ctx.stroke();
+			}
+		}
+
+
+	</script>
+</body>
+</html>

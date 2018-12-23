@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#c1{
+			border: 1px solid red;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var cvs = document.querySelector('#c1');
+			//获取上下文对象
+			var ctx = cvs.getContext("2d");
+			
+			ctx.moveTo(150, 20);
+			ctx.fillRect(150,20,10,10);
+			ctx.arcTo(150,100,50,20,30);
+			ctx.stroke();
+			ctx.fillRect(150, 100, 10, 10);
+			ctx.fillRect(50,20,10,10);
+		}
+	</script>
+</head>
+<body>
+	<canvas id="c1" width=800 height=500>
+		您的浏览器不支持！
+	</canvas>
+</body>
+</html>

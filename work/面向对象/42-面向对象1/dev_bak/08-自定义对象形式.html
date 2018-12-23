@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		
+		//对象本质是一个函数 所以可以通过函数声明创建一个对象
+		//疑问: 对象和函数的区别在哪呢?
+		// 由于自定义对象和函数的写法一模一样,所以约定 自定义对象的首字母必须大写!!
+		//优点: 可以明确知道一个对象的类型
+		//弊端: 创建大量相似对象 麻烦  而且代码比较松散...
+		function User(){
+
+		}
+		var u1 = new User();
+		// lis[i].index = i;
+		u1.name = '张三';
+		u1.age = 20;
+
+		var u2 = new User();
+		u2.name = '李四';
+		u2.age = 30;
+
+		console.log('u1==>'+u1.name);
+		console.log('u2==>'+u2.name);
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

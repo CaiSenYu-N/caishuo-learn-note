@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		var user = {
+			name:'zs',
+			age:20,
+			sex:false
+		}
+
+		var user2 = clone(user);
+		user2.name = 'lsi';
+		console.log(user,user2);
+
+		//实现简单数据对象的浅克隆
+		function clone (obj) {
+			//对象类型,堆内存会开辟新的空间
+			var rs = {};
+			//遍历对象的属性
+			for(var key in obj){
+				rs[key] = obj[key];
+			}
+			return rs;
+		}
+		var obj = {
+			name:'偶滴',
+			color:'#fff',
+			skills:['swing','running','sing'],
+			gFrind:{
+				name:'小美',
+				age:30
+			},
+			say:function(){
+				alert('Hi,I am  偶滴!');
+			}
+		}
+		console.log('obj.name==>',obj.name);
+		obj.say();
+		// 原生对象
+		// Math  Date   Object     Array
+		// 自定义的对象
+		// user  obj...
+	</script>
+</body>
+</html>

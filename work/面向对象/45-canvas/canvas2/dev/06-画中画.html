@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#canvas{
+			border: 1px solid red;
+		}
+		#canvas2{
+		}
+
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="500" height="500">您的浏览器不支持!</canvas>
+	<canvas id="canvas2" width="200" height="200">您的浏览器不支持!</canvas>
+	
+	<script>
+		var cvs1 = document.querySelector('#canvas');
+		var cvs2 = document.querySelector('#canvas2');
+		var ctx1 = cvs1.getContext("2d");
+		var ctx2 = cvs2.getContext("2d");
+		ctx2.fillStyle = 'rgba(0,255,0,.2)';
+		ctx2.fillRect(0, 0, 200,200);
+
+		var imgData = ctx2.getImageData(0, 0,200,200).data;
+		console.log(imgData);
+		//画中画什么时候用? 
+		ctx1.drawImage(cvs2,100,100,150,150);
+	</script>
+</body>
+</html>

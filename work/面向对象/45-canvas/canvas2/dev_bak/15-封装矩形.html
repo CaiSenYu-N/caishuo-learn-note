@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/Rect.js"></script>
+	<style>
+		#c1{
+			border: 1px solid red;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var cvs = document.querySelector('#c1');
+			//获取上下文对象
+			var ctx = cvs.getContext("2d");
+			
+			// ctx.save();
+			// ctx.beginPath();
+			// ctx.fillStyle ='yellow';
+			// ctx.translate(100, 20);
+			// ctx.rotate(Math.PI/6);
+			// ctx.fillRect(100, 100, 200, 100);
+			// ctx.restore();
+
+			// ctx.beginPath();
+			// ctx.fillStyle = 'green';
+			// //顺序有关
+			// ctx.scale(.5, .5);
+			// ctx.translate(100,100);
+			// ctx.fillRect(0,0,200,200);
+
+			// 能不能封装一个Rect对象  可以方便的new一个方块出来 可以变换但不影响后面
+
+			// var  rect = new Rect(ctx,0,0,200,200);
+			// //用户调用缩放可以实现 不调用也可以实现
+			// rect.scale(.5, .5);
+			// rect.fill('red');
+
+
+			// 1.	Math.min(5,4,6,8,7,9,2,3)     ======è   2     取最小数
+			// Math.random()；        =====è       取一个随机数   范围[0,1)
+			// Tips：取任意范围内的随机数
+			// parseInt(Math.random()*(max-min+1)+min);
+			// Math.floor(Math.random()*(max-min+1)+min);
+
+			ctx.globalAlpha = .5;
+
+			var count = 10;
+			setInterval(function(){
+				ctx.clearRect(0, 0, cvs.width,cvs.height);
+				for(var i = 0 ; i < count ; i++){
+					// Maht.random==> [0,1)
+					// 宽度和高度的区间  高度为 10-200，20,400
+					var sx = Math.random()*cvs.width
+					var sy = Math.random()*cvs.height;
+					var w = Math.floor(Math.random()*380)+20;
+					var h = Math.floor(Math.random()*191)+10;
+					// 0~2Math.PI
+					new Rect(ctx,sx,sy,w,h).fill(randomColor());
+				}
+
+			}, 20)
+			
+		}
+
+		function randomColor(){
+			// 颜色的范围 0~255;
+			// Math.floor(Math.random()*(max-min+1)+min);
+			var r = Math.floor(Math.random()*256);
+			var g = Math.floor(Math.random()*256);
+			var b = Math.floor(Math.random()*256);
+			return 'rgb('+r+','+g+','+b+')';
+		}
+	</script>
+</head>
+<body>
+	<canvas id="c1" width=800 height=500>
+		您的浏览器不支持！
+	</canvas>
+</body>
+</html>

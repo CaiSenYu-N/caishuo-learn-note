@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#c1{
+			border: 1px solid red;
+		}
+		.box{
+			border: 1px solid black;
+			background: ulr('data:img.......')
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var cvs1 = document.querySelector('#c1');
+			var cvs2 = document.querySelector('#c2');
+			var ctx1 = cvs1.getContext("2d");
+			var ctx2 = cvs2.getContext("2d");
+
+			ctx2.fillStyle = '#eee';
+			ctx2.fillRect(0,0,300,200);
+			ctx2.beginPath();
+			ctx2.fillStyle = 'green';
+			ctx2.fillRect(0,0, 100, 100);
+
+
+			//canvas本身就是画布的意思 所以可以通过drawImage实现画中画
+			// 注意：引入的是整个canvas  而不是某一个画布
+			ctx1.drawImage(cvs2, 100, 100,200,200);
+		}
+	</script>
+</head>
+<body>
+	<canvas id="c1" width=800 height=500>
+		您的浏览器不支持！
+	</canvas>
+
+	<canvas id="c2" widht=300 height=200>
+		您的浏览器不支持！
+	</canvas>
+</body>
+</html>

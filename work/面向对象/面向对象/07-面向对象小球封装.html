@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.canvas{
+			border:1px solid red;
+			/*canvas宽高不能在css中些 会使canvas中的图片拉伸变形*/
+			/*width: 600px;*/
+			/*background-color: pink;*/
+		}
+	</style>
+</head>
+<body>
+	<canvas class="canvas" width="600" height="600">您的浏览器不支持</canvas>
+	<script>
+		var cvs = document.querySelector('.canvas');
+		//创建一个2d的cvs上下文对象
+		var ctx = cvs.getContext("2d");
+		
+		function Ball(cvs,x,y,r,color){
+			this.cvs = cvs;
+			this.ctx = this.cvs.getContext('2d');
+			this.x = x;
+			this.y = y;
+			this.r = r;
+			this.color = color;
+			this.init();
+		}
+		Ball.prototype = {
+			init:function(){
+				//画个球
+				this.drawBall();
+				this.play();
+			},
+			drawBall:function(){
+				this.ctx.beginPath();
+				this.ctx.arc(this.x,this.y,this.r,2*Math.PI, false);
+				this.ctx.fillStyle = this.color;
+				this.ctx.fill();
+				this.ctx.closePath();
+			},
+			play:function(){
+				var speedX =this.rdSpeed(); 
+				var speedY =this.rdSpeed(); 
+				var that = this;
+				setInterval(function(){
+					//清除之前的
+					that.ctx.clearRect(that.x-that.r, that.y-that.r, 2*that.r, 2*that.r);
+					//x+= ; y+= ; 向量  速度
+					//相反方向
+					if(that.x+that.r >= that.cvs.width){
+						speedX = -1*Math.abs(speedX);
+					}
+					if(that.x-that.r <=0){
+						speedX = Math.abs(speedX);
+					}
+					if(that.y-that.r <= 0){
+						speedY = Math.abs(speedY);
+					}
+					if(that.y+that.r >= that.cvs.height){
+						speedY = -1*Math.abs(speedY);
+					}
+
+					that.x+= speedX;
+					that.y+= speedY;	
+					that.drawBall(that.x,that.y,that.r,that.color);
+				},17);
+			},
+			rdSpeed:function(){
+				return Math.floor(Math.random()*15);
+			}
+		}
+
+		// new Ball(cvs,100,100,50,'green');
+		var colors = ['red','green','pink','purple'];
+		for(var i = 0 ; i < 10 ; i ++){
+			new Ball(cvs,100,100,Math.floor(Math.random()*50+10),colors[Math.floor(Math.random()*colors.length)]);
+		}
+
+
+		
+	</script>
+</body>
+</html>

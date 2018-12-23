@@ -1,0 +1,55 @@
+@charset "UTF-8";
+.footer {
+  width: 100%;
+  height: 100px;
+  background-color: #333; }
+
+/*把原生的样式 代码不动  直接修改名称为scss即可*/
+.aside {
+  width: 70px;
+  height: 500px;
+  background-color: red; }
+
+/*混合  公用代码块*/
+/*函数 
+	150px = 75 =>  2rem 
+*/
+.header {
+  width: 100%;
+  height: 100px;
+  background-color: purple;
+  /*可以直接跳出去  但是不建议!!!*/ }
+  .header .p1 {
+    font-size: 30px;
+    color: red;
+    border: 10px solid purple; }
+  .header .p1 + p {
+    font-weight: border; }
+  .header .p2 {
+    font-size: 30px;
+    color: green; }
+  .header:hover .p2 {
+    color: red; }
+  nav + .header {
+    margin-top: 0; }
+
+.box {
+  width: 2rem;
+  height: 200px;
+  background-color: green;
+  -moz-border-radius: 20px;
+  -webkit-border-radius: 20px;
+  border-radius: 20px;
+  box-shadow: 30px 20px 15px green;
+  -webkit-box-shadow: 30px 20px 15px green;
+  -ms-box-shadow: 30px 20px 15px green; }
+
+/*尽量不要使用继承*/
+.error, .seriousError {
+  border: 1px solid red;
+  background-color: #fdd; }
+
+.seriousError {
+  border-width: 3px; }
+
+/*# sourceMappingURL=style.css.map */

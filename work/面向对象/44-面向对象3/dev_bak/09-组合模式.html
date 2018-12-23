@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- //组合模式  原型模式配合借用构造函数模式 实现继承 -->
+	
+	<script>
+		// 每种动物继承的时候必须告知星球
+		function Animate(planet){
+			this.planet = planet;
+			this.dna = 'DNA';
+			this.like = ['上山','游泳','打球'];
+		}
+		Animate.prototype = {
+			run:function(){
+				console.log(this.dna+'...running...like==>'+this.like);
+			}
+		}
+
+		function Dog(planet,name){
+			this.name = name;
+			//借用构造函数
+			Animate.call(this,planet);
+			this.say = function(){
+				console.log(this.name+'==> saying...');
+			}
+		}
+
+
+		function Cat(planet,color){
+			this.color = color;
+			Animate.call(this,planet);
+		}
+		Cat.prototype.maimeng = function(){
+			console.log(this.color + '...喵喵...');
+		}
+		// 原型继承
+		Dog.prototype =  new Animate();
+
+		// 验证 是否解决了 对象类型共享的问题  是否解决了原型方法不能被继承的问题   是否解决了可传参的问题...
+
+		var dog1 = new Dog('Earth','欧弟');
+		var dog2 = new Dog('Mar','哮天犬');
+		dog1.run();
+		dog1.say();
+		dog2.like.push('对着天叫');
+		dog2.run();
+		dog2.say();
+
+		// ===========
+		var cat1 = new Cat('moon','lightblue');
+		var cat2 = new Cat('sun','red');
+		cat1.maimeng();
+		cat2.maimeng();
+
+	</script>
+
+</head>
+<body>
+	
+</body>
+</html>

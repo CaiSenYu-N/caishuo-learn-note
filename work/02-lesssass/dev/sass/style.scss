@@ -1,0 +1,67 @@
+@import "footer.scss";
+/*把原生的样式 代码不动  直接修改名称为scss即可*/
+@import "aside.scss";
+$bg-color:purple; 
+$border: 10px solid $bg-color;
+/*混合  公用代码块*/ 
+@mixin rounded-corners($num:20px) {
+  -moz-border-radius: $num;
+  -webkit-border-radius: $num;
+  border-radius: $num;
+}
+
+@mixin boxshadow($x:10px,$y:10px,$blur:20px){
+	box-shadow: $x $y $blur  green;
+	-webkit-box-shadow: $x $y $blur  green;
+	-ms-box-shadow: $x $y $blur  green;
+}
+/*函数 
+	150px = 75 =>  2rem 
+*/  
+@function p2r($px) {
+  @return $px/75+rem;
+}
+
+
+.header{
+	width: 100%;
+	height: 100px;
+	background-color: $bg-color;
+	.p1{
+		font-size: 30px; 
+		color: red;
+		border: $border;
+	}
+	.p1+p{
+		font-weight: border;
+	}
+	.p2{
+		font-size: 30px;
+		color:green;
+	}
+	&:hover .p2{
+		color: red;
+	};
+	// 不会出现在css中
+	/*可以直接跳出去  但是不建议!!!*/
+	nav + & { margin-top: 0 }
+
+}
+.box{
+	width: p2r(150);
+	height: 200px;
+	background-color: green;
+	@include rounded-corners();
+	@include boxshadow(30px,20px,15px);
+}
+
+/*尽量不要使用继承*/
+.error {
+  border: 1px solid red;
+  background-color: #fdd;
+}
+.seriousError {
+  @extend .error;
+  border-width: 3px;
+}
+

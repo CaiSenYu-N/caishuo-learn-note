@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<script>
+		  var x = "我是全局变量";　　　　//定义全局变量x
+	      function A(){　　　　　　　　　//定义函数类结构a　　
+	        this.x = "我是在函数类结构a中声明的";
+	      }
+	      //定义普通函数，弹出当前指针所包含的变量x的值
+	      function f(){
+	        alert (this.x);
+	      }
+	      var a = new A();
+	      //返回值为“我是在函数类结构a中声明的哦”
+	      // call/apply 作用是一样的,使用方式稍微不同
+	      window.f.call(a);
+	      // window.f();
+	</script>
+</body>
+</html>

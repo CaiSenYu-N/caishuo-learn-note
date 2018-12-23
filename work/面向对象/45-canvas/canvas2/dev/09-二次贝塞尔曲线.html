@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#canvas{
+			border: 1px solid red;
+		}
+
+	</style>
+</head>
+<body>
+	<canvas id="canvas">您的浏览器不支持!</canvas>
+	<button class="btn1">获取图片</button>
+	<img class="img1" src="" alt="">
+	<script>
+		var cvs = document.querySelector('#canvas');
+		cvs.width = 600;
+		cvs.height = 600;
+		var ctx = cvs.getContext("2d");
+		ctx.lineWidth = 3;
+		
+		ctx.strokeStyle = 'green';
+		ctx.moveTo(0,300);
+		ctx.quadraticCurveTo(200,0,500,300);
+		ctx.stroke();
+
+		ctx.beginPath();
+		ctx.strokeStyle = 'red';
+		ctx.moveTo(0,600);
+		ctx.bezierCurveTo(0,0,600,600,600,0);
+		ctx.stroke();
+
+		ctx.closePath();
+		
+	</script>
+</body>
+</html>

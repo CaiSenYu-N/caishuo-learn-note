@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#canvas{
+			display: block;
+			border: 1px solid red;
+			/*canvas的宽高不能写到这里  会导致图片缩放比例失真*/
+			/*width: 500px;
+			height: 500px;*/
+			margin: 30px auto;
+		}	
+		
+	</style>
+
+</head>
+<body>
+	<canvas id="canvas">您的浏览器不支持!</canvas>
+	<button class="btn1">←</button>
+	<button class="btn2">↑</button>
+	<button class="btn3">→</button>
+	<button class="btn4">↓</button>
+	<!-- <img src="img/avatar.jpg" alt=""> -->
+	<script>
+		var cvs = document.querySelector('#canvas');
+		cvs.width = 500;
+		cvs.height = 500;
+		var ctx = cvs.getContext("2d");
+		var img = new Image();
+		img.src = 'img/1.png';
+		var count = 0;
+		img.onload = function(){
+			var w = this.width/8;
+			var h = this.height/8;
+			console.log('w==>'+w);
+			console.log('h==>'+h);
+			setInterval(function(){
+				var direction = 0;
+				//往左走
+				if(flag == 0 ){
+					// direction =
+					//往右走
+				}else if(flag == 1){
+					// direction=
+				}
+				count ++;
+				if(count == 8){
+					count = 0;
+				}
+				//清除之前的图片
+				ctx.clearRect(cvs.width/2-w/2,cvs.height/2-h/2 ,w,h);
+				ctx.drawImage(img, count*w, 0,w,h,cvs.width/2-w/2,cvs.height/2-h/2 ,w,h);
+			}, 200);
+		}
+
+
+			
+	</script>
+
+</body>
+</html>

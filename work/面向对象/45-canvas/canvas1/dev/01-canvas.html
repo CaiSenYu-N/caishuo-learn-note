@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.canvas{
+			border:1px solid red;
+			/*canvas宽高不能在css中些 会使canvas中的图片拉伸变形*/
+			/*width: 600px;*/
+			/*background-color: pink;*/
+		}
+	</style>
+</head>
+<body>
+	<canvas class="canvas" width="600" height="600">您的浏览器不支持</canvas>
+
+	<script>
+		var cvs = document.querySelector('.canvas');
+		//创建一个2d的cvs上下文对象
+		var ctx = cvs.getContext("2d");
+		//绘制方格
+		drawGrid(cvs,ctx);
+
+		// 一条线明明只有1px,为什么看起来像2px?是因为当前位置刚好在像素边界就渲染为2px了
+		// ctx.translate(0,.5);
+		ctx.beginPath();
+		//落笔
+		ctx.moveTo(100, 100);
+		//绘制路径
+		ctx.lineTo(300, 100);
+		ctx.lineTo(200,350);
+		ctx.lineTo(100, 100);
+		//描边的样式
+		ctx.strokeStyle = 'green';
+		//描边
+		ctx.stroke();
+		ctx.closePath();
+
+		ctx.beginPath();
+		ctx.moveTo(200,200);
+		ctx.lineTo(400,200);
+		ctx.lineTo(400,400);
+		ctx.lineTo(200,400);
+		ctx.lineTo(200,200);
+		ctx.strokeStyle = 'red';
+		ctx.stroke();
+		ctx.closePath();
+
+		//填充三角形
+		ctx.beginPath();
+		ctx.moveTo(150,150);
+		ctx.lineTo(100,250);
+		ctx.lineTo(0,120);
+		//填充 会自动连接第一个点
+		// ctx.lineTo(150,150);
+		ctx.closePath();
+		ctx.fillStyle = 'pink';
+		//填充
+		ctx.fill();
+
+		//填充了一个长方形
+		ctx.beginPath();
+		ctx.moveTo(200,200);
+		ctx.lineTo(300,200);
+		ctx.lineTo(300,100);
+		ctx.lineTo(200,100);
+		ctx.fillStyle = 'green';
+		ctx.fill();
+		
+		function drawGrid(cvs,ctx){
+			var w = 50;
+			var h = 50;
+			//竖线条数
+			var wCount = cvs.width/w;
+			var hCount = cvs.height/h;
+			for(var i = 1 ; i < wCount ; i ++){
+				ctx.beginPath();
+				ctx.strokeStyle = 'gray';
+				ctx.moveTo(i*w,0);
+				ctx.lineTo(i*w,cvs.height);
+				ctx.closePath();
+				ctx.stroke();
+			}
+			for(var i = 1 ; i < hCount ; i ++){
+				ctx.beginPath();
+				ctx.strokeStyle = 'gray';
+				ctx.moveTo(0,i*h);
+				ctx.lineTo(cvs.width,i*h);
+				ctx.closePath();
+				ctx.stroke();
+			}
+		}
+
+	</script>
+</body>
+</html>

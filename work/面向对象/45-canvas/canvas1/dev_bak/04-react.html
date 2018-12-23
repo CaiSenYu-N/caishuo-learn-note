@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#canvas{
+			display: block;
+			border: 1px solid red;
+			/*canvas的宽高不能写到这里  会导致图片缩放比例失真*/
+			/*width: 500px;
+			height: 500px;*/
+			margin: 30px auto;
+		}	
+		
+	</style>
+
+</head>
+<body>
+	<canvas id="canvas">您的浏览器不支持!</canvas>
+	
+	<script>
+		var cvs = document.querySelector('#canvas');
+		cvs.width = 500;
+		cvs.height = 500;
+		var ctx = cvs.getContext("2d");
+
+		ctx.rect(0,0,100,100);
+		ctx.fillStyle = 'green';
+		ctx.fill();
+		ctx.rect(200,200,200,100);
+		ctx.strokeStyle = 'pink';
+		ctx.stroke();
+
+		ctx.fillRect(150, 150, 150, 150);
+		//清除矩形
+		ctx.clearRect(160, 160, 20, 20);
+		// octx.arc(x,y,r,sAngle,eAngle,counterclockwise);
+	</script>
+
+</body>
+</html>

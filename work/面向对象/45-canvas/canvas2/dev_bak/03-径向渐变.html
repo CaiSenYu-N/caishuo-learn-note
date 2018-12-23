@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#c1{
+			border: 1px solid red;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var cvs = document.querySelector('#c1');
+			//获取上下文对象
+			var ctx = cvs.getContext("2d");
+
+			var crd = ctx.createRadialGradient(300, 300, 10, 300, 300, 300);
+			crd.addColorStop(0, 'yellow');
+			crd.addColorStop(.5,'green');
+			crd.addColorStop(1,'red');
+
+			var clg = ctx.createLinearGradient(500, 200, 200, 420);
+			clg.addColorStop(0,'#6B8DF4');
+			clg.addColorStop(1,'#60CBFF');
+			ctx.fillStyle = crd;
+			ctx.fillRect(100, 100, 300, 300);
+			ctx.fillStyle = clg;
+			ctx.fillRect(200,200,300,220);
+
+		}
+	</script>
+</head>
+<body>
+	<canvas id="c1" width=800 height=500>
+		您的浏览器不支持！
+	</canvas>
+</body>
+</html>

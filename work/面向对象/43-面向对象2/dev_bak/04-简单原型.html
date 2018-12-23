@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		function User(name,age){
+			this.name = name;
+			this.age = age;
+		}
+
+		// {}重新声明对象
+		// 完全模拟原生的prototype
+		User.prototype = {
+			constructor:User,
+			say:function(){
+				alert('Hi  i am  saying...');
+			},
+			run:function(){
+				alert('Hi  i  am  running...');
+			}
+		}
+
+		Object.defineProperty(User.prototype,'constructor',{
+			enumerable:false
+		})
+		// . 的形式是在原来对象上追加属性
+
+		// User.prototype.say = function(){
+		// 		alert('Hi  i am  saying...');
+		// }
+		// User.prototype.run = function(){
+		// 		alert('Hi  i  am  running...');
+		// }
+
+		var user1 = new User();
+		// console.log(user1.say())
+		console.log(user1.__proto__ == User.prototype);  // true
+
+		console.log(user1 instanceof User); // true;
+		// 所以如果通过{}形式重写了原型对象,则会截断 原型对象与构造函数之间的关联
+		// constructor 
+		console.log(User.prototype.constructor == User); // false
+
+		for(var a  in User.prototype){
+			console.log(a+'==>'+User.prototype[a]);
+		}
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

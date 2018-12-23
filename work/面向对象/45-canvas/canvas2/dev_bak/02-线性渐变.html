@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#c1{
+			border: 1px solid red;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var cvs = document.querySelector('#c1');
+			//获取上下文对象
+			var ctx = cvs.getContext("2d");
+
+			//从左上角到右下角的渐变
+			var cld = ctx.createLinearGradient(0, 0, 800, 500);
+			//第一个参数为渐变色的位置比例 区间为0~1
+			cld.addColorStop(0, 'red');
+			cld.addColorStop(.5,'orange');
+			cld.addColorStop(1,'purple');
+
+			// 设置填充渐变
+			ctx.fillStyle = cld;
+			ctx.fillRect(100, 100, 200, 180);
+			ctx.arc(600, 300, 200, 0, 2*Math.PI, false);
+			ctx.arc(0, 0, 100, 0, 2*Math.PI, false);
+			ctx.fill();
+		}
+	</script>
+</head>
+<body>
+	<canvas id="c1" width=800 height=500>
+		您的浏览器不支持！
+	</canvas>
+</body>
+</html>

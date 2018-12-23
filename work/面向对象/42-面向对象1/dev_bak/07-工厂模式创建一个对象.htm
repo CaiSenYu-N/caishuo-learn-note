@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script>
+		
+		function createUser(name,age){
+			// 通过Object创建对象
+			var o = new Object();
+			o.name = name;
+			o.age = age;
+			return o;
+		}
+
+		var user = createUser('张三',20);
+		var user2 = createUser('李四',30);
+		console.log(user.name);
+		console.log(user2.name);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

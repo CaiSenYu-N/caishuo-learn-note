@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		function User(name){
+			this.name  = name;
+		}
+
+		var user = new User('张三');
+		// 原型的动态性  只有被访问的时候 会去查找 
+		User.prototype.say = function(){
+			alert('Hi  i  am  saying...');
+		}
+
+		user.say();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#c1{
+			border: 1px solid red;
+		}
+		.box{
+			border: 1px solid black;
+			background: ulr('data:img.......')
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var cvs = document.querySelector('#c1');
+			//获取上下文对象
+			var ctx = cvs.getContext("2d");
+			drawGrid(cvs);
+			ctx.beginPath();
+			ctx.font = '60px  微软雅黑';
+			ctx.fillStyle = 'green';
+			ctx.fillText('不凡学院', 100, 100,200);
+
+			// 第二个参数 0~1  画布质量
+			// 可以把canvas转换为dom元素 当做图片插入页面
+			var imgData = cvs.toDataURL('image/png', 1);
+			console.log(imgData);
+			var img = new Image();
+			img.src = imgData;
+
+			var boxEle =document.querySelector('.box');
+			boxEle.appendChild(img);
+
+		}
+
+		function drawGrid(cvs){
+			var ctx = cvs.getContext('2d');
+			ctx.save();
+			ctx.beginPath();
+			//绘制网格
+			var step = 50;
+			for(var i = 0 ; i < Math.floor(cvs.width/step); i++){
+				ctx.moveTo(step*i,0);
+				ctx.lineTo(step*i,cvs.height);
+			}
+			for(var i = 0 ; i < Math.floor(cvs.height/step); i++){
+				ctx.moveTo(0,step*i);
+				ctx.lineTo(cvs.width,step*i);
+			}
+			ctx.strokeStyle='gray';
+			ctx.stroke();
+			ctx.closePath();
+			ctx.restore();
+		}
+	</script>
+</head>
+<body>
+	<canvas id="c1" width=800 height=500>
+		您的浏览器不支持！
+	</canvas>
+
+	<div class="box">
+		
+	</div>
+</body>
+</html>

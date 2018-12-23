@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script>
+		//面试题
+		var baseTop = 100;
+		var a = 3;
+		foo2();
+		function foo(num){
+			//基本数据类型被作为参数传递到对象里,
+			//对象里的改参数会被创建一个副本使用.
+			num ++;
+			return num;
+		}
+
+
+		//直接修改 会影响外部+
+		function foo2(){
+			a ++;
+		}
+
+		function foo3(num){
+			// num++ 和 ++num 影响的是接受的变量 不同
+			// num++和++num对自身num的影响是一样的
+			var b = num ++ ;
+			var b = ++ num ;
+			return num;
+		}
+		var rs = foo(a);
+		alert(foo3(3));  // 3;
+		console.log('a==>'+a);   // 3
+		console.log('rs==>'+rs);  // 4
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

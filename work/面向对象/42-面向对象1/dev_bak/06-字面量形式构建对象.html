@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		// 字面量创建出来 本身就是一个实例对象 而且是一个新的地址
+		// 好处: 当创建一个对象的时候很方便 
+		// 弊端: 如果需要创建多个 那么属性需要重复的写.
+		var name = '王五';
+		var user = {
+			name:'张三',
+			age:20,
+			say:function(){
+				alert('Hi am  saying...');
+			}
+		}
+
+		var user2 = {
+			name:'李四',
+			age:33,
+			run:function(){
+				// 回顾:
+				// 判断this的两种情况
+				// 1. 谁调用的当前方法,this指向谁
+				// 2. 如果是new出来的实例对象,那么this指向当前实例对象本身
+				alert('Hi am running... '+this.name);
+			}
+		}
+
+		user.say();
+		user2.run();
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.canvas{
+			border:1px solid red;
+			/*canvas宽高不能在css中些 会使canvas中的图片拉伸变形*/
+			/*width: 600px;*/
+			/*background-color: pink;*/
+		}
+	</style>
+</head>
+<body>
+	<canvas class="canvas" width="600" height="600">您的浏览器不支持</canvas>
+	<script>
+		var cvs = document.querySelector('.canvas');
+		//创建一个2d的cvs上下文对象
+		var ctx = cvs.getContext("2d");
+		
+		
+		
+		var x = 100;
+		var y = 100;
+		var r = 50;
+		//随机方向
+		var speedX =rdSpeed(); 
+		var speedY =rdSpeed(); 
+		setInterval(function(){
+			//清除之前的
+			ctx.clearRect(x-r, y-r, 2*r, 2*r);
+			var color = 'green';
+			//x+= ; y+= ; 向量  速度
+			//相反方向
+			if(x+r >= cvs.width){
+				speedX = -1*Math.abs(speedX);
+			}
+			if(x-r <=0){
+				speedX = Math.abs(speedX);
+			}
+
+			if(y-r <= 0){
+				speedY = Math.abs(speedY);
+			}
+
+			if(y+r >= cvs.height){
+				speedY = -1*Math.abs(speedY);
+			}
+
+
+			x+= speedX;
+			y+= speedY;	
+			drawBall(x,y,r,color);
+		},17);
+
+		function rdSpeed(){
+			return Math.floor(Math.random()*15);
+		}
+
+		function drawBall(x,y,r,color){
+			ctx.beginPath();
+			ctx.arc(x,y,r,2*Math.PI, false);
+			ctx.fillStyle = color;
+			ctx.fill();
+			ctx.closePath();
+		}
+	</script>
+</body>
+</html>

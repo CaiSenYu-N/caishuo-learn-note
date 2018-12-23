@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		var name = '张三';
+		function User(name,age){
+			this.name = name;
+			this.age =age;
+			this.say = function(){
+				alert('Hi  i am  '+this.name);
+			}
+		}
+
+
+		var user = new User('李四',30);
+		var user2 = new User('王五',33);
+		// call()的官方解释，“调用一个对象的一个方法，以另一个对象替换当前对象。”
+		user.say.call(user2);
+		// call(obj,[,p1][,p2][..]);
+		//call和apply第一个参数指上下文对象,一般指"this"
+		User.call(window,'不凡',40);
+		// apply和call是一样的功能,只是参数格式不同
+		// User.apply(window,['不凡',40]);
+		alert(name);
+		alert(age);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

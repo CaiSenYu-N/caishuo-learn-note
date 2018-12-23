@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#c1{
+			border: 1px solid red;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var cvs = document.querySelector('#c1');
+			//获取上下文对象
+			var ctx = cvs.getContext("2d");
+
+			ctx.fillStyle = 'pink';
+			ctx.translate(100, 0);
+			ctx.fillRect(0, 0, 300,300);
+			ctx.beginPath();
+			ctx.rotate(Math.PI/4);
+			ctx.fillStyle = 'green';
+			ctx.fillRect(0,0,200,200);
+			//发现一个问题 前面的变换会影响后面的元素 这个为我们的绘画造成了影响
+			ctx.beginPath();
+			ctx.fillStyle = 'yellow';
+			ctx.fillRect(100,100,100,100);
+
+
+
+		}
+	</script>
+</head>
+<body>
+	<canvas id="c1" width=800 height=500>
+		您的浏览器不支持！
+	</canvas>
+</body>
+</html>

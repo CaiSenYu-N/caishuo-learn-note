@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<script>
+		// 所有对象的顶级对象都是Object(对象)
+		// 实例对象:指的是具体的可以被使用的某一个对象
+		var person = new Object();
+		person.name = '张三',
+		person.age = 20;
+		person.say = function () {
+			//在有new的情况下 this指向new出来的实例对象
+			alert(this.name);
+		}
+
+		console.log('person.name==>'+person.name);
+		person.say();
+		// ====================
+		// 字面量形式
+		var person2 = {
+			name:'李四',
+			age:30
+		}
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		// 此时称User为构造函数对象
+		// 构造函数模式 可以解决 批量创建对象的问题,而且可以明确实例对象类型...
+		function  User(name,age){
+			// this==>  当前构造函数new出来的实例对象
+			this.name = name;
+			this.age = age;
+			this.say = function(){
+				alert('i am  '+this.name);
+			}
+		}
+		function Dog(){
+
+		}
+
+		var user1 = new User('张三',20);
+		var user2 = new User('李四',30);
+
+		// user1.say();
+		// user2.say();
+
+		console.log(User)
+		console.log(user1)
+
+		console.log(user1.__proto__ == User.prototype);
+		// isPrototypeOf 判断一个对象是否是另一个对象的原型对象
+		console.log(User.prototype.isPrototypeOf(user1));
+		console.log(Dog.prototype.isPrototypeOf(user1));
+		//通过  Object 的方法判断  原型与实例对象是否对应
+		console.log(Object.getPrototypeOf(user1) == User.prototype);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		var user = {
+			name:'张三',
+			age:20
+		}
+
+		function cgAge(obj){
+			obj.age ++;
+		}
+		function cgAge2(){
+			user.age ++;
+		}
+		cgAge(user);
+		cgAge2();
+		console.log(user);
+
+
+		// 例子
+
+		var arr = [3,7,5,2];
+
+		function bubbleSort(arr){
+			var myArr = arr;
+			
+			// blabal....
+		}
+
+		function selectSort(arr){
+
+		}
+
+		bubbleSort(arr);  // 结果正确 说明bubble正确了
+		selectSort(arr);  // 结果正确  说明select也正确  ===> 不确定的//
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

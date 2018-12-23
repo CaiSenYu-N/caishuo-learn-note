@@ -1,0 +1,38 @@
+1. canvas是一个标签
+	存在兼容问题，目前在低版本IE中不支持，如果在标签内部添加友情提示，如果不支持可以显示。
+2. Context  上下文
+	在任何一门语言中，都有上下文的称呼，为了表达当前对象的内部API和属性的集合。
+3. moveTo()   起始点 
+   lineTo(x,y)  画直线，到哪结束。
+   Rect(x,y,w,h)  画一个矩形的轨迹
+   arc(x,y,r,startDeg,endDeg,is...)   画一条弧线。
+   以上的方法全是轨迹。
+    beginPath();
+		如果为了防止轨迹相互干扰，可以在每次绘画之前加上beginPath()
+	closePath();
+		会自动封闭轨迹。比如三角形花了两条线，会自动封闭轨迹。
+	
+4. stroke()  笔触
+	描边
+5. fill() 填充
+	只画轨迹，不描边或者不填充是没有效果的
+	strokeRect(x,y,w,h)   
+		自动描边，矩形
+	fillRect(x,y,w,h)
+		自动填充，矩形
+
+6. ctx.fillText(txt,x,y[,minWidth])
+	font:'normal bold 14px/20px "微软雅黑"';
+	textAglin:
+		left  start   end  right 都是以中心点为参照点
+	baseLine：
+		top  bottom  baseLine middle ....
+7. ctx.drawImage
+	ctx.drawImage(img,x,y)
+	ctx.drawImage(img,x,y,w,h)
+	ctx.drawImage(img,sx,sy,sw,sh,x,y,w,h)
+		剪切图片 并缩放
+8. 小人人动画。
+	
+	
+   

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.canvas{
+			border:1px solid red;
+			/*canvas宽高不能在css中些 会使canvas中的图片拉伸变形*/
+			/*width: 600px;*/
+			/*background-color: pink;*/
+		}
+	</style>
+</head>
+<body>
+	<canvas class="canvas" width="600" height="600">您的浏览器不支持</canvas>
+
+	<script>
+		var cvs = document.querySelector('.canvas');
+		//创建一个2d的cvs上下文对象
+		var ctx = cvs.getContext("2d");
+		
+		//快速绘制矩形
+		ctx.rect(100, 100, 200, 100);
+		ctx.fillStyle = 'green';
+		ctx.fill();
+
+		ctx.beginPath();
+		// 快速矩形描边
+		ctx.strokeStyle = 'red';
+		ctx.strokeRect(200, 200, 200, 200);
+
+		ctx.fillStyle = 'yellow';
+		ctx.fillRect(300, 300, 100, 100);
+		//清除矩形 橡皮擦
+		ctx.clearRect(330, 330, 50, 50);
+		ctx.beginPath();
+		ctx.fillStyle = 'pink';
+		//绘制圆形
+		ctx.arc(250, 250, 120, 0, Math.PI*2, false);
+		ctx.fill();
+		ctx.closePath();
+		ctx.beginPath();
+		ctx.fillStyle = 'purple';
+		//绘制圆形 填充扇形  需要moveto中心点坐标
+		ctx.moveTo(400, 400)
+		ctx.arc(400, 400, 120, 0, Math.PI/2, false);
+		ctx.fill();
+		ctx.closePath();
+
+
+	</script>
+</body>
+</html>

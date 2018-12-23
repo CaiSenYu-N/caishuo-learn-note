@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- 设计模式: 是软件开发的过程中,大家总结出来的 能够科学的提高代码质量或者功能的一些封装的方法和经验 -->
+	<script>
+		// 1. 淘宝店家
+		// 2. 张三  鞋子  color,size
+		// 3. 李四  衣服  color,price
+		// ... 店家如果有新货到场,则发送广播通知 ,那么不同的用户根据自己当初订阅的内容不同,则接受到不同的内容.
+
+		var Ob = {};
+		// 订阅对象的订阅内容
+		Ob.list = {};
+		// Ob.list=[{a:[fn]},{b:fn}];
+		
+		// 添加订阅功能
+		// 不同的用户订阅后执行的操作是不同的,所以这里参数为fn类型
+		Ob.add = function(key,fn){
+			//如果list没有key属性 则直接添加
+			if(!this.list[key]){
+				this.list[key] = [];
+			}
+			// 把当前的订阅内容添加到订阅列表
+			this.list[key].push(fn);
+		}
+
+		//发布消息
+		Ob.trigger = function(){
+			//arguments 指的是当前所有的参数
+			var key = arguments[0];
+			var params = [];
+			for(var i = 1; i < arguments.length ; i++){
+				params.push(arguments[i]);
+			}
+
+			var fns = this.list[key];
+			for(var i = 0 ; i < fns.length ; i++){
+				//需要把数组的参数转变为 可被接收的形式  这种写法无法通过拼接实现,必须通过apply
+				fns[i].apply(this,params);
+			}	
+		}
+
+		// 真正的添加订阅者  张三
+		Ob.add('a',function(color,size,price){
+			console.log('color==>'+color);
+			console.log('size==>'+size);
+			console.log('price==>'+price);
+		})
+		
+		Ob.add('b',function(color,price){
+			console.log('color==>'+color);
+			console.log('price==>'+price);
+		})
+
+		//发布消息
+		// 由于无法区分每一次广播到底针对谁  所以添加一个key
+		Ob.trigger('a','pink','XL',250);
+		Ob.trigger('b','green',300);
+
+
+
+	</script>
+
+</head>
+<body>
+	
+</body>
+</html>

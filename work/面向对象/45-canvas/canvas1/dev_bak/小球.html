@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#cvs{
+			display: block;
+			margin: 100px auto;
+			border: 1px solid red;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="cvs" width=600 height=600>
+		
+	</canvas>
+	<script>
+		
+		function Ball(ctx,options){
+			this.ctx = ctx;
+			this.x = options.x||50; 
+			this.y = options.y||50;
+			this.r = options.r||50;
+			this.color = options.color || this.rdColor();
+			//规定一个方向
+			this.speedX = Math.floor(Math.random()*11);
+			this.speedY = Math.floor(Math.random()*11);
+			this.init();
+		}
+		Ball.prototype = {
+			init: function(){
+				this.draw();
+				this.play();
+			},
+			draw: function(){
+				// this.ctx.clearRect(0, 0, 600,600);
+				this.ctx.beginPath();
+				this.ctx.fillStyle = this.color;
+				this.ctx.arc(this.x, this.y, this.r, 0, 2*Math.PI, true);
+				this.ctx.fill();
+				this.ctx.closePath();
+			},
+			play:function(){
+				var that = this;
+				setInterval(function(){
+					//清除旧的圆形
+					that.ctx.clearRect(that.x-that.r, that.y-that.r, that.r*2,that.r*2);
+					that.x += that.speedX;
+					that.y += that.speedY;
+					//x轴触及了右边缘
+					if((that.x+that.r) >= 600){
+						that.x = 600-that.r;
+						that.speedX *= -1;
+					}
+					if((that.x-that.r) <= 0){
+						that.x = that.r;
+						that.speedX *= -1;
+					}
+					if((that.y+that.r) >= 600){
+						that.y = 600-that.r;
+						that.speedY *= -1;
+					}
+					if((that.y-that.r) <= 0){
+						that.y = that.r;
+						that.speedY *= -1;
+					}
+					
+
+					that.draw();
+				}, 20);
+				
+			},
+			rdColor: function(){
+				return `rgb(${rd255()},${rd255()},${rd255()})`;
+				function rd255(){
+					return Math.floor(Math.random()*256);
+				}
+			}
+		}
+	</script>
+	<script>
+		var cvs = document.querySelector('#cvs');
+		//获取上下文对象
+		var ctx = cvs.getContext("2d");
+		// new Ball(ctx,{x:50});
+		// ball.draw();
+		// ball.play();
+		for(var i = 0 ; i < 10 ; i++){
+			// 求随机半径 30, 80
+			var r = rd(30,80);
+			var x = rd(r,600-r);
+			var y = x;
+			new Ball(ctx,{x:x,y:y,r:r})
+		}
+		/**
+		* 计算任意区间的随机值
+		**/
+		function rd(min,max){
+			Math.floor(Math.random()*(max-min+1))+min;
+		}
+
+
+	</script>
+</body>
+</html>

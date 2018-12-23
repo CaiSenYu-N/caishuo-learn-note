@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		//面向对象特点: 继承 封装 多态
+		// 让原型对象等于另一个类型的实例
+		function Animate(){
+			this.dna = 'DNA';
+			this.like=['唱歌','游泳','爬山'];
+		}
+		function Dog(){
+			this.type = 'dog';
+			this.say = function(){
+				console.log(this.type+' dna is '+ this.dna);
+			}
+		}
+
+		function Cat(){
+			this.type = 'cat';
+			this.jump = function(){
+				alert('Hi 加菲!');
+			}
+			this.say = function(){
+				console.log(this.type+' dna is '+ this.dna);
+			}
+		}
+
+		// dog的原型== Animate对象的实例  那么久实现了 DOg对animate的继承
+		Dog.prototype = new Animate();
+		Cat.prototype = new Animate();
+		//谨慎定义原型方法  该方法必须在继承之后才能定义,更不能通过{}重写!
+		Cat.prototype.maimeng = function(){
+			console.log(this.type+'==> 喵喵...');
+		}
+		// Cat.prototype = {
+		// 	maimeng:function(){
+		// 		console.log(this.type+'==> 喵喵...');
+		// 	}
+		// }
+		// 加菲猫
+		var jafe = new Cat();
+		//达尔曼猫
+		var darman = new Cat();
+		// 这里对一个实例对象修改某个对象属性 会导致 该对象的所有实例对象都修改.
+		jafe.like.push('吃猪肉卷');
+		var old = new Dog();
+		old.say();
+		jafe.say();
+		jafe.jump();
+		jafe.maimeng();
+
+		console.log(old.like)
+		console.log(jafe.like)
+		console.log(darman.like)
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

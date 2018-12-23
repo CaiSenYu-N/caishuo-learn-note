@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		// 在java中  for会被当做一个块状作用域
+		//ES5没有块状作用于概念      ES6中let可以模拟块状作用于
+		// for(let i= 0 ; i < 5; i ++){
+		// 	console.log(i);
+		// }
+		// alert(i);
+
+		//es5 用代码模拟块状作用域
+
+		(function(){
+			for(var j = 0 ; j < 5; j ++){
+				console.log(j);
+			}
+		})();
+		alert(j);
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

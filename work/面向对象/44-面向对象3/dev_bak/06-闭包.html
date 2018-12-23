@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		var nAdd;
+		function f1(){
+	　　　　var n=999;
+	　　　　nAdd=function(){
+				n++;
+			}
+	// 　　　　function f2(){
+	// 　　　　　　alert(n);
+	// 　　　　}
+	// 　　　　return f2;
+			return function(){
+				alert(n);
+			}
+	　　}
+	// 遇到类似的写法 就可以大胆判断f1返回了一个函数,并执行了!
+	// 　　f1()();
+	// 	nAdd();
+	// 	f1()();
+		var rs = f1();
+		rs();
+		nAdd();
+		// rs();
+		nAdd();
+		nAdd();
+		nAdd();
+		rs();
+		
+		// fn()()()()()();
+	// 　　nAdd();
+	// 　　result();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

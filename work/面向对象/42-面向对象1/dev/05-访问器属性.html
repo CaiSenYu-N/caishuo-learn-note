@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		var goods = {
+			_price:100,   // 售价
+			sale:.75,   //折扣
+			name:'TV'   //商品名称
+		}
+		//重新定义属性
+		Object.defineProperty(goods,'newPrice',{
+			set:function (v) {
+				//劫持 
+				this._price = v * this.sale;
+			},
+			get:function(){
+				return this._price;
+			}
+		})
+		//任何的属性都有set/get方法,当对这个属性赋值的时候 实际调用了set方法,
+		// 当调用该属性的时候,实际是调用了get方法
+		goods.newPrice = 200;
+		console.log(goods.newPrice);
+
+	</script>
+</body>
+</html>

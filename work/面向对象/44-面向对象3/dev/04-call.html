@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		function Person(name, age, job) {
+	          this.name = name;
+	          this.age = age;
+	          this.job = job;
+	          this.sayName = function () {
+	            alert(this.name);
+	          }
+	      }
+	     function User(){
+
+	     }
+	     var user = new User();
+	    // Person('张三',20,'程序员');
+	    // call(ctx,p1,p2,p3...)
+	    // Person.call(window,'李四',20,'ui');
+	    // apply(ctx,[])
+	    Person.apply(user,['张三',22,'h5']);
+	    // alert(job);
+	    // alert(user.name);
+	    user.sayName();
+      // Person.apply(window,['wang',27,'php']);
+      // Person.call(window,'张',20,'h5');
+      // window.sayName();
+
+      // $('.banner').click(function(){
+      // 	$('.banner') ==> dom
+      // 	this.
+      // })
+	</script>
+</body>
+</html>

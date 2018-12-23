@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		// 面向对象的特点:  继承  封装  多态
+		// 写一个函数之前首先考虑:之前有没有封装好的方法可以直接用?封装之后解决什么样的共性问题...
+
+		// 思考:为什么需要构造函数?解决什么样的问题?
+		// 构造函数可以根据不同的参数创建不同的实例对象,同时可以解决批量创建对象的问题.
+		function User(name,age){
+			this.name = name;
+			this.age =age;
+			this.say = function(){
+				alert('Hi i am '+this.name);
+			}
+			this.run = function(){
+				alert('Hi  i am  running ....');
+			}
+		}
+		var user1 = new User('张三',20);
+		var user2 = new User('李四',33);
+		
+		// user1.say();
+		// user2.say();
+		//这个地方就存在问题,其实对于一个构造函数的方法,应该对所有的实例对象都是一样的.
+		console.log(user1.run == user2.run);
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

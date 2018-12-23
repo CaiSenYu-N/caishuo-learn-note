@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#c1{
+			border: 1px solid red;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var cvs = document.querySelector('#c1');
+			//获取上下文对象
+			var ctx = cvs.getContext("2d");
+
+			ctx.fillStyle = 'pink';
+			ctx.fillRect(10, 10, 10,10);
+			//x 宽度  y 高度 2==2倍 .5 == .5倍
+			ctx.scale(2,2);
+			ctx.beginPath();
+			ctx.fillStyle = 'green';
+			ctx.fillRect(10, 10, 10,10);
+
+			ctx.scale(2,2);
+			ctx.beginPath();
+			ctx.fillStyle = 'green';
+			ctx.fillRect(10, 10, 10,10);
+
+			ctx.scale(2,2);
+			ctx.beginPath();
+			ctx.fillStyle = 'green';
+			ctx.fillRect(10, 10, 10,10);
+
+			ctx.scale(2,2);
+			ctx.beginPath();
+			ctx.fillStyle = 'green';
+			ctx.fillRect(10, 10, 10,10);
+
+
+		}
+	</script>
+</head>
+<body>
+	<canvas id="c1" width=800 height=500>
+		您的浏览器不支持！
+	</canvas>
+</body>
+</html>

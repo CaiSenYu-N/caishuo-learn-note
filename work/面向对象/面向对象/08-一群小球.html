@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.canvas{
+			border:1px solid red;
+			/*canvas宽高不能在css中些 会使canvas中的图片拉伸变形*/
+			/*width: 600px;*/
+			/*background-color: pink;*/
+		}
+	</style>
+</head>
+<body>
+	<canvas class="canvas" width="600" height="600">您的浏览器不支持</canvas>
+	<script>
+		var cvs = document.querySelector('.canvas');
+		//创建一个2d的cvs上下文对象
+		var ctx = cvs.getContext("2d");
+		
+		function Ball(cvs,x,y,r,color){
+			this.cvs = cvs;
+			this.ctx = this.cvs.getContext('2d');
+			this.x = x;
+			this.y = y;
+			this.r = r;
+			this.color = color;
+			this.init();
+
+		}
+		Ball.prototype = {
+			init:function(){
+				//球被创建的时候  speedX 应该作为该球的一个属性存在
+				this.speedX =this.rdSpeed(); 
+				this.speedY =this.rdSpeed(); 
+				//画个球
+				this.drawBall();
+				this.play();
+			},
+			drawBall:function(){
+				this.ctx.beginPath();
+				this.ctx.arc(this.x,this.y,this.r,2*Math.PI, false);
+				this.ctx.fillStyle = this.color;
+				this.ctx.fill();
+				this.ctx.closePath();
+				
+			},
+			play:function(){
+				//x+= ; y+= ; 向量  速度
+				//相反方向
+				if(this.x+this.r >= this.cvs.width){
+					this.speedX = -1*Math.abs(this.speedX);
+				}
+				if(this.x-this.r <=0){
+					this.speedX = Math.abs(this.speedX);
+				}
+				if(this.y-this.r <= 0){
+					this.speedY = Math.abs(this.speedY);
+				}
+				if(this.y+this.r >= this.cvs.height){
+					this.speedY = -1*Math.abs(this.speedY);
+				}
+
+				this.x+= this.speedX;
+				this.y+= this.speedY;	
+				this.drawBall(this.x,this.y,this.r,this.color);
+			},
+			rdSpeed:function(){
+				return Math.random()*4;
+				// return Math.floor(Math.random()*10);
+			}
+		}
+
+		// new Ball(cvs,100,100,50,'green');
+		// var colors = ['red','green','pink','purple'];
+		//球的集合
+		var ballArr = [];
+		for(var i = 0 ; i < 100 ; i ++){
+			var r = Math.floor(Math.random()*10+2);
+			var ball = new Ball(cvs,Math.floor(Math.random()*(cvs.width-r)),Math.floor(Math.random()*(cvs.height-r)),r,rdColor());
+			ballArr.push(ball);
+		}
+
+		setInterval(function(){
+			//每次直接清空画布
+			ctx.clearRect(0, 0, cvs.width, cvs.height);
+			lineTo(ballArr,100);
+			for(var i = 0 ; i < ballArr.length ; i++){
+				//每隔17ms做一次动画 此时动画作为全局
+				// 每次变化一个增量
+				ballArr[i].play();
+			}
+
+		},17)
+
+		function rdColor(){
+			function rd(){
+				return Math.floor(Math.random()*256); // 0~255
+			}
+			return 'rgb('+rd()+','+rd()+','+rd()+')'; // rgb(255,33,27);
+		}
+
+
+		function lineTo(ballList,maxDis){
+			for(var i = 0 ; i < ballList.length ; i ++){
+				for(var j = 1 ; j < ballList.length - i ;  j ++){
+					var dis = abs(ballList[i],ballList[j]);
+					if(dis<=(maxDis||200)){
+						ctx.beginPath();
+						// ctx.globalAlpha = 1-dis/maxDis; // 0~1
+						ctx.moveTo(ballList[i].x, ballList[i].y); // 设置线的起始位置
+						ctx.lineTo(ballList[j].x, ballList[j].y); // 设置线的结束位置
+						// ctx.strokeStyle = 'rgba(255,0,0,'+(1-dis/200)+')'; // 设置绘制线条的颜色  color = 
+						// rgb(255,255,255)  ==> rgba(255,255,255,.3);
+						// var colorData = ballList[i].color.substr(4,ballList[i].color.length-2);
+						// var newColor = 'rgba('+colorData+','+(1-dis/maxDis)+')';
+						// console.log(newColor);
+						ctx.strokeStyle = ballList[i].color; // 设置绘制线条的颜色
+						ctx.strokeWidth = 1; // 设置绘制线条的宽度
+						// ctx.strokeStyle = 'red';
+						ctx.stroke(); // 绘制
+						ctx.closePath();
+					}
+				}
+			}
+
+			function abs(b1,b2){
+				return Math.floor(Math.sqrt(Math.pow((b1.x-b2.x),2)+Math.pow((b1.y-b2.y),2)));
+			}
+		}
+
+
+
+
+
+
+
+
+		
+	</script>
+</body>
+</html>

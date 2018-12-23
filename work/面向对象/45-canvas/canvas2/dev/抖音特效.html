@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="lib/zrender.js"></script>
+	<style>
+		#canvas{
+			display:block;
+			margin:100px auto;
+			background-color: #272822;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="canvas" width="500px" height="500px" style="margin: 0 auto"></canvas>
+	<script>
+		var zr = zrender.init(document.querySelector('canvas'))
+		//当前cvs的宽和高
+		var w = zr.getWidth();
+		var h = zr.getHeight();
+		//字体大小
+		var fontSize = 60;
+
+		var rectBg = new zrender.Rect({
+			shape:{
+				x:w/2-fontSize*4/2,
+				y:h/2,
+				width:fontSize*4+5,
+				height:fontSize
+			},
+			style:{
+				fill:'#272822'
+			}
+		})
+		zr.add(rectBg)
+		var t1 = new zrender.Text({
+			style:{
+				text:'不凡学院',
+				fontFamily:'微软雅黑',
+				fontWeight:'900',
+				fontSize:fontSize,
+				textFill:'#0ff',
+				textAlign:'center',
+				//混合模式  https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation
+				blend:'lighten'
+			},
+			position:[w/2,h/2]
+		})
+		var t2 = new zrender.Text({
+			style:{
+				text:'不凡学院',
+				fontFamily:'微软雅黑',
+				fontWeight:'900',
+				fontSize:fontSize,
+				textFill:'#f00',
+				textAlign:'center',
+				blend:'lighten'
+			},
+			position:[w/2+5,h/2]
+		})
+
+		zr.add(t1)
+		zr.add(t2)
+
+		function Line(){
+			//最小宽度
+			this.minL = w/10;
+			//最大宽度
+			this.maxL = w*8/10;
+			this.w = Math.random()*w*7/10+w/10;
+			this.h = Math.random()*3+1;
+			// this.color = ['#ff0', '#f0f', '#0ff', '#00f'];
+			// this.color[random];
+			this.color = ['#ff0', '#f0f', '#0ff', '#00f'][Math.floor(Math.random() * 4)];
+			this.x = Math.random()*w;
+			this.y = Math.random()*h;
+		}
+		Line.prototype.newPositon = function(){
+			return {
+				x:Math.random()*w,
+				y:Math.random()*h
+			}
+		}
+
+		var lineArr = [];
+		for(var i = 0 ; i<20 ; i ++){
+			// 每次new的Line属性都是随机的 
+			var line = new Line();
+			var zrLine = new zrender.Rect({
+				shape:{
+					x:line.x,
+					y:line.y,
+					width:line.w,
+					height:line.h
+				},
+				style:{
+					fill:line.color
+				}
+			});
+			//把之前的保存期起来
+			lineArr.push(zrLine);
+			//zrender api 用于绘制
+			zr.add(zrLine);
+
+		}
+		setInterval(function(){
+			// return;
+			for(var i = 0 ; i < lineArr.length ; i ++){
+				// zrenderapi  用于更新
+				lineArr[i].attr({
+					style:{
+						opacity:1,
+						color:['#ff0', '#f0f', '#0ff', '#00f'][Math.floor(Math.random() * 4)]
+					},
+					position:[Math.random()*w,Math.random()*h]
+				})
+			}
+			//避免更新太过频繁
+			if(Math.random()>.2){
+				t2.attr({
+					position:[w/2+10,h/2]
+				})
+				setTimeout(function(){
+					t2.attr({
+						position:[w/2+Math.random()*5+3,h/2]
+					})
+
+					for(var i = 0 ; i < lineArr.length ; i ++){
+						lineArr[i].attr({
+							style:{
+								opacity:0
+							}
+						})
+					}
+					
+				}, 100);
+			}
+			
+		},500)
+
+	</script>
+</body>
+</html>

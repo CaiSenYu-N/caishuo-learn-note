@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#canvas{
+			border: 1px solid red;
+		}
+
+	</style>
+</head>
+<body>
+	<canvas id="canvas">您的浏览器不支持!</canvas>
+
+	<script>
+		var cvs = document.querySelector('#canvas');
+		cvs.width = 600;
+		cvs.height = 600;
+		var ctx = cvs.getContext("2d");
+		var crg = ctx.createRadialGradient(300, 300, 0, 300, 300, 300);
+		crg.addColorStop(0,'red');
+		crg.addColorStop(1,'green');
+		ctx.fillStyle = crg;
+		ctx.fillRect(0, 0, 600, 600);
+		ctx.font = 'bolder 60px 微软雅黑';
+		ctx.fillText('不凡学院', 100, 300);
+	</script>
+</body>
+</html>

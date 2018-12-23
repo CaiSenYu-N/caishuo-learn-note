@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		//js中所有的对象都是函数 所有的函数也是对象
+		//自定义一个对象 约定俗成:定义对象的时候 首字母必须大写!!!
+		function User(name,age){
+			//this在User创建的时候 并不知道是谁,只有具体的new出现后才明确指向new出来的实例对象
+			this.name = name;
+			this.age = age;
+			this.say = function(){
+				alert('Hi,My name is '+this.name);
+			}
+		}
+		// 1. user是"构造函数"
+		// 2. user1是一个"实例对象"
+		var user1 = new User('张三',30);
+		var user2 = new User('李四',20);
+		// constructor 用于判断某个实例对象具体的构造函数
+		console.log(user1.constructor == User);
+		// 是谁的实例对象
+		console.log(user1 instanceof Object);
+		console.log(user1 instanceof User);  // user1是User的实例对象
+		user1.say();
+	</script>
+</body>
+</html>

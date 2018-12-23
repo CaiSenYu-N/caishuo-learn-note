@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.banner,.banner2{
+			width: 100%;
+			height: 500px;
+			background-color: #333;
+			overflow: hidden;
+			perspective: 1000px;
+		}
+		.banner .title,
+		.banner .text{
+			display: block;
+			margin: 0 auto;
+		}
+		.banner .title{
+			margin-top: 100px;
+			transform: rotateY(30deg);
+		}
+		.banner .text{
+			margin-top: 50px;
+		}
+		.banner2 .title1,
+		.banner2 .text2{
+			display: block;
+			margin: 0 auto;
+		}
+		.banner2 .title1{
+			margin-top: 100px;
+			transform: rotateY(30deg);
+		}
+		.banner2 .text2{
+			margin-top: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div class="banner">
+		<p>我是一个p标签</p>
+		<img class="title" data-parallax="1" data-reverse="false" src="img/banner_title.png" alt="">
+		<img class="text" data-parallax=".5" data-reverse="true" src="img/banner_text1.png" alt="">
+	</div>
+
+	<div class="banner2">
+		<p style="font-size: 40px;color:#fff;text-indent: 200px;" data-parallax="1">我是一个p标签</p>
+		<img class="title1" data-parallax="1"  src="img/banner_title.png" alt="">
+		<img class="text2" data-parallax="1" src="img/banner_text1.png" alt="">
+	</div>
+
+
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+	
+	<script src="js/parallax.js"></script>
+	<script>
+
+		new _($('.banner'),100,80,300,36);
+		new _($('.banner2'),200,40,500,16);
+
+		/*// 大盒子中心点坐标
+		var centerX = $('.banner').offset().left+$('.banner').width()/2;
+		var centerY = $('.banner').offset().top+$('.banner').height()/2;
+		//假如旋转最大度数为16deg
+		var maxDeg = 36;
+		var maxW = 100;
+		var maxH = 80;
+		var maxZ = 500;
+		$('.banner').on('mouseenter',function () {
+			$('.banner>.title').css('transition','none');
+			$('.banner>.text').css('transition','none');
+		})
+		$('.banner').on('mousemove',function (e) {
+			var chaX = centerX-e.pageX;
+			var chaY = centerY-e.pageY;
+			// 当前x差值 距离中心点 比例
+			var blX = chaX/($('.banner').width()/2);
+			var blY = chaY/($('.banner').height()/2);
+			//x轴偏移度数
+			// blX>0 那么 y都是-
+			// 纠正±
+			// var degY = blX>0?(-1*maxDeg*blX):(-1)*maxDeg*blX;
+			var degY = -1*maxDeg*blX;
+			var degX = maxDeg*blY;
+			$('.banner>.title').css('transform','translateX('+maxW*blX+'px) translateY('+maxH*blY+'px) translateZ('+maxZ*blX*blY+'px) rotateX('+degX+'deg) rotateY('+degY+'deg)');
+			$('.banner>.text').css('transform','translateX('+maxW*blX+'px) rotateX('+degX+'deg) rotateY('+degY+'deg)');
+
+		})
+		$('.banner').on('mouseleave',function () {
+			$('.banner>.title').css('transition','all ease .4s');
+			$('.banner>.title').css('transform','rotateX(0deg) rotateY(0deg)');
+			$('.banner>.text').css('transition','all ease .4s');
+			$('.banner>.text').css('transform','rotateX(0deg) rotateY(0deg)');
+		})
+*/
+
+
+	</script>
+</body>
+</html>

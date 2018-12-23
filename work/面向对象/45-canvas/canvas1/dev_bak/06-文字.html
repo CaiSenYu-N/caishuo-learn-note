@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#canvas{
+			display: block;
+			border: 1px solid red;
+			/*canvas的宽高不能写到这里  会导致图片缩放比例失真*/
+			/*width: 500px;
+			height: 500px;*/
+			margin: 30px auto;
+		}	
+		
+	</style>
+
+</head>
+<body>
+	<canvas id="canvas">您的浏览器不支持!</canvas>
+	
+	<script>
+		var cvs = document.querySelector('#canvas');
+		cvs.width = 500;
+		cvs.height = 500;
+		var ctx = cvs.getContext("2d");
+
+		ctx.strokeStyle = 'green';
+		ctx.fillStyle = 'pink';
+		ctx.fillRect(0, 0, 100, 100);
+		ctx.font = 'bolder 30px 微软雅黑';
+		// ctx.fillText('欢迎来到不凡学院', 100, 100);
+		ctx.textAlign = 'left';
+		ctx.textBaseline = 'ideographic';
+		ctx.strokeText('欢迎来到不凡学院', 100, 100);
+		console.log(ctx.measureText('欢迎来到不凡学院'))
+	</script>
+
+</body>
+</html>

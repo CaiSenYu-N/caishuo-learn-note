@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#c1{
+			border: 1px solid red;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			var cvs = document.querySelector('#c1');
+			//获取上下文对象
+			var ctx = cvs.getContext("2d");
+
+			ctx.fillStyle = 'pink';
+			ctx.shadowColor = 'green';
+			ctx.shadowBlur = 10;
+			ctx.shadowOffsetX = 15;
+			ctx.shadowOffsetY = 15;
+			// 绘画路径
+			// ctx.rect(100, 100, 300, 200);
+			//填充
+			// ctx.fill();
+			ctx.fillRect(100, 100, 300, 200);
+
+			var img =new Image();
+			img.src = 'img/logo.png';
+			img.onload = function(){
+				ctx.drawImage(img, 0, 0);
+			}
+
+			var img2 =new Image();
+			img2.src = 'img/hao_.png';
+			img2.onload= function(){
+				ctx.drawImage(img2, 150,0);
+			}
+		}
+	</script>
+</head>
+<body>
+	<canvas id="c1" width=800 height=500>
+		您的浏览器不支持！
+	</canvas>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		// 能通过对象形式追加属性 比如自定义对象的原型对象
+		// 那么能给原生对象的 原型对象  追加方法吗?
+		// 可以添加,但是不建议添加. 因为你无法全部掌握所有的原生对象的属性或者方法,
+		// 如果自己修改原生对象的原型属性,可能会把原来的属性覆盖掉....
+		String.prototype.bf = function(){
+			return this.charAt(0);
+		}
+
+		console.log('abc'.bf());
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

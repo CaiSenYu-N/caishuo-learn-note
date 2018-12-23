@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+	<script>
+		function User (name,age) {
+			this.name = name;
+			this.age = age;
+			// this.say = function(){
+			// 	alert('Hi  my name is '+this.name);
+			// }
+		}
+		console.log(User.prototype);
+		//原型对象 可以提供共享空间,使每一个实例对象都可以共享这里的属性
+		User.prototype.say = function(){
+				alert('Hi  my name is '+this.name);
+			}
+		var user1 = new User('张三',30);
+		var user2 =new User('李四',20);
+		// user1.say();
+		// user2.say();
+		// 说明每次new的时候 都重新创建了相同逻辑的对象  对资源的浪费
+		console.log(user1.say == user2.say); //false
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		function User(name){
+			this.name  = name;
+		}
+
+		var user = new User('张三');
+		// User.prototype.say = function(){
+		// 	alert('Hi  i  am  saying...');
+		// }
+		// 大括号就是重新声明了对象  
+		User.prototype = {
+			say:function(){
+				alert('Hi  i  am  here!');
+			}
+		}
+
+		user.say();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

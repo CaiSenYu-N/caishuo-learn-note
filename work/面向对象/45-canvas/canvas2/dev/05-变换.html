@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#canvas{
+			border: 1px solid red;
+		}
+
+	</style>
+</head>
+<body>
+	<canvas id="canvas">您的浏览器不支持!</canvas>
+	<button class="btn1">获取图片</button>
+	<img class="img1" src="" alt="">
+	<script>
+		var cvs = document.querySelector('#canvas');
+		cvs.width = 600;
+		cvs.height = 600;
+		var ctx = cvs.getContext("2d");
+		
+		ctx.fillStyle = 'green';
+		ctx.fillRect(0, 0, 100, 100);
+		//scale(w,h);
+		//变换一般配合 save和restore
+		ctx.save();
+		ctx.scale(2, 2);
+		ctx.fillRect(100,100,100,100);
+		ctx.restore();
+		ctx.save();
+		//单位 弧度
+		ctx.fillRect(100,100,100,100);
+		ctx.rotate(Math.PI/6);
+		ctx.fillRect(100,100,100,100);
+		ctx.restore();
+
+		ctx.save();
+		ctx.fillStyle = 'red';
+		ctx.translate(100,100);
+		//当前画布的透明度  也配合save()使用
+		ctx.globalAlpha = .5;
+		ctx.fillRect(100,100,100,100);
+		ctx.arc(300,300,200,0,Math.PI,true);
+		ctx.fill();
+		ctx.restore();
+
+		var btn1 = document.querySelector('.btn1');
+		btn1.onclick = function(){
+			//0~1 画质
+			//结果是一个base64格式 
+			var data = cvs.toDataURL('image/jpg',1);
+			var img1 = document.querySelector('.img1');
+			img1.src = data;
+		}
+	</script>
+</body>
+</html>

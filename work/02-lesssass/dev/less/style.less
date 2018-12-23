@@ -1,0 +1,34 @@
+@topColor:pink;
+@base: #f938ab;
+
+/*混合*/
+.rounded-corners (@radius: 5px) {
+  border-radius: @radius;
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+}
+
+
+.header{
+	width:100%;
+	height: 200px;
+	background-color:@topColor;
+	.rounded-corners(50%);
+	.p1{
+		font-size:20px;
+		color: red;
+	}
+	/*&返回上一级*/
+	&:hover .p1{
+		font-size: 30px;
+		color:green;
+	};
+}
+
+
+#header {
+  .rounded-corners;
+}
+#footer {
+  .rounded-corners(10px);
+}

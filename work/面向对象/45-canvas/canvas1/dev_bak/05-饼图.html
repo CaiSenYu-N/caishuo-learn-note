@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<style>
+		#canvas{
+			display: block;
+			border: 1px solid red;
+			/*canvas的宽高不能写到这里  会导致图片缩放比例失真*/
+			/*width: 500px;
+			height: 500px;*/
+			margin: 30px auto;
+		}	
+		
+	</style>
+
+</head>
+<body>
+	<canvas id="canvas">您的浏览器不支持!</canvas>
+	
+	<script>
+		var cvs = document.querySelector('#canvas');
+		cvs.width = 500;
+		cvs.height = 500;
+		var ctx = cvs.getContext("2d");
+		// 150  语文   红色
+		// 150  数学   绿色
+		// 120  英语   黄色
+		// 300  理综   蓝色
+		
+		
+		var obj = [
+			{
+				title:'语文',
+				data:150,
+				color:'red'
+			},
+			{
+				title:'数学',
+				data:150,
+				color:'green'
+			},
+			{
+				title:'英语',
+				data:120,
+				color:'yellow'
+			},
+			{
+				title:'理综',
+				data:300,
+				color:'blue'
+			}
+		]
+
+		var total = 0 ;
+		var r = 100;
+		for(var i = 0 ; i < obj.length ; i++){
+			total += obj[i].data;
+		}
+
+		var endAngle = 0 ;
+		for(var i = 0 ; i < obj.length ; i ++){
+			ctx.beginPath();
+			ctx.moveTo(250, 250);
+			//每一次的终止位置应该是下一次起点位置
+			//当前异步
+			var step = (obj[i].data/total)*2*Math.PI;
+			ctx.arc(250, 250, r, endAngle,endAngle+step, false);
+			ctx.fillStyle = obj[i].color;
+			ctx.closePath();
+			ctx.fill();
+			endAngle += step;
+		}
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

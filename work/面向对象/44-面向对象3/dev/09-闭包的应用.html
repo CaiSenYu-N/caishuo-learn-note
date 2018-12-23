@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul class="ul">
+		<li class="li_1">li_1</li>
+		<li class="li_2">li_2</li>
+		<li class="li_3">li_3</li>
+		<li class="li_4">li_4</li>
+		<li class="li_5">li_5</li>
+		<li class="li_6">li_6</li>
+	</ul>
+	<script>
+		var ulEl = document.querySelector('.ul');
+		var lis = ulEl.children;
+		for(var i = 0 ; i < lis.length ; i++){
+			// lis[i].index = i;
+			// lis[i].onclick = function(){
+			// 	alert(i);
+			// }
+			// 一个闭包的应用
+			lis[i].onclick = (function(index){
+				// alert(index);
+				return function(){
+					alert(index);
+				}
+			})(i);
+		}
+
+		// alert(i);
+	</script>
+</body>
+</html>

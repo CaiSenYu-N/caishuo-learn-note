@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.canvas{
+			border:1px solid red;
+			/*canvas宽高不能在css中些 会使canvas中的图片拉伸变形*/
+			/*width: 600px;*/
+			/*background-color: pink;*/
+		}
+	</style>
+</head>
+<body>
+	<canvas class="canvas" width="600" height="600">您的浏览器不支持</canvas>
+	<!-- <img class="img" width="200" height="200" src="avatar.jpg"  alt=""> -->
+	<script>
+		var cvs = document.querySelector('.canvas');
+		//创建一个2d的cvs上下文对象
+		var ctx = cvs.getContext("2d");
+		// 可以通过js创建imgdom对象
+		var img = new Image();
+		img.src = 'avatar.jpg';
+		// var img = document.querySelector('.img');
+		//ctx如果需要用到img ,必须等图片加载完毕
+		img.onload = function(){
+			//img的dom元素对象
+			// ctx.drawImage(img,100,100);
+			//从img中[100,100]的位置截取(w=80,h=80)的图片,放到canvas中[400,400]的位置,宽高为100,100
+			ctx.drawImage(img, 100, 100, 80, 80, 400, 400, 100, 100);		
+		}
+		
+
+	</script>
+</body>
+</html>

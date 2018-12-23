@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+<!-- 	1.引入插件库样式
+	2.引入依赖库
+	3.引入核心库
+	4.初始化js -->
+	<link rel="stylesheet" href="js/MySwiper.css">
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		ul{
+			list-style: none;
+		}
+		
+		.banner{
+			position: relative;
+			width: 1200px;
+			height: 460px;
+			margin: 100px auto;
+			background-color: pink;
+			overflow: hidden;
+		}
+		
+	</style>
+</head>
+<body>
+	
+	<div class="banner">
+		<!-- <ul class="swiper">
+			<li class="slide">
+				<img src="img/m1.jpg" alt="">
+			</li>
+			<li class="slide">
+				<img src="img/m2.jpg" alt="">
+			</li>
+			<li class="slide">
+				<img src="img/m3.jpg" alt="">
+			</li>
+			<li class="slide">
+				<img src="img/m4.jpg" alt="">
+			</li>
+			<li class="slide">
+				<img src="img/m5.jpg" alt="">
+			</li>
+		</ul> -->
+	</div>
+
+	<script src="lib/jquery.js"></script>
+	<!-- //面向对象形式封装了一个插件 -->
+	<script src="js/MySwiper.js"></script>
+	<script>
+		// ajax
+		var  imgs = ['m1.jpg','m2.jpg','m3.jpg','m4.jpg','m5.jpg'];
+		// 封装?   1.el对象  2.数据源对象
+		new MySwiper('.banner',imgs);
+
+
+		// for(var i = 0 ; i < lis.length ;  i++){
+
+		// 	(function(a){
+		// 		lis[a].onclick = function(){
+
+		// 		}
+
+		// 	})(i);
+		// }
+
+	</script>
+</body>
+</html>

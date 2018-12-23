@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		function User(){
+			this.name = '张三';
+		}
+
+		// prototype里面可以直接设值属性
+		// User.prototype.name = '张三';
+		User.prototype.say = function(){
+			return this.name;
+		}
+		// 实例对象里可以重新定义某个属性的值. 注意:这里只是重新定义,并没有覆盖原型的该属性.
+		// 也不可能通过实例对象修改原型的某个属性的值
+		var user1 = new User();
+
+		user1.say = function(){
+			return 'Hi  i am '+this.name;
+		}
+
+		//只能删除实例对象的属性
+		// delete user1.say;
+
+		var user2 = new User();
+		console.log(user1);
+		console.log(user1.say());
+
+		console.log(user2.say());
+
+		// 判断某个属性是属于自己还是原型对象的
+		console.log(user1.hasOwnProperty('say'));  //true
+		console.log(user2.hasOwnProperty('say'));  //false
+
+		// 只要可枚举 就是true  所以不区分是原型属性还是实例对象的属性
+		console.log('say' in user1);  //true
+		console.log('say' in user2);  //true
+
+
+		// 怎么判断一个属性是否是属于原型对象的？
+
+		function isPrototypeAttr(obj,name){
+			// 不是实例对象的属性 而且是是可以被访问的属性 就是原型对象属性
+			return !obj.hasOwnProperty(name)&& (name in obj);
+		}
+
+
+		// for...in...
+		// 只能打印可枚举属性   比如constructor 无法打印. 无法打印不代表无法访问.
+
+		console.log('========for...in===========');
+		console.log(User.prototype);
+
+		for(var  a  in User.prototype){
+			console.log(a+'===>'+User.prototype[a]);
+		}
+
+		console.log('=========keys========');
+		console.log(Object.keys(user1.__proto__));
+
+		console.log('=======getOwnPropertyNames=========');
+		console.log(Object.getOwnPropertyNames(user1.__proto__));
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

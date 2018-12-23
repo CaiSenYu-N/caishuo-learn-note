@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		//面向对象特点: 继承 封装 多态
+		// 让原型对象等于另一个类型的实例
+		function Animate(){
+			this.dna = 'DNA';
+			this.like=['唱歌','游泳','爬山'];
+		}
+		//借用构造函数模式 可以解决 同一对象的实例对象 修改了共享的 对象类型属性导致所有实例对象都被修改的问题.
+		// 但是跟无法访问到 原型里的方法,所以 别说继承了,函数复用都是问题!!
+		Animate.prototype.run = function(){
+			alert(this.dna+'...running...');
+		}
+
+		function Dog(){
+			Animate.call(this);
+		}
+
+		var old = new Dog();
+		var old2 = new Dog();
+		old2.like.push('洗澡');
+		console.log(old.like);
+		console.log(old2.like);
+		// 根本就没有借用到prototype里的方法
+		old.run();
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

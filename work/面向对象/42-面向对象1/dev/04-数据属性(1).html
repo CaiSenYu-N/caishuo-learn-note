@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script>
+		//开启严格模式
+		'use strict';
+
+		var user = {
+			name:'张三',
+			age:20
+		}
+		// configurable 设置某个属性是否可以通过数据属性进行属性的修改
+		// Object.defineProperty(user, 'name', {
+		// 	configurable:false
+		// })
+		//user.name 禁止被修改
+		Object.defineProperty(user, 'name', {
+			writable:false,
+			enumerable: false,  //可枚举
+			value:'李四'
+		})
+		// user.name ='李四';
+		for(var key in user){
+			console.log(key);
+		}
+
+		console.log(user.name);
+
+
+		function foo() {
+			//如果在函数体内部 不声明var直接写变量 变量为被当做全局变量
+			//不会报错 但是错误的语法!!
+			count = 1;
+		}
+
+		// console.log(user);
+		// foo();
+		// console.log(count);
+	</script>
+</body>
+</html>

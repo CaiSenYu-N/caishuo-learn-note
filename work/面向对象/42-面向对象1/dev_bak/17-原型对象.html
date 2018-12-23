@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		
+		function User(name,age){
+			this.name = name;
+			this.age =age;
+		}
+		var user1 = new User('张三',20);
+		var user2 = new User('李四',33);
+
+		console.log('User对象==>');
+		// Function  函数的顶级对象
+		console.log(User.__proto__ == Function.prototype);
+
+		console.log('原型对象==>')
+		console.log(User.prototype);  //获取原型对象
+		console.log(User.prototype.constructor == User);
+
+		console.log('实例对象==>')
+		console.log(user1);
+		console.log(user1.__proto__ == User.prototype);
+		console.log(user2.__proto__ == User.prototype);
+
+		// 谁有原型对象?  函数才有   实例对象有吗?
+		console.log('实例对象的prototype==>')
+		console.log(user1.prototype);
+
+		// 原型对象是Object的一个实例对象
+		console.log('原型对象.__proto__ ==>');
+		console.log(User.prototype.__proto__ == Object.prototype);
+
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

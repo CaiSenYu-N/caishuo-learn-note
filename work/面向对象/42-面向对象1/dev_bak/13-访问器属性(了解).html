@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		var user = {
+			name:'张三',
+			age:20
+		}
+		Object.defineProperty(user,'age',{
+			//get需要return一个值
+			get:function(){
+				console.log('get方法被调用...');
+				return 50;
+			},
+			// 不能直接通过this给当前属性设置值
+			set:function(v){
+				age = v;
+				console.log('set方法被调用...设置为'+v);
+			}
+			
+		})
+
+		// 每隔属性有两个访问器属性,当该属性被访问时候调用
+		// 唯一需要知道的是 当一个对象的属性被访问的时候,可以通过调用get方法在当前属性访问之前操作.
+		// 也可以在属性被设置值的时候做操作.
+		user.age = 30;
+		console.log(user.age);
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

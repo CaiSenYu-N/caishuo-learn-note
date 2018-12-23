@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script>
+		var arr = [3,2,1,5];
+		var myArr2 = [];
+		var name = '张安';
+		function bubbleSort(arr){
+			//想当然以为 myArr接受了arr的值,但由于arr是对象类型
+			// ,所以指向了同一个地址 ,所以影响到了 arr本身
+			// 怎么解决呢?  那么久需要使用clone
+			var myArr = arr;
+			var myArr2 = [];   // 新的变量 指向新的地址
+			var name = '李四';
+			console.log('name==>'+name);
+			console.log('name2==>'+window.name);
+			for(var k = 0 ;k < arr.length  ; k ++){
+				myArr2.push(arr[k]);
+			}
+			for(var i = 0 ; i < myArr.length; i ++){
+				for(var j = i ; j < myArr.length - i ; j ++){
+					if(myArr[j]>myArr[j+1]){
+						var temp = myArr[j];
+						myArr[j] = myArr[j+1];
+						myArr[j+1] = temp;
+					}
+				}
+			}
+			return myArr;
+		}
+
+		var rs = bubbleSort(arr);
+		console.log('arr==>');
+		console.log(arr);
+		console.log('rs==>');
+		console.log(rs);
+
+
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

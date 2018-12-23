@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script>
+		var color1 = "red";
+
+	     function aa() {    
+
+	       var color2 = "green";
+	         color2 = "black";   // black
+
+	       function bb() {    
+
+	         var color3 = "yellow";  // yellow
+	         color3 = color2;  //  black;
+	         color2 = color1;  // red;
+	         color1 = 'pink';  // pink
+	         console.log('color3='+color3);  // black
+	         console.log('color2='+color2);  // red
+	       }
+
+	       bb();
+	     }
+
+	     aa();
+
+	     console.log(color1);  // pink
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

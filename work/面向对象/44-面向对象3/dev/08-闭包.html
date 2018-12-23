@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+
+	<script>
+		// 闭包的问题就是 你不知道什么时候能回收内部的变量 所以不建议大量使用闭包
+		// 但是闭包可以减少外部变量
+		function f1(){
+	　　　　var n=999;
+	　　　　nAdd=function(){
+			n+=1;
+		   }
+	　　　　function f2(){
+	　　　　　　alert(n);
+	　　　　}
+	　　　　return f2;
+	　　}
+	　　var result=f1();  // function
+	　　result(); //执行函数   999
+	　　nAdd(); 
+	　　result();  // 执行函数  1000
+
+	</script>
+</body>
+</html>

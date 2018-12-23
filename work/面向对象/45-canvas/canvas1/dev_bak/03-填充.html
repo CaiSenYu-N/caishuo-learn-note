@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#canvas{
+			display: block;
+			border: 1px solid red;
+			/*canvas的宽高不能写到这里  会导致图片缩放比例失真*/
+			/*width: 500px;
+			height: 500px;*/
+			margin: 30px auto;
+		}	
+		
+	</style>
+
+</head>
+<body>
+	<canvas id="canvas">您的浏览器不支持!</canvas>
+	
+	<script>
+		var cvs = document.querySelector('#canvas');
+		cvs.width = 500;
+		cvs.height = 500;
+		var ctx = cvs.getContext("2d");
+
+		ctx.moveTo(100, 100);
+		ctx.lineTo(200, 200);
+		ctx.lineTo(80,220);
+		ctx.lineTo(100,100);
+		// stroke 描边
+		// ctx.stroke();
+		ctx.fillStyle = 'green';
+		// fill 填充
+		ctx.fill();
+		ctx.beginPath();
+		ctx.moveTo(300, 300);
+		ctx.lineTo(230, 230);
+		ctx.lineTo(180,220);
+		ctx.lineTo(300,300);
+		ctx.strokeStyle = 'red';
+		ctx.stroke();
+		ctx.closePath();
+
+		ctx.beginPath();
+		ctx.strokeStyle = 'purple';
+		ctx.moveTo(220,220);
+		ctx.lineTo(300,70);
+		ctx.lineTo(480,270);
+		//路径的closePath会自动补全 使其封闭起来
+		ctx.closePath();
+		ctx.stroke();
+
+		ctx.beginPath();
+		ctx.strokeStyle = 'pink';
+		ctx.fillStyle = 'pink';
+		ctx.moveTo(100, 100);
+		ctx.lineTo(200,100);
+		ctx.lineTo(200,200);
+		ctx.lineTo(100,200);
+		ctx.closePath();
+		// ctx.stroke();
+		ctx.fill();
+	</script>
+
+</body>
+</html>
